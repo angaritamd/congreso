@@ -1311,12 +1311,14 @@
     }
 
     function attempt() {
-      if (input.value === PASSWORD) {
+      const entered = input.value.trim();
+      console.log('[auth] entered:', JSON.stringify(entered), '| expected:', JSON.stringify(PASSWORD), '| match:', entered === PASSWORD);
+      if (entered === PASSWORD) {
         unlock();
       } else {
         errorEl.textContent = 'Contraseña incorrecta';
         input.classList.remove('error', 'shake');
-        void input.offsetWidth; // reflow to restart animation
+        void input.offsetWidth;
         input.classList.add('error', 'shake');
         input.value = '';
         input.focus();
