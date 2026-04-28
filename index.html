@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simposio IA en Radiología · AngaritaRad · 11 Sep 2026</title>
+  <meta name="description" content="Del Pixel al Diagnóstico: IA Real en Radiología. Viernes 11 de Septiembre 2026, Los Cobos Medical Center, Bogotá. Organizado por AngaritaRad / OpenRad.ai." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── DESIGN TOKENS ── */
+    :root {
+      --primary:           #f54e00;
+      --primary-active:    #d04200;
+      --ink:               #26251e;
+      --body:              #5a5852;
+      --body-strong:       #26251e;
+      --muted:             #807d72;
+      --muted-soft:        #a09c92;
+      --hairline:          #e6e5e0;
+      --hairline-soft:     #efeee8;
+      --hairline-strong:   #cfcdc4;
+      --canvas:            #f7f7f4;
+      --canvas-soft:       #fafaf7;
+      --surface-card:      #ffffff;
+      --surface-strong:    #e6e5e0;
+      --on-primary:        #ffffff;
+      --timeline-thinking: #dfa88f;
+      --timeline-grep:     #9fc9a2;
+      --timeline-read:     #9fbbe0;
+      --timeline-edit:     #c0a8dd;
+      --timeline-done:     #c08532;
+      --semantic-error:    #cf2d56;
+      --semantic-success:  #1f8a65;
+
+      --font-sans:   'Inter', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+
+      --radius-xs: 4px;
+      --radius-sm: 6px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-pill: 9999px;
+
+      --sp-xxs: 4px;
+      --sp-xs:  8px;
+      --sp-sm:  12px;
+      --sp-base:16px;
+      --sp-md:  20px;
+      --sp-lg:  24px;
+      --sp-xl:  32px;
+      --sp-xxl: 48px;
+      --sp-section: 80px;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--canvas);
+      color: var(--body);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--sp-xl);
+    }
+
+    /* ── TYPOGRAPHY UTILITIES ── */
+    .display-mega {
+      font-size: 72px; font-weight: 400; line-height: 1.1;
+      letter-spacing: -2.16px; color: var(--ink); font-family: var(--font-sans);
+    }
+    .display-lg {
+      font-size: 36px; font-weight: 400; line-height: 1.2;
+      letter-spacing: -0.72px; color: var(--ink);
+    }
+    .display-md {
+      font-size: 26px; font-weight: 400; line-height: 1.25;
+      letter-spacing: -0.325px; color: var(--ink);
+    }
+    .display-sm {
+      font-size: 22px; font-weight: 400; line-height: 1.3;
+      letter-spacing: -0.11px; color: var(--ink);
+    }
+    .title-md { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+    .title-sm { font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+    .body-md  { font-size: 16px; font-weight: 400; line-height: 1.5; }
+    .body-sm  { font-size: 14px; font-weight: 400; line-height: 1.5; }
+    .caption  { font-size: 13px; font-weight: 400; line-height: 1.4; }
+    .caption-uppercase {
+      font-size: 11px; font-weight: 600; line-height: 1.4;
+      letter-spacing: 0.88px; text-transform: uppercase;
+    }
+
+    /* ── BADGE PILL ── */
+    .badge-pill {
+      display: inline-flex; align-items: center; gap: var(--sp-xs);
+      background: var(--surface-strong); color: var(--ink);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.88px;
+      text-transform: uppercase; line-height: 1.4;
+      border-radius: var(--radius-pill); padding: 4px 10px;
+    }
+    .badge-pill--primary { background: var(--primary); color: var(--on-primary); }
+    .badge-pill--ink     { background: var(--ink);     color: var(--canvas); }
+    .badge-pill--gold    { background: var(--timeline-done); color: var(--on-primary); }
+    .badge-pill--green   { background: var(--semantic-success); color: #fff; }
+
+    /* ── BUTTONS ── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-sans); font-size: 14px; font-weight: 500;
+      line-height: 1; border-radius: var(--radius-md);
+      cursor: pointer; border: none; transition: background 0.15s, border-color 0.15s;
+      text-decoration: none;
+    }
+    .btn--primary {
+      background: var(--primary); color: var(--on-primary);
+      padding: 10px 18px; height: 40px;
+    }
+    .btn--primary:hover { background: var(--primary-active); }
+    .btn--download {
+      background: var(--ink); color: var(--canvas);
+      padding: 12px 20px; height: 44px;
+    }
+    .btn--download:hover { background: #3a3930; }
+    .btn--secondary {
+      background: var(--surface-card); color: var(--ink);
+      padding: 9px 17px; height: 40px;
+      border: 1px solid var(--hairline-strong);
+    }
+    .btn--secondary:hover { border-color: var(--ink); }
+    .btn--outline {
+      background: transparent; color: var(--ink);
+      padding: 11px 19px; height: 44px;
+      border: 1px solid var(--hairline-strong);
+    }
+    .btn--outline:hover { border-color: var(--ink); }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: var(--sp-section) 0; }
+    .section-header { margin-bottom: var(--sp-xxl); }
+    .section-header .badge-pill { margin-bottom: var(--sp-base); }
+
+    /* ── CARDS ── */
+    .card {
+      background: var(--surface-card); border-radius: var(--radius-lg);
+      border: 1px solid var(--hairline); padding: var(--sp-lg);
+      transition: border-color 0.2s;
+    }
+    .card:hover { border-color: var(--hairline-strong); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ══════════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════════ */
+    .nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--canvas); height: 64px;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s, backdrop-filter 0.2s, background 0.2s;
+    }
+    .nav.scrolled {
+      border-bottom-color: var(--hairline);
+      backdrop-filter: blur(12px);
+      background: rgba(247, 247, 244, 0.85);
+    }
+    .nav__inner {
+      max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-xl);
+      height: 100%; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav__logo {
+      font-size: 18px; font-weight: 600; color: var(--primary);
+      letter-spacing: -0.3px; flex-shrink: 0;
+    }
+    .nav__links {
+      display: flex; align-items: center; gap: var(--sp-xl);
+      list-style: none;
+    }
+    .nav__links a {
+      font-size: 14px; font-weight: 500; line-height: 1.4;
+      color: var(--ink); transition: color 0.15s;
+    }
+    .nav__links a:hover { color: var(--primary); }
+    .nav__cta { flex-shrink: 0; }
+    .nav__hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: var(--sp-xs);
+    }
+    .nav__hamburger span {
+      display: block; width: 22px; height: 2px;
+      background: var(--ink); border-radius: 2px;
+      transition: transform 0.25s, opacity 0.25s;
+    }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+    .nav__mobile {
+      display: none; flex-direction: column;
+      background: var(--canvas); border-top: 1px solid var(--hairline);
+      padding: var(--sp-lg) var(--sp-xl); gap: var(--sp-base);
+      position: absolute; top: 64px; left: 0; right: 0;
+    }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a {
+      font-size: 14px; font-weight: 500; color: var(--ink);
+      padding: var(--sp-xs) 0;
+    }
+    .nav__mobile .btn { margin-top: var(--sp-xs); align-self: flex-start; }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════════ */
+    .hero {
+      padding: var(--sp-section) 0 60px;
+      text-align: center;
+    }
+    .hero__badge { margin-bottom: var(--sp-lg); }
+    .hero__h1 { margin-bottom: var(--sp-sm); }
+    .hero__subhead {
+      font-size: 28px; font-weight: 400; color: var(--primary);
+      letter-spacing: -0.3px; margin-bottom: var(--sp-lg);
+    }
+    .hero__body {
+      max-width: 600px; margin: 0 auto var(--sp-xl);
+      color: var(--body); font-size: 16px; line-height: 1.6;
+    }
+    .hero__info-badges {
+      display: flex; flex-wrap: wrap; justify-content: center;
+      gap: var(--sp-sm); margin-bottom: var(--sp-xl);
+    }
+    .info-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--surface-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-pill); padding: 6px 14px;
+      font-size: 13px; font-weight: 500; color: var(--ink);
+    }
+    .info-badge__icon { font-size: 14px; }
+    .hero__ctas {
+      display: flex; justify-content: center; gap: var(--sp-base);
+      flex-wrap: wrap; margin-bottom: var(--sp-xxl);
+    }
+
+    /* COUNTDOWN */
+    .countdown {
+      display: flex; justify-content: center; gap: var(--sp-base);
+      margin-bottom: var(--sp-xxl); flex-wrap: wrap;
+    }
+    .countdown__card {
+      background: var(--surface-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg); padding: var(--sp-lg) var(--sp-xl);
+      min-width: 100px; text-align: center;
+    }
+    .countdown__number {
+      display: block; font-size: 40px; font-weight: 400;
+      letter-spacing: -1px; color: var(--ink); line-height: 1;
+      margin-bottom: var(--sp-xs);
+    }
+    .countdown__label {
+      font-size: 11px; font-weight: 600; letter-spacing: 0.88px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hero__logos {
+      display: flex; align-items: center; justify-content: center;
+      gap: var(--sp-lg); flex-wrap: wrap;
+      border-top: 1px solid var(--hairline); padding-top: var(--sp-xl);
+    }
+    .hero__logos-label {
+      font-size: 12px; font-weight: 600; letter-spacing: 0.88px;
+      text-transform: uppercase; color: var(--muted);
+    }
+    .hero__logos-items {
+      display: flex; align-items: center; gap: var(--sp-xxl); flex-wrap: wrap;
+      justify-content: center;
+    }
+    .logo-name {
+      font-size: 14px; font-weight: 600; color: var(--body-strong);
+      letter-spacing: -0.2px;
+    }
+    .logo-name--separator { color: var(--hairline-strong); margin: 0 -8px; }
+
+    /* ══════════════════════════════════════════════════════════
+       WHY THIS EVENT
+    ══════════════════════════════════════════════════════════ */
+    .why { background: var(--canvas); }
+    .why__grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-lg); margin-bottom: var(--sp-xl);
+    }
+    .why__card { padding: var(--sp-xl); }
+    .why__icon {
+      width: 44px; height: 44px; border-radius: var(--radius-md);
+      background: var(--surface-strong); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: var(--sp-base);
+    }
+    .why__card-title { margin-bottom: var(--sp-xs); }
+    .why__card-body { color: var(--body); font-size: 14px; line-height: 1.6; }
+    .why__strip {
+      background: var(--ink); border-radius: var(--radius-lg);
+      padding: var(--sp-xl) var(--sp-xxl);
+      display: flex; align-items: center; gap: var(--sp-xxl); flex-wrap: wrap;
+    }
+    .why__strip-stat {
+      font-size: 48px; font-weight: 400; letter-spacing: -1.5px;
+      color: var(--primary); line-height: 1; flex-shrink: 0;
+    }
+    .why__strip-text { color: var(--canvas); font-size: 16px; line-height: 1.5; }
+    .why__strip-title {
+      font-size: 20px; font-weight: 600; color: var(--canvas);
+      letter-spacing: -0.2px; margin-bottom: 4px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       SPEAKERS
+    ══════════════════════════════════════════════════════════ */
+    .speakers { background: var(--canvas-soft); }
+    .speakers__grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-lg);
+    }
+    .speaker-card { padding: var(--sp-xl); }
+    .speaker-card__avatar {
+      width: 64px; height: 64px; border-radius: var(--radius-pill);
+      background: var(--surface-strong); display: flex;
+      align-items: center; justify-content: center;
+      font-size: 20px; font-weight: 600; color: var(--ink);
+      margin-bottom: var(--sp-base); flex-shrink: 0;
+    }
+    .speaker-card__badges { display: flex; gap: var(--sp-xs); flex-wrap: wrap; margin-bottom: var(--sp-sm); }
+    .speaker-card__name { margin-bottom: 2px; }
+    .speaker-card__institution { color: var(--muted); font-size: 13px; margin-bottom: var(--sp-sm); }
+    .speaker-card__talk { font-size: 14px; color: var(--body); line-height: 1.4; margin-bottom: var(--sp-sm); }
+    .speaker-card__time {
+      display: inline-flex; align-items: center;
+      background: var(--surface-strong); border-radius: var(--radius-pill);
+      padding: 3px 10px; font-size: 12px; font-weight: 600;
+      color: var(--muted); letter-spacing: 0.3px;
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       PROGRAM
+    ══════════════════════════════════════════════════════════ */
+    .program { background: var(--canvas); }
+    .program__table {
+      display: flex; flex-direction: column; gap: 0;
+      border: 1px solid var(--hairline); border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .program__row {
+      display: grid; grid-template-columns: 140px 1fr auto;
+      align-items: center; gap: var(--sp-lg);
+      padding: var(--sp-base) var(--sp-lg);
+      border-bottom: 1px solid var(--hairline-soft);
+      background: var(--surface-card);
+      transition: background 0.15s;
+    }
+    .program__row:last-child { border-bottom: none; }
+    .program__row:hover { background: var(--canvas-soft); }
+    .program__row--angarita { background: rgba(159, 187, 224, 0.12); }
+    .program__row--angarita:hover { background: rgba(159, 187, 224, 0.2); }
+    .program__row--dell { background: rgba(192, 133, 50, 0.1); }
+    .program__row--dell:hover { background: rgba(192, 133, 50, 0.18); }
+    .program__row--workshop { background: rgba(159, 201, 162, 0.15); }
+    .program__row--workshop:hover { background: rgba(159, 201, 162, 0.22); }
+    .program__row--break { background: var(--canvas-soft); }
+    .time-pill {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 4px 10px; border-radius: var(--radius-pill);
+      font-size: 12px; font-weight: 600; white-space: nowrap;
+      background: var(--surface-strong); color: var(--ink);
+    }
+    .time-pill--angarita { background: var(--timeline-read); color: var(--ink); }
+    .time-pill--dell { background: var(--timeline-done); color: var(--on-primary); }
+    .time-pill--workshop { background: var(--timeline-grep); color: var(--ink); }
+    .time-pill--break { background: var(--canvas); color: var(--muted); }
+    .program__title { font-size: 14px; color: var(--body-strong); line-height: 1.4; }
+    .program__title--break { color: var(--muted); font-style: italic; }
+    .program__speaker { font-size: 12px; color: var(--muted); text-align: right; white-space: nowrap; }
+
+    /* ══════════════════════════════════════════════════════════
+       VENUE
+    ══════════════════════════════════════════════════════════ */
+    .venue { background: var(--canvas-soft); }
+    .venue__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-xxl); align-items: start; }
+    .venue__body { color: var(--body); line-height: 1.7; margin-bottom: var(--sp-xl); }
+    .venue__info-row {
+      display: flex; align-items: flex-start; gap: var(--sp-base);
+      padding: var(--sp-base) 0; border-bottom: 1px solid var(--hairline-soft);
+      font-size: 14px;
+    }
+    .venue__info-row:last-of-type { border-bottom: none; }
+    .venue__info-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+    .venue__info-label { font-weight: 600; color: var(--ink); margin-bottom: 1px; font-size: 13px; }
+    .venue__info-value { color: var(--body); font-size: 13px; }
+    .venue__partner-card {
+      margin-top: var(--sp-xl); padding: var(--sp-lg);
+      background: var(--surface-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg);
+    }
+    .venue__partner-label { font-size: 11px; font-weight: 600; letter-spacing: 0.88px; text-transform: uppercase; color: var(--muted); margin-bottom: var(--sp-xs); }
+    .venue__partner-name { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+    .venue__partner-desc { font-size: 13px; color: var(--body); }
+    .venue__map iframe {
+      width: 100%; height: 420px; border: none;
+      border-radius: var(--radius-lg); display: block;
+    }
+    .venue__link { display: inline-flex; align-items: center; gap: 4px; color: var(--primary); font-size: 14px; font-weight: 500; margin-top: var(--sp-base); }
+    .venue__link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════════════
+       FORMAT
+    ══════════════════════════════════════════════════════════ */
+    .format { background: var(--canvas); }
+    .format__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-lg); margin-bottom: var(--sp-xl); }
+    .format__card { padding: var(--sp-xxl); }
+    .format__number { font-size: 72px; font-weight: 400; letter-spacing: -2.16px; line-height: 1; margin-bottom: var(--sp-base); }
+    .format__number--orange { color: var(--primary); }
+    .format__number--ink { color: var(--ink); }
+    .format__card-title { margin-bottom: var(--sp-sm); }
+    .format__list { list-style: none; display: flex; flex-direction: column; gap: var(--sp-xs); }
+    .format__list li { font-size: 14px; color: var(--body); display: flex; gap: 8px; align-items: flex-start; }
+    .format__list li::before { content: "—"; color: var(--muted-soft); flex-shrink: 0; }
+    .format__cert-strip {
+      background: var(--surface-card); border: 1px solid var(--hairline);
+      border-radius: var(--radius-lg); padding: var(--sp-lg) var(--sp-xl);
+      display: flex; align-items: center; gap: var(--sp-lg); flex-wrap: wrap;
+    }
+    .format__cert-icon { font-size: 28px; flex-shrink: 0; }
+    .format__cert-title { font-size: 16px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+    .format__cert-desc { font-size: 13px; color: var(--body); }
+
+    /* ══════════════════════════════════════════════════════════
+       REGISTRATION CTA
+    ══════════════════════════════════════════════════════════ */
+    .cta-band {
+      background: var(--canvas); padding: 96px 0;
+      border-top: 1px solid var(--hairline);
+      text-align: center;
+    }
+    .cta-band__badge { margin-bottom: var(--sp-lg); }
+    .cta-band__h2 { margin-bottom: var(--sp-sm); }
+    .cta-band__subhead { color: var(--muted); font-size: 18px; margin-bottom: var(--sp-base); }
+    .cta-band__body { max-width: 520px; margin: 0 auto var(--sp-xl); color: var(--body); font-size: 15px; line-height: 1.6; }
+    .cta-band__ctas { display: flex; justify-content: center; gap: var(--sp-base); flex-wrap: wrap; margin-bottom: var(--sp-xl); }
+    .cta-band__pills { display: flex; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════ */
+    .footer {
+      background: var(--canvas);
+      border-top: 1px solid var(--hairline);
+      padding: 64px var(--sp-xl) 40px;
+    }
+    .footer__inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--sp-xxl);
+      margin-bottom: var(--sp-xxl);
+    }
+    .footer__brand {}
+    .footer__logo { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: var(--sp-xs); }
+    .footer__tagline { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 240px; }
+    .footer__social { display: flex; gap: var(--sp-sm); margin-top: var(--sp-base); }
+    .footer__social a {
+      font-size: 12px; font-weight: 500; color: var(--body);
+      padding: 4px 10px; border-radius: var(--radius-pill);
+      border: 1px solid var(--hairline); transition: border-color 0.15s;
+    }
+    .footer__social a:hover { border-color: var(--hairline-strong); color: var(--ink); }
+    .footer__col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.88px; text-transform: uppercase; color: var(--ink); margin-bottom: var(--sp-base); }
+    .footer__links { list-style: none; display: flex; flex-direction: column; gap: var(--sp-sm); }
+    .footer__links a { font-size: 14px; color: var(--body); transition: color 0.15s; }
+    .footer__links a:hover { color: var(--ink); }
+    .footer__bottom {
+      max-width: 1200px; margin: 0 auto;
+      border-top: 1px solid var(--hairline-soft); padding-top: var(--sp-lg);
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: var(--sp-sm);
+      font-size: 12px; color: var(--muted);
+    }
+
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .why__grid { grid-template-columns: repeat(2, 1fr); }
+      .speakers__grid { grid-template-columns: repeat(2, 1fr); }
+      .footer__inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__cta  { display: none; }
+      .nav__hamburger { display: flex; }
+
+      .display-mega { font-size: 36px; letter-spacing: -0.9px; }
+      .display-lg   { font-size: 28px; }
+
+      .hero { padding: 48px 0 40px; }
+      .hero__subhead { font-size: 20px; }
+      .countdown { gap: var(--sp-sm); }
+      .countdown__card { min-width: 72px; padding: var(--sp-base); }
+      .countdown__number { font-size: 28px; }
+
+      .why__grid { grid-template-columns: 1fr; }
+      .why__strip { flex-direction: column; gap: var(--sp-base); }
+
+      .speakers__grid { grid-template-columns: 1fr; }
+
+      .program__row { grid-template-columns: 110px 1fr; gap: var(--sp-sm); }
+      .program__speaker { display: none; }
+
+      .venue__grid { grid-template-columns: 1fr; }
+      .venue__map iframe { height: 280px; }
+
+      .format__grid { grid-template-columns: 1fr; }
+
+      .footer__inner { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { padding: 0 var(--sp-base); }
+      .footer { padding: 48px var(--sp-base) 32px; }
+      .footer__inner { grid-template-columns: 1fr; gap: var(--sp-xl); }
+    }
+
+    @media (min-width: 640px) and (max-width: 1024px) {
+      .display-mega { font-size: 56px; letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════════════════════
+     NAV
+══════════════════════════════════════════════════════════ -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="#inicio" class="nav__logo">AngaritaRad</a>
+    <ul class="nav__links">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#programa">Programa</a></li>
+      <li><a href="#speakers">Speakers</a></li>
+      <li><a href="#venue">Venue</a></li>
+      <li><a href="#registro">Registro</a></li>
+    </ul>
+    <a href="#registro" class="btn btn--download nav__cta">Registrarme</a>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="nav-mobile">
+    <a href="#inicio"   onclick="closeMobile()">Inicio</a>
+    <a href="#programa" onclick="closeMobile()">Programa</a>
+    <a href="#speakers" onclick="closeMobile()">Speakers</a>
+    <a href="#venue"    onclick="closeMobile()">Venue</a>
+    <a href="#registro" onclick="closeMobile()">Registro</a>
+    <a href="#registro" class="btn btn--download" onclick="closeMobile()">Registrarme</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     HERO
+══════════════════════════════════════════════════════════ -->
+<section class="hero section" id="inicio">
+  <div class="container">
+    <div class="hero__badge reveal">
+      <span class="badge-pill">&#128205; BOGOTÁ &middot; 11 SEP 2026</span>
+    </div>
+
+    <h1 class="display-mega hero__h1 reveal">Del Pixel al Diagnóstico</h1>
+    <p class="hero__subhead reveal">IA Real en Radiología</p>
+    <p class="hero__body body-md reveal">
+      Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy
+      en hospitales reales. Sin presentaciones vacías. Sin hype.
+      Diseñado para el radiólogo que quiere actuar, no solo escuchar.
+    </p>
+
+    <div class="hero__info-badges reveal">
+      <span class="info-badge"><span class="info-badge__icon">&#127970;</span> Los Cobos Medical Center, Bogotá</span>
+      <span class="info-badge"><span class="info-badge__icon">&#128197;</span> Viernes, 11 de Septiembre de 2026 &middot; 7:30 AM – 6:00 PM</span>
+      <span class="info-badge"><span class="info-badge__icon">&#127979;</span> Academia: Universidad El Bosque</span>
+    </div>
+
+    <div class="hero__ctas reveal">
+      <a href="#registro" class="btn btn--download">Registrarme</a>
+      <a href="#programa" class="btn btn--outline">Ver programa</a>
+    </div>
+
+    <!-- COUNTDOWN -->
+    <div class="countdown reveal">
+      <div class="countdown__card">
+        <span class="countdown__number" id="cd-days">—</span>
+        <span class="countdown__label">Días</span>
+      </div>
+      <div class="countdown__card">
+        <span class="countdown__number" id="cd-hours">—</span>
+        <span class="countdown__label">Horas</span>
+      </div>
+      <div class="countdown__card">
+        <span class="countdown__number" id="cd-mins">—</span>
+        <span class="countdown__label">Minutos</span>
+      </div>
+      <div class="countdown__card">
+        <span class="countdown__number" id="cd-secs">—</span>
+        <span class="countdown__label">Segundos</span>
+      </div>
+    </div>
+
+    <!-- LOGOS ROW -->
+    <div class="hero__logos reveal">
+      <span class="hero__logos-label">En alianza con</span>
+      <div class="hero__logos-items">
+        <span class="logo-name">Los Cobos Medical Center</span>
+        <span class="logo-name logo-name--separator">/</span>
+        <span class="logo-name">Universidad El Bosque</span>
+        <span class="logo-name logo-name--separator">/</span>
+        <span class="logo-name">Harvard Executive Education</span>
+        <span class="logo-name logo-name--separator">/</span>
+        <span class="logo-name">Dell Technologies</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     WHY THIS EVENT
+══════════════════════════════════════════════════════════ -->
+<section class="why section" id="por-que">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">El Evento</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">No más slides. Aquí la IA corre en vivo.</h2>
+    </div>
+
+    <div class="why__grid">
+      <div class="card why__card reveal">
+        <div class="why__icon">&#9889;</div>
+        <h3 class="title-md why__card-title">Sin presentaciones vacías</h3>
+        <p class="why__card-body">
+          Cada ponencia incluye una demo funcional. Los modelos corren en hardware real,
+          los resultados aparecen en pantalla. Si falla, lo vemos todos juntos.
+          Así es la radiología real.
+        </p>
+      </div>
+      <div class="card why__card reveal">
+        <div class="why__icon">&#129504;</div>
+        <h3 class="title-md why__card-title">Diseñado para radiólogos sin código</h3>
+        <p class="why__card-body">
+          No necesitas saber Python ni Machine Learning. El contenido fue creado
+          por radiólogos, para radiólogos. Aprenderás a evaluar, adoptar y dirigir
+          herramientas de IA en tu práctica.
+        </p>
+      </div>
+      <div class="card why__card reveal">
+        <div class="why__icon">&#127891;</div>
+        <h3 class="title-md why__card-title">Harvard llega a Bogotá</h3>
+        <p class="why__card-body">
+          Leonard Nuernberg — creador de MHub.ai, <strong>Cum Laude RSNA 2025</strong>,
+          AIM Program Harvard / Mass General Brigham — presenta en vivo el cierre del
+          simposio junto a AngaritaRad. Por primera vez en Colombia.
+        </p>
+      </div>
+    </div>
+
+    <div class="why__strip reveal">
+      <div class="why__strip-stat">3 000</div>
+      <div class="why__strip-text">
+        <div class="why__strip-title">Radiólogos en Colombia que necesitan esta conversación</div>
+        Solo el 12 % tiene acceso hoy a formación práctica en IA clínica.
+        Este simposio cambia eso — en persona y en vivo para toda Latinoamérica.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SPEAKERS
+══════════════════════════════════════════════════════════ -->
+<section class="speakers section" id="speakers">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Conferencistas</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Quién estará en el escenario</h2>
+    </div>
+
+    <div class="speakers__grid">
+
+      <!-- Dr. Miguel Angarita -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3)">MA</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--primary">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dr. Miguel Angarita</div>
+        <div class="speaker-card__institution">AngaritaRad / OpenRad.ai<br>Harvard Executive Education</div>
+        <div class="speaker-card__talk">
+          Aplicaciones útiles de IA en el trabajo diario del radiólogo<br>
+          <em>+ Agentes de IA en Radiología: del caso clínico al reporte sin tocar una terminal</em>
+        </div>
+        <span class="speaker-card__time">12:00 PM · 5:00 PM</span>
+      </div>
+
+      <!-- Leonard Nuernberg -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.2)">LN</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--gold">&#127941; Cum Laude RSNA 2025</span>
+        </div>
+        <div class="title-md speaker-card__name">Leonard Nuernberg</div>
+        <div class="speaker-card__institution">AIM Program Harvard<br>Mass General Brigham</div>
+        <div class="speaker-card__talk">
+          Clausura + Taller: Corre tu primer modelo cardíaco con IA (MHub.ai)<br>
+          <em>Creador de MHub.ai — premiado en RSNA 2025</em>
+        </div>
+        <span class="speaker-card__time">5:30 PM</span>
+      </div>
+
+      <!-- Dra. Diana Leal -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.3)">DL</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dra. Diana Leal</div>
+        <div class="speaker-card__institution">Los Cobos Medical Center<br>Bogotá, Colombia</div>
+        <div class="speaker-card__talk">
+          Flujos de trabajo en Radiología apoyados por IA<br>
+          <em>Implementación clínica real en radiología hospitalaria</em>
+        </div>
+        <span class="speaker-card__time">8:00 AM</span>
+      </div>
+
+      <!-- Dell Technologies -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.15)">DT</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--gold">&#11088; Patrocinador</span>
+        </div>
+        <div class="title-md speaker-card__name">Dell Technologies</div>
+        <div class="speaker-card__institution">Healthcare &amp; AI Infrastructure<br>Demo en vivo</div>
+        <div class="speaker-card__talk">
+          Infraestructura para IA clínica: 3D Slicer y MONAI<br>
+          <em>Demo en vivo con hardware Dell — MONAI + 3D Slicer</em>
+        </div>
+        <span class="speaker-card__time">4:30 PM</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FULL PROGRAM
+══════════════════════════════════════════════════════════ -->
+<section class="program section" id="programa">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Programa</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Un día completo. Todo en vivo.</h2>
+    </div>
+
+    <div class="program__table reveal">
+
+      <div class="program__row">
+        <span class="time-pill">7:30 – 8:00</span>
+        <span class="program__title">Inauguración del Simposio</span>
+        <span class="program__speaker">AngaritaRad</span>
+      </div>
+
+      <div class="program__row program__row--angarita">
+        <span class="time-pill time-pill--angarita">8:00 – 8:30</span>
+        <span class="program__title">Flujos de trabajo en Radiología apoyados por IA</span>
+        <span class="program__speaker">Dra. Leal</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">8:30 – 9:00</span>
+        <span class="program__title">Marco legal del uso de la IA en Colombia</span>
+        <span class="program__speaker">Dra. Martha Oyuela</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">9:00 – 9:30</span>
+        <span class="program__title">Implementación de informe radiológico con apoyo de IA</span>
+        <span class="program__speaker">—</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">9:30 – 10:00</span>
+        <span class="program__title">El futuro de la Radiología con el uso de la IA</span>
+        <span class="program__speaker">Internacional</span>
+      </div>
+
+      <div class="program__row program__row--break">
+        <span class="time-pill time-pill--break">10:00 – 10:30</span>
+        <span class="program__title program__title--break">&#9749; Coffee Break</span>
+        <span class="program__speaker">—</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">10:30 – 11:00</span>
+        <span class="program__title">Consideraciones fundamentales en la implementación de modelos de IA</span>
+        <span class="program__speaker">Internacional</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">11:00 – 11:30</span>
+        <span class="program__title">Programas de formación en Radiología integrando IA</span>
+        <span class="program__speaker">Alixa</span>
+      </div>
+
+      <div class="program__row program__row--angarita">
+        <span class="time-pill time-pill--angarita">12:00 – 12:30</span>
+        <span class="program__title">Aplicaciones útiles de IA en el trabajo diario del radiólogo &#11088;</span>
+        <span class="program__speaker">Dr. Miguel Angarita</span>
+      </div>
+
+      <div class="program__row program__row--break">
+        <span class="time-pill time-pill--break">12:30 – 1:30</span>
+        <span class="program__title program__title--break">&#127869;&#65039; Almuerzo</span>
+        <span class="program__speaker">—</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">1:30 – 2:00</span>
+        <span class="program__title">Aplicación de herramientas de IA en generación de imágenes</span>
+        <span class="program__speaker">—</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">2:00 – 2:30</span>
+        <span class="program__title">Herramientas de IA para el wellness en Radiología</span>
+        <span class="program__speaker">Dra. Lina Jaimes</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">2:30 – 3:00</span>
+        <span class="program__title">Monitorización de softwares de IA postimplementación</span>
+        <span class="program__speaker">—</span>
+      </div>
+
+      <div class="program__row program__row--break">
+        <span class="time-pill time-pill--break">3:00 – 3:30</span>
+        <span class="program__title program__title--break">&#9749; Coffee Break</span>
+        <span class="program__speaker">—</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">3:30 – 4:00</span>
+        <span class="program__title">Cómo decidir la introducción de software de IA en la práctica</span>
+        <span class="program__speaker">Unilab</span>
+      </div>
+
+      <div class="program__row">
+        <span class="time-pill">4:00 – 4:30</span>
+        <span class="program__title">Modelos de IA para la investigación en radiología</span>
+        <span class="program__speaker">Carlos · U. El Bosque</span>
+      </div>
+
+      <div class="program__row program__row--dell">
+        <span class="time-pill time-pill--dell">4:30 – 5:00</span>
+        <span class="program__title">Infraestructura para IA clínica: 3D Slicer y MONAI — Demo en vivo con hardware Dell &#11088;</span>
+        <span class="program__speaker">Dell Technologies</span>
+      </div>
+
+      <div class="program__row program__row--angarita">
+        <span class="time-pill time-pill--angarita">5:00 – 5:30</span>
+        <span class="program__title">Agentes de IA en Radiología: del caso clínico al reporte sin tocar una terminal &#11088;</span>
+        <span class="program__speaker">Dr. Miguel Angarita</span>
+      </div>
+
+      <div class="program__row program__row--workshop">
+        <span class="time-pill time-pill--workshop">5:30 – 6:00</span>
+        <span class="program__title">&#127891; Clausura + Taller: Corre tu primer modelo cardíaco con IA (MHub) &#11088;</span>
+        <span class="program__speaker">AngaritaRad + Harvard</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     VENUE
+══════════════════════════════════════════════════════════ -->
+<section class="venue section" id="venue">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Sede</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Los Cobos Medical Center</h2>
+    </div>
+
+    <div class="venue__grid">
+      <div>
+        <p class="venue__body">
+          Uno de los centros médicos más reconocidos de Colombia, clasificado entre
+          los <strong>top 25 IPS del país por Newsweek</strong>. Sede de alta complejidad
+          en el norte de Bogotá, con infraestructura de clase mundial para ciencias de la salud.
+        </p>
+
+        <div class="venue__info-row reveal">
+          <span class="venue__info-icon">&#128205;</span>
+          <div>
+            <div class="venue__info-label">Dirección</div>
+            <div class="venue__info-value">Calle 100 #8A-55, Bogotá, Colombia</div>
+          </div>
+        </div>
+        <div class="venue__info-row reveal">
+          <span class="venue__info-icon">&#128197;</span>
+          <div>
+            <div class="venue__info-label">Fecha y hora</div>
+            <div class="venue__info-value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 6:00 PM</div>
+          </div>
+        </div>
+        <div class="venue__info-row reveal">
+          <span class="venue__info-icon">&#128100;</span>
+          <div>
+            <div class="venue__info-label">Capacidad presencial</div>
+            <div class="venue__info-value">150 cupos · aforo limitado</div>
+          </div>
+        </div>
+        <div class="venue__info-row reveal">
+          <span class="venue__info-icon">&#128247;</span>
+          <div>
+            <div class="venue__info-label">Transmisión</div>
+            <div class="venue__info-value">YouTube Live + Luma Events · 400+ online</div>
+          </div>
+        </div>
+
+        <div class="card venue__partner-card reveal">
+          <div class="venue__partner-label">Alianza académica</div>
+          <div class="venue__partner-name">Universidad El Bosque</div>
+          <div class="venue__partner-desc">
+            Aval académico y certificación del evento a través de la Facultad de Medicina
+            y su programa de Radiología — una de las más reconocidas de Colombia.
+          </div>
+        </div>
+
+        <a href="https://www.loscobosmc.com" target="_blank" rel="noopener" class="venue__link reveal">
+          loscobosmc.com &#8599;
+        </a>
+      </div>
+
+      <div class="reveal">
+        <div class="venue__map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6!2d-74.0458!3d4.6780!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9be2a1b9b3ef%3A0x4b26f5f8a3c6b9e1!2sLos%20Cobos%20Medical%20Center!5e0!3m2!1ses!2sco!4v1680000000000!5m2!1ses!2sco"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Los Cobos Medical Center en Google Maps">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FORMAT
+══════════════════════════════════════════════════════════ -->
+<section class="format section" id="formato">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Formato</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Presencial y en vivo para toda Latinoamérica</h2>
+    </div>
+
+    <div class="format__grid">
+      <div class="card format__card reveal">
+        <div class="format__number format__number--orange">150+</div>
+        <h3 class="title-md format__card-title">Presencial · Bogotá</h3>
+        <ul class="format__list">
+          <li>Acceso completo al simposio (7:30 AM – 6:00 PM)</li>
+          <li>Coffee breaks y almuerzo incluidos</li>
+          <li>Networking con speakers y patrocinadores</li>
+          <li>Acceso al taller hands-on de cierre (MHub)</li>
+          <li>Certificado digital con aval Universidad El Bosque</li>
+          <li>Módulo gratuito del curso academy.openrad.ai</li>
+        </ul>
+      </div>
+      <div class="card format__card reveal">
+        <div class="format__number format__number--ink">400+</div>
+        <h3 class="title-md format__card-title">Online · Latinoamérica</h3>
+        <ul class="format__list">
+          <li>Transmisión en vivo por YouTube Live</li>
+          <li>Registro en Luma Events con recordatorio</li>
+          <li>Acceso a grabaciones post-evento</li>
+          <li>Certificado de asistencia virtual</li>
+          <li>Q&amp;A en vivo con los speakers</li>
+          <li>Módulo gratuito del curso academy.openrad.ai</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="format__cert-strip card reveal">
+      <div class="format__cert-icon">&#127941;</div>
+      <div>
+        <div class="format__cert-title">Certificación oficial · Universidad El Bosque</div>
+        <div class="format__cert-desc">
+          Todos los asistentes presenciales y online reciben certificado digital con aval académico
+          de la Universidad El Bosque, válido para créditos de educación médica continuada.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     REGISTRATION CTA
+══════════════════════════════════════════════════════════ -->
+<section class="cta-band" id="registro">
+  <div class="container">
+    <div class="cta-band__badge reveal">
+      <span class="badge-pill">Registro</span>
+    </div>
+    <h2 class="display-lg cta-band__h2 reveal">Cupos limitados.</h2>
+    <p class="cta-band__subhead reveal">Regístrate antes del 1 de agosto de 2026.</p>
+    <p class="cta-band__body reveal">
+      Los primeros inscritos reciben acceso gratuito al módulo 0 del curso
+      <strong>academy.openrad.ai</strong> y descuento exclusivo de inscripción.
+      150 cupos presenciales — el aforo no se amplía.
+    </p>
+    <div class="cta-band__ctas reveal">
+      <a href="[LUMA_LINK]" target="_blank" rel="noopener" class="btn btn--download">Registrarme ahora</a>
+      <a href="https://academy.openrad.ai" target="_blank" rel="noopener" class="btn btn--outline">Ver curso</a>
+    </div>
+    <div class="cta-band__pills reveal">
+      <span class="badge-pill">&#127881; Módulo gratuito incluido</span>
+      <span class="badge-pill">&#127941; Certificado U. El Bosque</span>
+      <span class="badge-pill">&#128176; Descuento early bird</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════════════════════ -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">
+      <div class="footer__logo">AngaritaRad</div>
+      <p class="footer__tagline">Del Pixel al Diagnóstico:<br>IA Real en Radiología.<br>11 Sep 2026 · Bogotá.</p>
+      <div class="footer__social">
+        <a href="https://instagram.com/angaritarad" target="_blank" rel="noopener">@angaritarad</a>
+        <a href="https://linkedin.com/in/angaritarad" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://academy.openrad.ai" target="_blank" rel="noopener">academy.openrad.ai</a>
+      </div>
+    </div>
+
+    <div>
+      <div class="footer__col-title">Evento</div>
+      <ul class="footer__links">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#programa">Programa</a></li>
+        <li><a href="#speakers">Speakers</a></li>
+        <li><a href="#venue">Venue</a></li>
+        <li><a href="#registro">Registro</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer__col-title">AngaritaRad</div>
+      <ul class="footer__links">
+        <li><a href="https://academy.openrad.ai" target="_blank" rel="noopener">academy.openrad.ai</a></li>
+        <li><a href="https://openrad.ai" target="_blank" rel="noopener">OpenRad.ai</a></li>
+        <li><a href="https://instagram.com/angaritarad" target="_blank" rel="noopener">Instagram</a></li>
+        <li><a href="https://linkedin.com/in/angaritarad" target="_blank" rel="noopener">LinkedIn</a></li>
+      </ul>
+    </div>
+
+    <div>
+      <div class="footer__col-title">Alianzas</div>
+      <ul class="footer__links">
+        <li><a href="https://www.loscobosmc.com" target="_blank" rel="noopener">Los Cobos Medical Center</a></li>
+        <li><a href="https://www.uelbosque.edu.co" target="_blank" rel="noopener">Universidad El Bosque</a></li>
+        <li><a href="https://www.dell.com/en-us/dt/healthcare" target="_blank" rel="noopener">Dell Technologies</a></li>
+        <li><a href="https://mhub.ai" target="_blank" rel="noopener">MHub.ai · Harvard</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <span>&copy; 2026 AngaritaRad / OpenRad.ai · Dr. Miguel Angarita · Todos los derechos reservados</span>
+    <span>Bogotá, Colombia</span>
+  </div>
+</footer>
+
+<!-- ══════════════════════════════════════════════════════════
+     JAVASCRIPT
+══════════════════════════════════════════════════════════ -->
+<script>
+  // ── 1. COUNTDOWN TO 2026-09-11T07:30:00 UTC-5 ──
+  const TARGET = new Date('2026-09-11T07:30:00-05:00').getTime();
+
+  function updateCountdown() {
+    const now  = Date.now();
+    const diff = TARGET - now;
+
+    if (diff <= 0) {
+      document.getElementById('cd-days').textContent  = '0';
+      document.getElementById('cd-hours').textContent = '0';
+      document.getElementById('cd-mins').textContent  = '0';
+      document.getElementById('cd-secs').textContent  = '0';
+      return;
+    }
+
+    const days  = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins  = Math.floor((diff % 3600000)  / 60000);
+    const secs  = Math.floor((diff % 60000)    / 1000);
+
+    document.getElementById('cd-days').textContent  = String(days);
+    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
+    document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
+  }
+
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
+
+  // ── 2. STICKY NAV ──
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // ── 3. HAMBURGER ──
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+
+  hamburger.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+
+  function closeMobile() {
+    navMobile.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  // ── 4. SCROLL REVEAL ──
+  const revealEls = document.querySelectorAll('.reveal');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      // Stagger siblings inside the same parent grid
+      const siblings = Array.from(el.parentElement.querySelectorAll('.reveal'));
+      const index = siblings.indexOf(el);
+      el.style.transitionDelay = index > 0 ? `${index * 60}ms` : '0ms';
+      el.classList.add('visible');
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  revealEls.forEach(el => observer.observe(el));
+
+  // ── 5. SMOOTH SCROLL ──
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>
