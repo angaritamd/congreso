@@ -1,0 +1,744 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taller Práctico de IA en Radiología · 11 Sep 2026 · Los Cobos Medical Center</title>
+  <meta name="description" content="Corre tu primer modelo de IA sobre imágenes médicas reales — sin programar, guiado por Leonard Nürnberg del AIM Program de Harvard. 11 de septiembre 2026, Los Cobos Medical Center, Bogotá." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
+  <style>
+    /* ── DESIGN TOKENS (same as main page) ── */
+    :root {
+      --primary:           #f54e00;
+      --primary-active:    #d04200;
+      --ink:               #003e6a;
+      --body:              #003e6a;
+      --body-strong:       #003e6a;
+      --muted:             #807d72;
+      --muted-soft:        #a09c92;
+      --hairline:          #e6e5e0;
+      --hairline-soft:     #efeee8;
+      --hairline-strong:   #cfcdc4;
+      --canvas:            #f7f7f4;
+      --canvas-soft:       #fafaf7;
+      --surface-card:      #ffffff;
+      --surface-strong:    #e6e5e0;
+      --on-primary:        #ffffff;
+      --timeline-grep:     #9fc9a2;
+      --timeline-read:     #9fbbe0;
+      --timeline-done:     #c08532;
+      --semantic-error:    #cf2d56;
+      --semantic-success:  #1f8a65;
+      --font-sans:   'Inter', system-ui, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      --font-mono:   'JetBrains Mono', 'Fira Code', monospace;
+      --radius-xs: 4px; --radius-sm: 6px; --radius-md: 8px;
+      --radius-lg: 12px; --radius-xl: 16px; --radius-pill: 9999px;
+      --sp-xxs: 4px; --sp-xs: 8px; --sp-sm: 12px; --sp-base: 16px;
+      --sp-md: 20px; --sp-lg: 24px; --sp-xl: 32px; --sp-xxl: 48px;
+      --sp-section: 80px;
+    }
+
+    /* ── RESET ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--canvas); color: var(--body); font-family: var(--font-sans); font-size: 16px; font-weight: 400; line-height: 1.5; -webkit-font-smoothing: antialiased; }
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-xl); }
+
+    /* ── TYPOGRAPHY ── */
+    .display-mega { font-size: 64px; font-weight: 400; line-height: 1.1; letter-spacing: -2px; color: var(--ink); }
+    .display-lg   { font-size: 36px; font-weight: 400; line-height: 1.2; letter-spacing: -0.72px; color: var(--ink); }
+    .display-md   { font-size: 26px; font-weight: 400; line-height: 1.25; letter-spacing: -0.325px; color: var(--ink); }
+    .title-md     { font-size: 18px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+    .title-sm     { font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ink); }
+    .body-md      { font-size: 16px; font-weight: 400; line-height: 1.6; }
+    .caption-uppercase { font-size: 11px; font-weight: 600; line-height: 1.4; letter-spacing: 0.88px; text-transform: uppercase; }
+
+    /* ── BADGE PILL ── */
+    .badge-pill { display: inline-flex; align-items: center; gap: var(--sp-xs); background: var(--surface-strong); color: var(--ink); font-size: 11px; font-weight: 600; letter-spacing: 0.88px; text-transform: uppercase; border-radius: var(--radius-pill); padding: 4px 10px; }
+    .badge-pill--primary { background: var(--primary); color: var(--on-primary); }
+    .badge-pill--gold    { background: var(--timeline-done); color: var(--on-primary); }
+    .badge-pill--green   { background: var(--semantic-success); color: #fff; }
+    .badge-pill--ink     { background: var(--ink); color: var(--canvas); }
+
+    /* ── BUTTONS ── */
+    .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-size: 14px; font-weight: 500; line-height: 1; border-radius: var(--radius-md); cursor: pointer; border: none; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
+    .btn--download { background: var(--ink); color: var(--canvas); padding: 12px 20px; height: 44px; }
+    .btn--download:hover { background: #3a3930; }
+    .btn--primary  { background: var(--primary); color: var(--on-primary); padding: 12px 20px; height: 44px; }
+    .btn--primary:hover { background: var(--primary-active); }
+    .btn--outline  { background: transparent; color: var(--ink); padding: 11px 19px; height: 44px; border: 1px solid var(--hairline-strong); }
+    .btn--outline:hover { border-color: var(--ink); }
+
+    /* ── SECTIONS ── */
+    .section { padding: var(--sp-section) 0; }
+    .section-header { margin-bottom: var(--sp-xxl); }
+    .section-header .badge-pill { margin-bottom: var(--sp-base); }
+
+    /* ── CARDS ── */
+    .card { background: var(--surface-card); border-radius: var(--radius-lg); border: 1px solid var(--hairline); padding: var(--sp-lg); transition: border-color 0.2s; }
+    .card:hover { border-color: var(--hairline-strong); }
+
+    /* ── SCROLL REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.4s ease, transform 0.4s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── INFO BADGE ── */
+    .info-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--surface-card); border: 1px solid var(--hairline); border-radius: var(--radius-pill); padding: 6px 14px; font-size: 13px; font-weight: 500; color: var(--ink); }
+
+    /* ══════════════════════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════════════════════ */
+    .nav { position: sticky; top: 0; z-index: 100; background: var(--canvas); height: 64px; border-bottom: 1px solid transparent; transition: border-color 0.2s, backdrop-filter 0.2s, background 0.2s; }
+    .nav.scrolled { border-bottom-color: var(--hairline); backdrop-filter: blur(12px); background: rgba(247,247,244,0.85); }
+    .nav__inner { max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-xl); height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .nav__logo { font-size: 15px; font-weight: 600; color: var(--primary); letter-spacing: -0.3px; flex-shrink: 0; }
+    .nav__back { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 500; color: var(--muted); transition: color 0.15s; }
+    .nav__back:hover { color: var(--ink); }
+    .nav__links { display: flex; align-items: center; gap: var(--sp-xl); list-style: none; }
+    .nav__links a { font-size: 14px; font-weight: 500; color: var(--ink); transition: color 0.15s; }
+    .nav__links a:hover { color: var(--primary); }
+    .nav__cta { flex-shrink: 0; }
+    .nav__hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: var(--sp-xs); }
+    .nav__hamburger span { display: block; width: 22px; height: 2px; background: var(--ink); border-radius: 2px; transition: transform 0.25s, opacity 0.25s; }
+    .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav__hamburger.open span:nth-child(2) { opacity: 0; }
+    .nav__hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    .nav__mobile { display: none; flex-direction: column; background: var(--canvas); border-top: 1px solid var(--hairline); padding: var(--sp-lg) var(--sp-xl); gap: var(--sp-base); position: absolute; top: 64px; left: 0; right: 0; }
+    .nav__mobile.open { display: flex; }
+    .nav__mobile a { font-size: 14px; font-weight: 500; color: var(--ink); padding: var(--sp-xs) 0; }
+    .nav__mobile .btn { margin-top: var(--sp-xs); align-self: flex-start; }
+
+    /* ══════════════════════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════════════════════ */
+    .taller-hero { padding: var(--sp-section) 0 60px; text-align: center; background: var(--canvas); }
+    .taller-hero__badge { margin-bottom: var(--sp-lg); display: flex; align-items: center; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; }
+    .taller-hero__h1 { margin-bottom: var(--sp-sm); }
+    .taller-hero__subhead { font-size: 22px; font-weight: 400; color: var(--primary); letter-spacing: -0.2px; margin-bottom: var(--sp-lg); max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.4; }
+    .taller-hero__info { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-sm); margin-bottom: var(--sp-xxl); }
+
+    /* ══════════════════════════════════════════════════════════
+       PROMISES
+    ══════════════════════════════════════════════════════════ */
+    .promises { background: var(--canvas-soft); }
+    .promises__list { display: flex; flex-direction: column; gap: var(--sp-base); max-width: 640px; }
+    .promises__item { display: flex; align-items: flex-start; gap: var(--sp-base); }
+    .promises__check { width: 28px; height: 28px; border-radius: var(--radius-pill); background: rgba(31,138,101,0.12); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+
+    /* ══════════════════════════════════════════════════════════
+       LEONARD SECTION
+    ══════════════════════════════════════════════════════════ */
+    .leonard { background: var(--canvas); }
+    .leonard__card { max-width: 760px; padding: var(--sp-xxl); }
+    .leonard__header { display: flex; align-items: flex-start; gap: var(--sp-xl); margin-bottom: var(--sp-xl); flex-wrap: wrap; }
+    .leonard__avatar { width: 80px; height: 80px; border-radius: var(--radius-pill); background: rgba(192,133,50,0.18); display: flex; align-items: center; justify-content: center; font-size: 28px; font-weight: 600; color: var(--timeline-done); flex-shrink: 0; }
+    .leonard__meta { flex: 1; min-width: 200px; }
+    .leonard__name { font-size: 26px; font-weight: 600; color: var(--ink); letter-spacing: -0.4px; margin-bottom: var(--sp-xs); }
+    .leonard__role { font-size: 14px; color: var(--muted); margin-bottom: var(--sp-sm); line-height: 1.5; }
+    .leonard__badges { display: flex; gap: var(--sp-xs); flex-wrap: wrap; }
+    .leonard__body p { font-size: 15px; color: var(--body); line-height: 1.7; margin-bottom: var(--sp-base); }
+    .leonard__body p:last-child { margin-bottom: 0; }
+    .leonard__link { display: inline-flex; align-items: center; gap: 5px; color: var(--primary); font-size: 14px; font-weight: 500; margin-top: var(--sp-lg); }
+    .leonard__link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════════════
+       MHUB SECTION
+    ══════════════════════════════════════════════════════════ */
+    .mhub { background: var(--canvas-soft); }
+    .mhub__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-xxl); align-items: start; }
+    .mhub__features { display: flex; flex-direction: column; gap: var(--sp-sm); }
+    .mhub__feature { display: flex; align-items: flex-start; gap: var(--sp-sm); padding: var(--sp-sm) 0; border-bottom: 1px solid var(--hairline-soft); }
+    .mhub__feature:last-child { border-bottom: none; }
+    .mhub__feature-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--semantic-success); flex-shrink: 0; margin-top: 8px; }
+    .mhub__body { font-size: 15px; color: var(--body); line-height: 1.7; margin-bottom: var(--sp-lg); }
+    .mhub__link { display: inline-flex; align-items: center; gap: 5px; color: var(--primary); font-size: 14px; font-weight: 500; }
+    .mhub__link:hover { text-decoration: underline; }
+
+    /* ══════════════════════════════════════════════════════════
+       TOOLS GRID
+    ══════════════════════════════════════════════════════════ */
+    .tools { background: var(--canvas); }
+    .tools__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--sp-base); }
+    .tool-card { padding: var(--sp-xl); display: flex; flex-direction: column; gap: var(--sp-sm); }
+    .tool-card__icon { width: 44px; height: 44px; border-radius: var(--radius-md); background: var(--surface-strong); display: flex; align-items: center; justify-content: center; font-size: 20px; }
+    .tool-card__name { font-size: 15px; font-weight: 600; color: var(--ink); }
+    .tool-card__desc { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ══════════════════════════════════════════════════════════
+       REQUIREMENTS (WHAT TO BRING / NO-NEED)
+    ══════════════════════════════════════════════════════════ */
+    .requirements { background: var(--canvas-soft); }
+    .requirements__grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--sp-xxl); align-items: start; }
+    .req-list { display: flex; flex-direction: column; gap: var(--sp-sm); }
+    .req-item { display: flex; align-items: flex-start; gap: var(--sp-sm); font-size: 14px; color: var(--body); padding: var(--sp-xs) 0; }
+    .req-item__icon { width: 22px; height: 22px; border-radius: var(--radius-pill); display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .req-item__icon--yes { background: rgba(31,138,101,0.1); }
+    .req-item__icon--no  { background: rgba(128,125,114,0.1); }
+    .req-subgroup { margin-top: var(--sp-lg); }
+    .req-subgroup-title { font-size: 12px; font-weight: 600; letter-spacing: 0.88px; text-transform: uppercase; color: var(--muted); margin-bottom: var(--sp-sm); padding-bottom: var(--sp-xs); border-bottom: 1px solid var(--hairline-soft); }
+
+    /* ══════════════════════════════════════════════════════════
+       INSTRUCTORS
+    ══════════════════════════════════════════════════════════ */
+    .instructors { background: var(--canvas); }
+    .instructors__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--sp-lg); max-width: 760px; }
+    .speaker-card { padding: var(--sp-xl); }
+    .speaker-card__avatar { width: 64px; height: 64px; border-radius: var(--radius-pill); background: var(--surface-strong); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 600; color: var(--ink); margin-bottom: var(--sp-base); }
+    .speaker-card__badges { display: flex; gap: var(--sp-xs); flex-wrap: wrap; margin-bottom: var(--sp-sm); }
+    .speaker-card__name { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 2px; }
+    .speaker-card__institution { color: var(--muted); font-size: 13px; line-height: 1.5; margin-bottom: var(--sp-sm); }
+    .speaker-card__talk { font-size: 13px; color: var(--body); line-height: 1.4; }
+
+    /* ══════════════════════════════════════════════════════════
+       CTA BAND
+    ══════════════════════════════════════════════════════════ */
+    .cta-band { background: var(--canvas); padding: 96px 0; border-top: 1px solid var(--hairline); text-align: center; }
+    .cta-band__badge { margin-bottom: var(--sp-lg); }
+    .cta-band__h2 { margin-bottom: var(--sp-sm); }
+    .cta-band__body { max-width: 480px; margin: 0 auto var(--sp-xl); color: var(--body); font-size: 15px; line-height: 1.6; }
+    .cta-band__ctas { display: flex; justify-content: center; gap: var(--sp-base); flex-wrap: wrap; margin-bottom: var(--sp-xl); }
+    .cta-band__pills { display: flex; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; }
+
+    /* ══════════════════════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════════════════════ */
+    .footer { background: var(--canvas); border-top: 1px solid var(--hairline); padding: 48px var(--sp-xl) 32px; }
+    .footer__inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-lg); margin-bottom: var(--sp-xl); }
+    .footer__brand { font-size: 15px; font-weight: 600; color: var(--primary); }
+    .footer__links { display: flex; gap: var(--sp-xl); flex-wrap: wrap; list-style: none; }
+    .footer__links a { font-size: 14px; color: var(--body); transition: color 0.15s; }
+    .footer__links a:hover { color: var(--ink); }
+    .footer__bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--hairline-soft); padding-top: var(--sp-lg); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-sm); font-size: 12px; color: var(--muted); }
+
+    /* ══════════════════════════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .tools__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 768px) {
+      .nav__links { display: none; }
+      .nav__cta   { display: none; }
+      .nav__hamburger { display: flex; }
+      .display-mega { font-size: 36px; letter-spacing: -0.9px; }
+      .display-lg   { font-size: 28px; }
+      .taller-hero__subhead { font-size: 18px; }
+      .mhub__grid { grid-template-columns: 1fr; }
+      .requirements__grid { grid-template-columns: 1fr; }
+      .instructors__grid { grid-template-columns: 1fr; }
+      .leonard__header { gap: var(--sp-base); }
+      .tools__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 0 var(--sp-base); }
+      .tools__grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 640px) and (max-width: 1024px) {
+      .display-mega { font-size: 48px; letter-spacing: -1.5px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__back">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      Volver al simposio
+    </a>
+    <ul class="nav__links">
+      <li><a href="#leonard">Instructor</a></li>
+      <li><a href="#herramientas">Herramientas</a></li>
+      <li><a href="#requisitos">Requisitos</a></li>
+      <li><a href="#registro">Registro</a></li>
+    </ul>
+    <a href="https://lu.ma/ia-radiologia-2026" target="_blank" rel="noopener" class="btn btn--download nav__cta">Inscribirme</a>
+    <button class="nav__hamburger" id="hamburger" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav__mobile" id="nav-mobile">
+    <a href="#leonard"     onclick="closeMobile()">Instructor</a>
+    <a href="#herramientas" onclick="closeMobile()">Herramientas</a>
+    <a href="#requisitos"  onclick="closeMobile()">Requisitos</a>
+    <a href="https://lu.ma/ia-radiologia-2026" target="_blank" rel="noopener" class="btn btn--download" onclick="closeMobile()">Inscribirme</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1: HERO
+══════════════════════════════════════════════════════════ -->
+<section class="taller-hero">
+  <div class="container">
+    <div class="taller-hero__badge reveal">
+      <span class="badge-pill badge-pill--green">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Taller Práctico
+      </span>
+      <span class="badge-pill">Viernes 11 de septiembre de 2026 · 3:00 PM – 5:30 PM</span>
+    </div>
+
+    <h1 class="display-mega taller-hero__h1 reveal">Taller Práctico de IA<br>en Radiología</h1>
+    <p class="taller-hero__subhead reveal">
+      Corre tu primer modelo de inteligencia artificial sobre imágenes médicas reales — sin programar, en tu propio computador
+    </p>
+
+    <div class="taller-hero__info reveal">
+      <span class="info-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Los Cobos Medical Center, Bogotá
+      </span>
+      <span class="info-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Cupos presenciales limitados
+      </span>
+      <span class="info-badge">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Incluido en la inscripción presencial al simposio
+      </span>
+    </div>
+
+    <div style="display:flex;justify-content:center;gap:var(--sp-base);flex-wrap:wrap;" class="reveal">
+      <a href="https://lu.ma/ia-radiologia-2026" target="_blank" rel="noopener" class="btn btn--download">Inscribirme al simposio →</a>
+      <a href="/" class="btn btn--outline">Ver programa completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 2: PROMESAS DEL TALLER
+══════════════════════════════════════════════════════════ -->
+<section class="promises section" id="promesas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Lo que te llevas</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Al terminar el taller tendrás instalado y funcionando en tu propio computador:</h2>
+    </div>
+
+    <div class="promises__list reveal">
+      <div class="promises__item">
+        <div class="promises__check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="title-sm">Un modelo de IA que analiza estudios de imágenes de tu especialidad</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:3px;">Los mismos modelos que usan los investigadores del Mass General Brigham y Harvard.</div>
+        </div>
+      </div>
+      <div class="promises__item">
+        <div class="promises__check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="title-sm">Las imágenes de tus pacientes nunca salen de tu computador</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:3px;">100% local. Sin subir datos a ningún servidor. Sin nube.</div>
+        </div>
+      </div>
+      <div class="promises__item">
+        <div class="promises__check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="title-sm">Sin suscripciones ni costos adicionales</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:3px;">mhub.ai es open-source y gratuito. Los modelos AIM de Harvard también.</div>
+        </div>
+      </div>
+      <div class="promises__item">
+        <div class="promises__check">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div>
+          <div class="title-sm">30 días de acceso a la comunidad AngaritaRad</div>
+          <div style="font-size:14px;color:var(--muted);margin-top:3px;">Soporte post-taller, modelos adicionales y configuraciones compartidas por otros médicos.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 3: LEONARD NUERNBERG
+══════════════════════════════════════════════════════════ -->
+<section class="leonard section" id="leonard">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill badge-pill--gold">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Instructor internacional
+      </span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Tu instructor viene desde Harvard</h2>
+    </div>
+
+    <div class="card leonard__card reveal">
+      <div class="leonard__header">
+        <div class="leonard__avatar">LN</div>
+        <div class="leonard__meta">
+          <div class="leonard__name">Leonard Nürnberg</div>
+          <div class="leonard__role">
+            Research Scholar — Artificial Intelligence in Medicine (AIM) Program<br>
+            Mass General Brigham · Harvard Medical School<br>
+            Boston, EE.UU. / Países Bajos
+          </div>
+          <div class="leonard__badges">
+            <span class="badge-pill badge-pill--gold">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+              Cum Laude RSNA 2025
+            </span>
+            <span class="badge-pill">AIM Program · Harvard</span>
+            <span class="badge-pill">Creador de mhub.ai</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="leonard__body">
+        <p>
+          Leonard Nürnberg es investigador del programa AIM (Artificial Intelligence in Medicine) del Mass General Brigham — Harvard Medical School, especializado en aplicaciones de deep learning en imagen cardiovascular e investigación oncológica. Es además doctor en el programa PhD de la Universidad de Maastricht (GROW School for Oncology), Países Bajos.
+        </p>
+        <p>
+          Es el creador de <strong>mhub.ai</strong>, plataforma open-source que empaqueta los mejores modelos de IA para imagen médica del mundo en un formato que cualquier médico puede instalar y correr — sin servidor, sin programar, sin costo.
+        </p>
+        <p>
+          En el RSNA 2025 (el mayor congreso mundial de radiología) su trabajo fue reconocido con el premio <strong>Cum Laude</strong>.
+        </p>
+      </div>
+
+      <a href="https://aim.mgh.harvard.edu/team/leonard-nunberg" target="_blank" rel="noopener" class="leonard__link">
+        Ver perfil oficial en AIM · Harvard
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 4: SOBRE mhub.ai
+══════════════════════════════════════════════════════════ -->
+<section class="mhub section" id="mhub">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">La herramienta</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">mhub.ai</h2>
+      <p class="caption-uppercase" style="color:var(--muted);margin-top:var(--sp-xs)">Creada en el AIM Program · Harvard Medical School</p>
+    </div>
+
+    <div class="mhub__grid reveal">
+      <div>
+        <p class="mhub__body">
+          mhub.ai es una plataforma open-source que permite correr modelos de inteligencia artificial de vanguardia sobre imágenes médicas directamente en tu computador. Los modelos incluidos son los mismos que usan los investigadores del Mass General Brigham y Harvard — validados, publicados, y listos para usar en la práctica clínica.
+        </p>
+        <a href="https://mhub.ai" target="_blank" rel="noopener" class="mhub__link">
+          mhub.ai
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+        </a>
+      </div>
+      <div>
+        <div class="mhub__features">
+          <div class="mhub__feature">
+            <div class="mhub__feature-dot"></div>
+            <div>
+              <div class="title-sm">100% local</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px;">Tus imágenes nunca salen de tu equipo</div>
+            </div>
+          </div>
+          <div class="mhub__feature">
+            <div class="mhub__feature-dot"></div>
+            <div>
+              <div class="title-sm">Open-source</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px;">Sin licencias ni suscripciones</div>
+            </div>
+          </div>
+          <div class="mhub__feature">
+            <div class="mhub__feature-dot"></div>
+            <div>
+              <div class="title-sm">Modelos validados en Harvard / MGH</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px;">Investigación publicada, no demos de marketing</div>
+            </div>
+          </div>
+          <div class="mhub__feature">
+            <div class="mhub__feature-dot"></div>
+            <div>
+              <div class="title-sm">Compatible con Mac y Windows</div>
+              <div style="font-size:13px;color:var(--muted);margin-top:2px;">No se requiere GPU dedicada</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 5: HERRAMIENTAS
+══════════════════════════════════════════════════════════ -->
+<section class="tools section" id="herramientas">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Stack</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Herramientas que usarás</h2>
+    </div>
+
+    <div class="tools__grid reveal">
+      <div class="card tool-card">
+        <div class="tool-card__icon" style="background:rgba(159,201,162,0.25);">🧠</div>
+        <div class="tool-card__name">mhub.ai</div>
+        <div class="tool-card__desc">Plataforma de modelos de IA para imagen médica · AIM Harvard</div>
+      </div>
+      <div class="card tool-card">
+        <div class="tool-card__icon" style="background:rgba(159,187,224,0.25);">⚡</div>
+        <div class="tool-card__name">MONAI</div>
+        <div class="tool-card__desc">Framework open-source de IA médica · NVIDIA + King's College London</div>
+      </div>
+      <div class="card tool-card">
+        <div class="tool-card__icon" style="background:rgba(192,168,221,0.25);">🔬</div>
+        <div class="tool-card__name">3D Slicer</div>
+        <div class="tool-card__desc">Software gratuito de visualización y análisis de imágenes médicas</div>
+      </div>
+      <div class="card tool-card">
+        <div class="tool-card__icon" style="background:rgba(192,133,50,0.18);">🏥</div>
+        <div class="tool-card__name">Modelos AIM Program</div>
+        <div class="tool-card__desc">Modelos validados de deep learning · Mass General Brigham</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIONES 6 + 7: QUÉ TRAER / NO NECESITAS
+══════════════════════════════════════════════════════════ -->
+<section class="requirements section" id="requisitos">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Equipamiento</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Qué necesitas traer</h2>
+    </div>
+
+    <div class="requirements__grid reveal">
+      <!-- QUÉ TRAER -->
+      <div>
+        <div class="req-subgroup">
+          <div class="req-subgroup-title">Equipos aceptados</div>
+          <div class="req-list">
+            <div class="req-item">
+              <div class="req-item__icon req-item__icon--yes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Mac con macOS Ventura 13 o superior</span>
+            </div>
+            <div class="req-item">
+              <div class="req-item__icon req-item__icon--yes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>PC con Windows 10 u 11 (64 bits)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="req-subgroup" style="margin-top:var(--sp-xl);">
+          <div class="req-subgroup-title">Requisitos mínimos</div>
+          <div class="req-list">
+            <div class="req-item">
+              <div class="req-item__icon req-item__icon--yes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>8 GB de RAM (16 GB recomendado)</span>
+            </div>
+            <div class="req-item">
+              <div class="req-item__icon req-item__icon--yes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>10 GB de disco libre</span>
+            </div>
+            <div class="req-item">
+              <div class="req-item__icon req-item__icon--yes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Tu cargador</span>
+            </div>
+            <div class="req-item">
+              <div class="req-item__icon req-item__icon--yes">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1f8a65" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </div>
+              <span>Conexión WiFi (la del evento está disponible)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NO NECESITAS -->
+      <div>
+        <div class="req-subgroup">
+          <div class="req-subgroup-title">No necesitas nada de esto</div>
+          <div class="req-list">
+            <div class="req-item" style="color:var(--muted);">
+              <div class="req-item__icon req-item__icon--no">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted-soft)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+              <span style="text-decoration:line-through;color:var(--muted-soft);">Conocimientos de programación</span>
+            </div>
+            <div class="req-item" style="color:var(--muted);">
+              <div class="req-item__icon req-item__icon--no">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted-soft)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+              <span style="text-decoration:line-through;color:var(--muted-soft);">GPU ni servidor</span>
+            </div>
+            <div class="req-item" style="color:var(--muted);">
+              <div class="req-item__icon req-item__icon--no">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--muted-soft)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </div>
+              <span style="text-decoration:line-through;color:var(--muted-soft);">Cuenta en servicios de nube</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:var(--sp-xl);background:rgba(31,138,101,0.06);border-color:rgba(31,138,101,0.2);">
+          <div style="font-size:13px;font-weight:600;color:var(--semantic-success);text-transform:uppercase;letter-spacing:0.88px;margin-bottom:var(--sp-xs);">100% guiado en vivo</div>
+          <p style="font-size:14px;color:var(--body);line-height:1.6;">Leonard Nürnberg guía cada paso desde cero. Si tu equipo cumple los requisitos mínimos, saldrás del taller con todo funcionando.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 8: INSTRUCTORES
+══════════════════════════════════════════════════════════ -->
+<section class="instructors section" style="background:var(--canvas-soft);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Instructores</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Instructores del taller</h2>
+    </div>
+
+    <div class="instructors__grid reveal">
+      <div class="card speaker-card">
+        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.18);color:var(--timeline-done);">LN</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--gold">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            Cum Laude RSNA 2025
+          </span>
+        </div>
+        <div class="speaker-card__name">Leonard Nürnberg</div>
+        <div class="speaker-card__institution">Research Scholar · AIM Program · Harvard Medical School<br>Creador de mhub.ai</div>
+        <div class="speaker-card__talk">Conferencia 10:50 AM · Taller 3:00 – 5:00 PM</div>
+      </div>
+
+      <div class="card speaker-card">
+        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3);">MA</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--primary">Speaker</span>
+        </div>
+        <div class="speaker-card__name">Dr. Miguel Angarita</div>
+        <div class="speaker-card__institution">Radiólogo · Los Cobos Medical Center<br>Fundador OpenRad.ai · @angaritarad</div>
+        <div class="speaker-card__talk">Conferencia 8:40 AM · Taller 3:00 – 5:00 PM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 9: CTA FINAL
+══════════════════════════════════════════════════════════ -->
+<section class="cta-band" id="registro">
+  <div class="container">
+    <div class="cta-band__badge reveal">
+      <span class="badge-pill">Registro</span>
+    </div>
+    <h2 class="display-lg cta-band__h2 reveal">El taller es presencial.<br>Los cupos son limitados.</h2>
+    <p class="cta-band__body reveal">
+      Incluido en la inscripción presencial al simposio. Los primeros inscritos reciben acceso gratuito al módulo 0 del curso <strong>academy.openrad.ai</strong>.
+    </p>
+    <div class="cta-band__ctas reveal">
+      <a href="https://lu.ma/ia-radiologia-2026" target="_blank" rel="noopener" class="btn btn--download">Inscribirme al simposio →</a>
+      <a href="/" class="btn btn--outline">Ver programa completo →</a>
+    </div>
+    <div class="cta-band__pills reveal">
+      <span class="badge-pill">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+        100 cupos presenciales
+      </span>
+      <span class="badge-pill">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+        Certificado U. El Bosque
+      </span>
+      <span class="badge-pill">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        Almuerzo incluido
+      </span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__brand">Inteligencia Artificial en Radiología</div>
+    <ul class="footer__links">
+      <li><a href="/">← Volver al simposio</a></li>
+      <li><a href="/#programa">Programa completo</a></li>
+      <li><a href="/#speakers">Speakers</a></li>
+      <li><a href="/#registro">Registro</a></li>
+    </ul>
+  </div>
+  <div class="footer__bottom">
+    <span>&copy; 2026 Todos los derechos reservados</span>
+    <span>Los Cobos Medical Center · Bogotá, Colombia</span>
+  </div>
+</footer>
+
+<script>
+  // Sticky nav
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 10);
+  }, { passive: true });
+
+  // Hamburger
+  const hamburger = document.getElementById('hamburger');
+  const navMobile = document.getElementById('nav-mobile');
+  hamburger.addEventListener('click', () => {
+    const open = navMobile.classList.toggle('open');
+    hamburger.classList.toggle('open', open);
+    hamburger.setAttribute('aria-expanded', String(open));
+  });
+  function closeMobile() {
+    navMobile.classList.remove('open');
+    hamburger.classList.remove('open');
+    hamburger.setAttribute('aria-expanded', 'false');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (!entry.isIntersecting) return;
+      const el = entry.target;
+      const siblings = Array.from(el.parentElement.querySelectorAll('.reveal'));
+      const index = siblings.indexOf(el);
+      el.style.transitionDelay = index > 0 ? `${index * 60}ms` : '0ms';
+      el.classList.add('visible');
+      observer.unobserve(el);
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      const target = document.getElementById(id);
+      if (!target) return;
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+</body>
+</html>
