@@ -1,5 +1,7 @@
 {
   "version": 2,
+  "buildCommand": null,
+  "outputDirectory": ".",
   "routes": [
     { "src": "/images/(.*)", "dest": "/images/$1" },
     { "src": "/taller", "dest": "/taller.html" },
