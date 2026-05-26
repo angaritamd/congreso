@@ -170,40 +170,64 @@
     ══════════════════════════════════════════════════════════ */
     .nav {
       position: sticky; top: 0; z-index: 100;
-      background: var(--canvas); height: 64px;
-      border-bottom: 1px solid transparent;
-      transition: border-color 0.2s, backdrop-filter 0.2s, background 0.2s;
+      background: #ffffff; height: 68px;
+      border-bottom: 1px solid #E8E6E1;
+      transition: box-shadow 0.2s;
     }
-    .nav.scrolled {
-      border-bottom-color: var(--hairline);
-      backdrop-filter: blur(12px);
-      background: rgba(247, 247, 244, 0.85);
-    }
+    .nav.scrolled { box-shadow: 0 2px 12px rgba(12,63,102,0.10); }
     .nav__inner {
       max-width: 1200px; margin: 0 auto; padding: 0 var(--sp-xl);
       height: 100%; display: flex; align-items: center; justify-content: space-between;
+      gap: var(--sp-xl);
     }
     .nav__logo {
-      font-size: 18px; font-weight: 600; color: var(--primary);
-      letter-spacing: -0.3px; flex-shrink: 0;
+      display: flex; align-items: center; gap: 14px;
+      flex-shrink: 0; text-decoration: none;
+    }
+    .nav__logo-img {
+      height: 34px; width: auto; display: block; flex-shrink: 0;
+    }
+    .nav__logo-divider {
+      width: 1px; height: 28px; background: #D1D5DB; flex-shrink: 0;
+    }
+    .nav__partner {
+      display: flex; flex-direction: column; gap: 1px;
+      line-height: 1.2;
+    }
+    .nav__partner-name {
+      font-size: 12px; font-weight: 700; color: var(--ink);
+      letter-spacing: 0.3px;
+    }
+    .nav__partner-name--orange { color: var(--primary); }
+    .nav__partner-sub {
+      font-size: 10px; color: #6B7280; font-weight: 400; letter-spacing: 0.2px;
     }
     .nav__links {
-      display: flex; align-items: center; gap: var(--sp-xl);
+      display: flex; align-items: center; gap: var(--sp-lg);
       list-style: none;
     }
     .nav__links a {
       font-size: 14px; font-weight: 500; line-height: 1.4;
-      color: var(--ink); transition: color 0.15s;
+      color: #374151; transition: color 0.15s;
     }
     .nav__links a:hover { color: var(--primary); }
     .nav__cta { flex-shrink: 0; }
+    .nav__btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--primary); color: #ffffff;
+      font-size: 13px; font-weight: 600; letter-spacing: 0.3px;
+      padding: 9px 20px; border-radius: 20px; border: none;
+      cursor: pointer; text-decoration: none; transition: background 0.15s;
+      white-space: nowrap;
+    }
+    .nav__btn:hover { background: var(--primary-active); }
     .nav__hamburger {
       display: none; flex-direction: column; gap: 5px;
       background: none; border: none; cursor: pointer; padding: var(--sp-xs);
     }
     .nav__hamburger span {
       display: block; width: 22px; height: 2px;
-      background: var(--ink); border-radius: 2px;
+      background: #374151; border-radius: 2px;
       transition: transform 0.25s, opacity 0.25s;
     }
     .nav__hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
@@ -212,16 +236,18 @@
 
     .nav__mobile {
       display: none; flex-direction: column;
-      background: var(--canvas); border-top: 1px solid var(--hairline);
+      background: #ffffff; border-top: 1px solid #E8E6E1;
       padding: var(--sp-lg) var(--sp-xl); gap: var(--sp-base);
-      position: absolute; top: 64px; left: 0; right: 0;
+      position: absolute; top: 68px; left: 0; right: 0;
+      box-shadow: 0 8px 16px rgba(0,0,0,0.08);
     }
     .nav__mobile.open { display: flex; }
     .nav__mobile a {
-      font-size: 14px; font-weight: 500; color: var(--ink);
+      font-size: 14px; font-weight: 500; color: #374151;
       padding: var(--sp-xs) 0;
     }
-    .nav__mobile .btn { margin-top: var(--sp-xs); align-self: flex-start; }
+    .nav__mobile a:hover { color: var(--primary); }
+    .nav__mobile .nav__btn { margin-top: var(--sp-xs); align-self: flex-start; }
 
     /* ══════════════════════════════════════════════════════════
        HERO
@@ -460,35 +486,57 @@
        FOOTER
     ══════════════════════════════════════════════════════════ */
     .footer {
-      background: var(--canvas);
-      border-top: 1px solid var(--hairline);
-      padding: 64px var(--sp-xl) 40px;
+      background: #0C3F66;
+      padding: 56px var(--sp-xl) 32px;
     }
-    .footer__inner {
-      max-width: 1200px; margin: 0 auto;
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: var(--sp-xxl);
-      margin-bottom: var(--sp-xxl);
+    .footer__logos-row {
+      max-width: 1200px; margin: 0 auto 48px;
+      display: flex; align-items: center; justify-content: center;
+      gap: 32px; flex-wrap: wrap;
     }
-    .footer__brand {}
-    .footer__logo { font-size: 18px; font-weight: 600; color: var(--primary); margin-bottom: var(--sp-xs); }
-    .footer__tagline { font-size: 13px; color: var(--muted); line-height: 1.5; max-width: 240px; }
-    .footer__social { display: flex; gap: var(--sp-sm); margin-top: var(--sp-base); }
+    .footer__logo-item {
+      display: flex; align-items: center; gap: 8px;
+      opacity: 0.9;
+    }
+    .footer__logo-item img { height: 36px; width: auto; filter: brightness(0) invert(1); }
+    .footer__logo-text {
+      font-size: 12px; font-weight: 700; color: #ffffff;
+      letter-spacing: 0.5px; text-transform: uppercase; line-height: 1.3;
+    }
+    .footer__logo-text span {
+      display: block; font-size: 10px; font-weight: 400;
+      color: rgba(255,255,255,0.6); text-transform: none; letter-spacing: 0;
+    }
+    .footer__logo-divider { width: 1px; height: 32px; background: rgba(255,255,255,0.2); }
+    .footer__main {
+      max-width: 600px; margin: 0 auto 36px; text-align: center;
+    }
+    .footer__event-name {
+      font-size: 20px; font-weight: 600; color: #ffffff;
+      margin-bottom: 16px; letter-spacing: -0.3px;
+    }
+    .footer__event-meta {
+      list-style: none; display: flex; flex-direction: column; gap: 6px;
+    }
+    .footer__event-meta li {
+      font-size: 13px; color: rgba(255,255,255,0.72);
+    }
+    .footer__social {
+      display: flex; gap: 12px; justify-content: center; margin-bottom: 40px;
+    }
     .footer__social a {
-      font-size: 12px; font-weight: 500; color: var(--body);
-      padding: 4px 10px; border-radius: var(--radius-pill);
-      border: 1px solid var(--hairline); transition: border-color 0.15s;
+      width: 40px; height: 40px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);
+      border: 1px solid rgba(255,255,255,0.18);
+      transition: background 0.15s; text-decoration: none;
     }
-    .footer__social a:hover { border-color: var(--hairline-strong); color: var(--ink); }
-    .footer__col-title { font-size: 12px; font-weight: 600; letter-spacing: 0.88px; text-transform: uppercase; color: var(--ink); margin-bottom: var(--sp-base); }
-    .footer__links { list-style: none; display: flex; flex-direction: column; gap: var(--sp-sm); }
-    .footer__links a { font-size: 14px; color: var(--body); transition: color 0.15s; }
-    .footer__links a:hover { color: var(--ink); }
+    .footer__social a:hover { background: rgba(255,255,255,0.22); color: #ffffff; }
     .footer__bottom {
       max-width: 1200px; margin: 0 auto;
-      border-top: 1px solid var(--hairline-soft); padding-top: var(--sp-lg);
-      display: flex; justify-content: space-between; align-items: center;
-      flex-wrap: wrap; gap: var(--sp-sm);
-      font-size: 12px; color: var(--muted);
+      border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px;
+      text-align: center;
+      font-size: 12px; color: rgba(255,255,255,0.45);
     }
 
     /* ══════════════════════════════════════════════════════════
@@ -497,7 +545,7 @@
     @media (max-width: 1024px) {
       .why__grid { grid-template-columns: repeat(2, 1fr); }
       .speakers__grid { grid-template-columns: repeat(2, 1fr); }
-      .footer__inner { grid-template-columns: 1fr 1fr; }
+      .nav__partner-sub { display: none; }
     }
 
     @media (max-width: 768px) {
@@ -527,13 +575,13 @@
 
       .format__grid { grid-template-columns: 1fr; }
 
-      .footer__inner { grid-template-columns: 1fr 1fr; }
     }
 
     @media (max-width: 640px) {
       .container { padding: 0 var(--sp-base); }
-      .footer { padding: 48px var(--sp-base) 32px; }
-      .footer__inner { grid-template-columns: 1fr; gap: var(--sp-xl); }
+      .footer { padding: 40px var(--sp-base) 28px; }
+      .footer__logos-row { gap: 20px; }
+      .footer__logo-divider { display: none; }
     }
 
     @media (min-width: 640px) and (max-width: 1024px) {
@@ -569,6 +617,24 @@
     }
     .auth-input:focus { border-color: var(--hairline-strong); }
     .auth-input.error { border-color: var(--semantic-error); }
+    @keyframes taller-pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(229,82,5,0); }
+      50%       { box-shadow: 0 0 0 4px rgba(229,82,5,0.18); }
+    }
+    .badge-taller {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(229,82,5,0.10); color: #E35205;
+      border: 1px solid rgba(229,82,5,0.30);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.3px;
+      padding: 3px 10px; border-radius: 9999px;
+      animation: taller-pulse 2.4s ease-in-out infinite;
+      transition: background 0.15s, box-shadow 0.15s;
+    }
+    .badge-taller:hover {
+      background: rgba(229,82,5,0.18);
+      animation: none;
+      box-shadow: 0 0 0 3px rgba(229,82,5,0.2);
+    }
     @keyframes shake {
       0%,100% { transform: translateX(0); }
       20%      { transform: translateX(-8px); }
@@ -682,6 +748,7 @@
       .taller-modal__body { padding: var(--sp-base); }
     }
   </style>
+  <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
 
@@ -704,7 +771,11 @@
 ══════════════════════════════════════════════════════════ -->
 <nav class="nav" id="nav">
   <div class="nav__inner">
-    <a href="#inicio" class="nav__logo">Inteligencia Artificial en Radiología</a>
+    <!-- Logo institucional -->
+    <a href="#inicio" class="nav__logo">
+      <img src="images/logo.webp" alt="Los Cobos Medical Center" class="nav__logo-img" style="height:44px;" onerror="this.style.display='none'">
+    </a>
+    <!-- Links -->
     <ul class="nav__links">
       <li><a href="#inicio">Inicio</a></li>
       <li><a href="#programa">Programa</a></li>
@@ -712,7 +783,7 @@
       <li><a href="#venue">Venue</a></li>
       <li><a href="#registro">Registro</a></li>
     </ul>
-    <a href="#registro" class="btn btn--download nav__cta">Registrarme</a>
+    <a href="#registro" class="nav__btn nav__cta">Registrarme</a>
     <button class="nav__hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -723,7 +794,7 @@
     <a href="#speakers" onclick="closeMobile()">Speakers</a>
     <a href="#venue"    onclick="closeMobile()">Venue</a>
     <a href="#registro" onclick="closeMobile()">Registro</a>
-    <a href="#registro" class="btn btn--download" onclick="closeMobile()">Registrarme</a>
+    <a href="#registro" class="nav__btn" onclick="closeMobile()">Registrarme</a>
   </div>
 </nav>
 
@@ -737,7 +808,7 @@
     </div>
 
     <h1 class="display-mega hero__h1 reveal">IV Simposio de Imágenes Diagnósticas</h1>
-    <p class="hero__subhead reveal">Democratización del uso de Inteligencia Artificial en Radiología: De la formación a la práctica</p>
+    <p class="hero__subhead reveal">Democratización del uso de Inteligencia Artificial en Radiología:<br>De la formación a la práctica</p>
     <p class="hero__body body-md reveal">
       Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy
       en hospitales reales. Sin presentaciones vacías. Sin hype.
@@ -786,8 +857,6 @@
         <span class="logo-name">Los Cobos Medical Center</span>
         <span class="logo-name logo-name--separator">/</span>
         <span class="logo-name">Universidad El Bosque</span>
-        <span class="logo-name logo-name--separator">/</span>
-        <span class="logo-name">AIM Program · Harvard Medical School</span>
       </div>
     </div>
   </div>
@@ -812,29 +881,22 @@
       <div class="reveal" style="display:flex; gap:var(--sp-lg); align-items:flex-start; padding:var(--sp-base) var(--sp-lg); background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg);">
         <span style="font-size:22px; font-weight:400; color:var(--primary); letter-spacing:-0.5px; flex-shrink:0; min-width:28px; line-height:1.3;">2</span>
         <div>
-          <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;">Demos en vivo sobre casos reales</p>
-          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Demostrar el uso de herramientas de IA (MONAI, 3D Slicer, agentes clínicos) sobre casos radiológicos reales. En el taller práctico del cierre, cada asistente instala y corre un modelo en su propio computador — no es una demo en pantalla, es en tu máquina.</p>
+          <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;">Demos sobre casos clínicos reales</p>
+          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Demostrar el uso de herramientas de IA (MONAI, 3D Slicer, agentes clínicos) sobre casos radiológicos reales, con demostración en vivo en el taller práctico del cierre.</p>
         </div>
       </div>
       <div class="reveal" style="display:flex; gap:var(--sp-lg); align-items:flex-start; padding:var(--sp-base) var(--sp-lg); background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg);">
         <span style="font-size:22px; font-weight:400; color:var(--primary); letter-spacing:-0.5px; flex-shrink:0; min-width:28px; line-height:1.3;">3</span>
         <div>
           <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;">Capacitación práctica — te llevas el modelo funcionando</p>
-          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Capacitar a radiólogos en el uso práctico de modelos MHub.ai sin necesidad de programar. Los asistentes al taller reciben y configuran los modelos del AIM Program de Harvard directamente en su computador. Sales del evento con la herramienta instalada y un caso procesado.</p>
+          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Capacitar a radiólogos en el uso práctico de modelos MHub.ai sin necesidad de programar. Los asistentes al taller instalan y configuran los modelos directamente en su computador. Sales del evento con la herramienta instalada y un caso procesado.</p>
         </div>
       </div>
       <div class="reveal" style="display:flex; gap:var(--sp-lg); align-items:flex-start; padding:var(--sp-base) var(--sp-lg); background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg);">
         <span style="font-size:22px; font-weight:400; color:var(--primary); letter-spacing:-0.5px; flex-shrink:0; min-width:28px; line-height:1.3;">4</span>
         <div>
-          <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;">Puente Harvard ↔ Latinoamérica</p>
-          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Establecer un puente entre la investigación internacional en IA médica — representada por Leonard Nuernberg del AIM Program, Mass General Brigham, Harvard Medical School — y la práctica radiológica latinoamericana.</p>
-        </div>
-      </div>
-      <div class="reveal" style="display:flex; gap:var(--sp-lg); align-items:flex-start; padding:var(--sp-base) var(--sp-lg); background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg);">
-        <span style="font-size:22px; font-weight:400; color:var(--primary); letter-spacing:-0.5px; flex-shrink:0; min-width:28px; line-height:1.3;">5</span>
-        <div>
-          <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;">Modelo replicable para la región</p>
-          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Generar un modelo de evento replicable para educación médica continua en IA clínica en Colombia y Latinoamérica — con contenido, estructura y comunidad que puedan replicarse en otras instituciones.</p>
+          <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;">Sentar las bases de un modelo replicable</p>
+          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;">Sentar las bases de un modelo de evento replicable para educación médica continua en IA clínica en Colombia y Latinoamérica.</p>
         </div>
       </div>
     </div>
@@ -858,7 +920,7 @@
         </div>
         <h3 class="title-md why__card-title">Diseñado para el radiólogo que quiere actuar hoy</h3>
         <p class="why__card-body">
-          Radiólogos, residentes, líderes de tecnología médica e investigadores. No necesitas saber programar. Creado por radiólogos, para radiólogos — con casos clínicos reales y herramientas que funcionan desde el primer día.
+          Radiólogos, residentes, líderes de tecnología médica e investigadores. Creado por radiólogos, para radiólogos — con casos clínicos reales y herramientas que funcionan desde el primer día.
         </p>
       </div>
       <div class="card why__card reveal">
@@ -867,16 +929,16 @@
         </div>
         <h3 class="title-md why__card-title">Al terminar el simposio podrás</h3>
         <p class="why__card-body">
-          Evaluar y seleccionar modelos de IA para tu especialidad. Correr un modelo sobre imágenes médicas reales desde tu propio computador. Entender la brecha entre lo que ofrecen los hospitales hoy y lo que puedes hacer tú mientras esa brecha se cierra. Aplicar herramientas validadas por Harvard desde el día siguiente.
+          Evaluar y seleccionar modelos de IA para tu especialidad. Correr un modelo sobre imágenes médicas reales desde tu propio computador. Aplicar herramientas validadas en casos clínicos reales desde el día siguiente.
         </p>
       </div>
       <div class="card why__card reveal">
         <div class="why__icon">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="8 21 12 17 16 21"/><polygon points="10 8.5 10 13.5 15 11"/></svg>
         </div>
-        <h3 class="title-md why__card-title">Un taller donde la IA corre en vivo — de verdad</h3>
+        <h3 class="title-md why__card-title">Entre tanto, el hospital se alista</h3>
         <p class="why__card-body">
-          El cierre del simposio es un taller práctico de 2 horas donde cada asistente instala y corre un modelo de IA sobre imágenes médicas reales en su propio computador. Sin simulaciones. Sin código. Guiado por Leonard Nuernberg, creador de MHub.ai e investigador del AIM Program de Harvard.
+          Los hospitales colombianos avanzan en la adopción institucional de IA. Entre tanto, el radiólogo puede empezar hoy: alistarse, generar sus propias habilidades y aprender a actuar con IA de forma responsable. La mayoría de los cursos disponibles son demasiado técnicos para el radiólogo clínico. Este simposio hace fácil el acceso: modelos de vanguardia, sobre imágenes médicas reales, en tu propio computador.
         </p>
       </div>
       <div class="card why__card reveal">
@@ -885,7 +947,7 @@
         </div>
         <h3 class="title-md why__card-title">Investigador invitado desde Harvard</h3>
         <p class="why__card-body">
-          Leonard Nuernberg — Research Scholar, AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai, plataforma open-source que permite correr modelos de IA de vanguardia sobre imágenes médicas sin necesidad de programar.
+          Leonard Nuernberg — Research Scholar, AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai, plataforma open-source para correr modelos de IA sobre imágenes médicas sin necesidad de programar.
         </p>
       </div>
     </div>
@@ -893,13 +955,92 @@
   </div>
 </section>
 
-<div style="padding: var(--sp-xl) 0;">
+<!-- ══════════════════════════════════════════════════════════
+     INVITADO INTERNACIONAL — LEONARD NÜRNBERG
+══════════════════════════════════════════════════════════ -->
+<section style="background: #0C3F66; padding: 72px 0;">
   <div class="container">
-    <div style="display:flex; justify-content:center; margin: 40px auto 0 auto;">
-      <img src="images/3d.webp" alt="Visualización 3D con IA en Radiología" style="width:50%; max-width:600px; height:auto; border-radius:12px; border:1px solid var(--hairline);" onerror="this.style.border='3px solid red'; this.alt='ERROR: ' + this.src;">
+
+    <!-- Badge superior -->
+    <div style="text-align:center; margin-bottom:40px;">
+      <span style="display:inline-flex; align-items:center; gap:8px; background:rgba(243,172,51,0.15); border:1px solid rgba(243,172,51,0.4); color:#F3AC33; font-size:11px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; padding:7px 18px; border-radius:9999px;">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" fill="currentColor"/></svg>
+        Invitado Internacional &nbsp;·&nbsp; Cum Laude RSNA 2025
+      </span>
     </div>
+
+    <!-- Layout foto + texto -->
+    <div class="leonard-grid" style="display:grid; grid-template-columns:300px 1fr; gap:56px; align-items:start; max-width:1000px; margin:0 auto;">
+
+      <!-- Foto -->
+      <div style="position:relative;">
+        <div style="position:absolute; inset:-6px; border:2px solid rgba(243,172,51,0.35); border-radius:18px; pointer-events:none;"></div>
+        <img src="images/leonard.webp" alt="Leonard Nürnberg — AIM Program · Harvard Medical School"
+          style="width:100%; border-radius:14px; display:block; box-shadow:0 20px 60px rgba(0,0,0,0.45);"
+          onerror="this.style.opacity='0.4'">
+        <!-- Premio badge sobre la foto -->
+        <div style="margin-top:16px; background:rgba(243,172,51,0.12); border:1px solid rgba(243,172,51,0.3); border-radius:10px; padding:14px 16px;">
+          <div style="font-size:10px; font-weight:700; color:#F3AC33; letter-spacing:1px; text-transform:uppercase; margin-bottom:6px;">🏆 Premio Cum Laude</div>
+          <div style="font-size:12px; font-weight:600; color:#ffffff; line-height:1.4; margin-bottom:4px;">RSNA 2025 Annual Meeting · Chicago</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.65); line-height:1.4; font-style:italic;">"MHub.ai — Simple and Reproducible AI for Medical Imaging"</div>
+          <div style="font-size:10px; color:rgba(255,255,255,0.45); margin-top:6px;">Award Cum Laude · NEE-40 · Top 3% de todos los trabajos</div>
+        </div>
+      </div>
+
+      <!-- Texto biográfico -->
+      <div>
+        <h2 style="font-size:28px; font-weight:700; color:#ffffff; margin:0 0 4px; letter-spacing:-0.5px;">Leonard Nürnberg, MSc</h2>
+        <p style="font-size:14px; color:#F3AC33; font-weight:500; margin:0 0 28px; letter-spacing:0.2px;">Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School</p>
+
+        <p style="font-size:15px; color:rgba(255,255,255,0.82); line-height:1.7; margin:0 0 16px;">
+          Leonard Nürnberg es Research Scholar del AIM Program en Mass General Brigham (Harvard Medical School), donde trabaja en aplicaciones de deep learning en imagen cardiovascular e investigación oncológica. Es candidato a PhD en la Universidad de Maastricht (GROW School for Oncology and Reproduction, Países Bajos).
+        </p>
+        <p style="font-size:15px; color:rgba(255,255,255,0.82); line-height:1.7; margin:0 0 16px;">
+          Anteriormente fue Research Assistant en Maastro Clinic (Países Bajos), enfocado en segmentación de imágenes médicas con deep learning — específicamente segmentación de subestructuras cardíacas en CT de planificación para radioterapia.
+        </p>
+        <p style="font-size:15px; color:rgba(255,255,255,0.82); line-height:1.7; margin:0 0 24px;">
+          Cree que la IA puede ser el componente clave para aprovechar el crecimiento exponencial de datos en medicina — pero solo si adoptamos estándares abiertos y acuerdos sobre semántica y estructura de datos.
+        </p>
+
+        <!-- Formación -->
+        <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:10px; padding:16px 20px; margin-bottom:24px;">
+          <div style="font-size:11px; font-weight:700; color:rgba(255,255,255,0.45); letter-spacing:1px; text-transform:uppercase; margin-bottom:10px;">Formación</div>
+          <div style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.6;">
+            BSc en Ingeniería de la Información y Gestión — Karlsruhe Institut of Technologies (KIT), Alemania<br>
+            MSc en Inteligencia Artificial — Universidad de Maastricht, Países Bajos
+          </div>
+        </div>
+
+        <!-- Tags -->
+        <div style="display:flex; flex-wrap:wrap; gap:8px;">
+          <span style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.6); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); padding:4px 12px; border-radius:9999px;">Deep Learning · Imagen Médica</span>
+          <span style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.6); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); padding:4px 12px; border-radius:9999px;">Imagen Cardiovascular</span>
+          <span style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.6); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); padding:4px 12px; border-radius:9999px;">Creador de MHub.ai</span>
+          <span style="font-size:11px; font-weight:600; color:rgba(255,255,255,0.6); background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.15); padding:4px 12px; border-radius:9999px;">PhD Candidate · Maastricht</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RSNA prize detail bar -->
+    <div style="max-width:1000px; margin:40px auto 0; background:rgba(243,172,51,0.08); border:1px solid rgba(243,172,51,0.25); border-radius:12px; padding:20px 28px; display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+      <div style="font-size:28px; flex-shrink:0;">🏆</div>
+      <div>
+        <div style="font-size:13px; font-weight:700; color:#F3AC33; margin-bottom:4px;">Premio Cum Laude — RSNA 2025 Annual Meeting · Chicago</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.75); line-height:1.5;">
+          Education Exhibit · Award Cum Laude: NEE-40 — <em>"MHub.ai — Simple and Reproducible AI for Medical Imaging"</em> · <span style="color:rgba(255,255,255,0.5);">El RSNA es el mayor congreso mundial de radiología. El premio Cum Laude es otorgado al top 3% de los trabajos presentados.</span>
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
+
+<!-- RESPONSIVE: stack on mobile -->
+<style>
+  @media (max-width: 768px) {
+    .leonard-grid { grid-template-columns: 1fr !important; }
+  }
+</style>
 
 <!-- ══════════════════════════════════════════════════════════
      SPEAKERS
@@ -952,7 +1093,7 @@
         <div class="speaker-card__talk">
           "Herramientas de IA para el wellness en Radiología"
         </div>
-        <span class="speaker-card__time">2:10 PM</span>
+        <span class="speaker-card__time">2:00 PM</span>
       </div>
 
       <!-- 4. Leonard Nuernberg -->
@@ -960,19 +1101,18 @@
         <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.2)">LN</div>
         <div class="speaker-card__badges">
           <span class="badge-pill badge-pill--gold"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> Cum Laude RSNA 2025</span>
+          <span class="badge-pill">Speaker</span>
+          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Taller</span></a>
         </div>
         <div class="title-md speaker-card__name">Leonard Nuernberg ★</div>
         <div class="speaker-card__institution">Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School</div>
         <p class="speaker-card__talk" style="font-size:13px; color:var(--body); line-height:1.5; margin-bottom:var(--sp-sm);">
           Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai. Dos conferencias + taller práctico.
         </p>
-        <div class="speaker-card__talk" style="margin-bottom:4px;">
-          9:00 AM — "Retos y desafíos de la IA en imágenes médicas"
-        </div>
         <div class="speaker-card__talk">
-          10:50 AM — "DeepCAC2: calcio coronario con IA"
+          10:50 AM — "Retos y desafíos de la IA en imágenes médicas"
         </div>
-        <span class="speaker-card__time">9:00 AM · 10:50 AM · Taller 3:20 PM</span>
+        <span class="speaker-card__time">10:50 AM · Taller 3:20 PM</span>
       </div>
 
       <!-- 5. Dr. Diego Jaramillo -->
@@ -984,23 +1124,24 @@
         <div class="title-md speaker-card__name">Dr. Diego Jaramillo</div>
         <div class="speaker-card__institution">Imagen Cardiaca · Los Cobos Medical Center</div>
         <div class="speaker-card__talk">
-          "Agentes de IA en Radiología: del caso clínico al reporte"
+          "Agentes de IA en Radiología: del caso clínico al reporte en cardiología"
         </div>
-        <span class="speaker-card__time">Taller 3:20 PM</span>
+        <span class="speaker-card__time">3:00 PM</span>
       </div>
 
       <!-- 6. Dr. Miguel Angarita -->
       <div class="card speaker-card reveal">
         <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3)">MA</div>
         <div class="speaker-card__badges">
-          <span class="badge-pill badge-pill--primary">Speaker</span>
+          <span class="badge-pill">Speaker</span>
+          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Taller</span></a>
         </div>
         <div class="title-md speaker-card__name">Dr. Miguel Angarita</div>
-        <div class="speaker-card__institution">Radiólogo · Los Cobos MC · Fundador OpenRad.ai</div>
+        <div class="speaker-card__institution">Radiólogo · Los Cobos Medical Center</div>
         <div class="speaker-card__talk">
           "Aplicaciones útiles de IA en el trabajo diario del radiólogo"
         </div>
-        <span class="speaker-card__time">8:40 AM · Taller 3:20 PM</span>
+        <span class="speaker-card__time">8:40 AM · 9:20 AM · Taller 3:20 PM</span>
       </div>
 
       <!-- 7. Carlos Alberto Pérez -->
@@ -1071,16 +1212,16 @@
         <span class="program__speaker">Dr. Miguel Angarita</span>
       </div>
 
-      <div class="program__row program__row--workshop">
-        <span class="time-pill time-pill--workshop">9:00 – 9:20</span>
-        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Retos y desafíos de la IA en imágenes médicas <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        <span class="program__speaker">Leonard Nuernberg ★</span>
+      <div class="program__row">
+        <span class="time-pill">9:00 – 9:20</span>
+        <span class="program__title">El futuro de la Radiología con el uso de la IA</span>
+        <span class="program__speaker">Por confirmar</span>
       </div>
 
-      <div class="program__row">
-        <span class="time-pill">9:20 – 9:40</span>
-        <span class="program__title">Implementación de informe radiológico con apoyo de IA</span>
-        <span class="program__speaker">Por confirmar · Dedalus</span>
+      <div class="program__row program__row--angarita">
+        <span class="time-pill time-pill--angarita">9:20 – 9:40</span>
+        <span class="program__title">Entre la Firma y el Error: IA como Segunda Revisión en Radiología <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-read)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="program__speaker">Dr. Miguel Angarita</span>
       </div>
 
       <div class="program__row">
@@ -1103,7 +1244,7 @@
 
       <div class="program__row program__row--workshop">
         <span class="time-pill time-pill--workshop">10:50 – 11:10</span>
-        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> DeepCAC2: calcio coronario con IA a escala poblacional — datos del NLST <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Retos y desafíos de la IA en imágenes médicas <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
         <span class="program__speaker">Leonard Nuernberg ★</span>
       </div>
 
@@ -1116,7 +1257,7 @@
       <div class="program__row">
         <span class="time-pill">11:35 – 11:55</span>
         <span class="program__title">Panel de preguntas con expositores</span>
-        <span class="program__speaker">Moderadora: Dra. Diana Patricia Leal</span>
+        <span class="program__speaker">Moderadora: Dra. Diana Patricia Leal Contreras</span>
       </div>
 
       <div class="program__row program__row--break">
@@ -1132,36 +1273,36 @@
       </div>
 
       <div class="program__row">
-        <span class="time-pill">1:50 – 2:10</span>
+        <span class="time-pill">1:50 – 2:00</span>
         <span class="program__title">Monitorización de software de IA post-implementación</span>
         <span class="program__speaker">Por confirmar</span>
       </div>
 
       <div class="program__row">
-        <span class="time-pill">2:10 – 2:30</span>
+        <span class="time-pill">2:00 – 2:20</span>
         <span class="program__title">Herramientas de IA para el wellness en Radiología</span>
         <span class="program__speaker">Dra. Lina María Jaimes</span>
       </div>
 
       <div class="program__row">
-        <span class="time-pill">2:30 – 2:50</span>
+        <span class="time-pill">2:20 – 2:40</span>
         <span class="program__title">Panel de preguntas con expositores</span>
-        <span class="program__speaker">—</span>
+        <span class="program__speaker">Moderadora: Dra. Diana Patricia Leal Contreras</span>
       </div>
 
       <div class="program__row program__row--break">
-        <span class="time-pill time-pill--break">2:50 – 3:00</span>
+        <span class="time-pill time-pill--break">2:40 – 3:00</span>
         <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Coffee Break</span>
         <span class="program__speaker">—</span>
       </div>
 
-      <div class="program__row program__row--workshop">
+      <div class="program__row program__row--workshop" style="border-bottom:none; border-radius:var(--radius-lg) var(--radius-lg) 0 0; margin-bottom:0;">
         <span class="time-pill time-pill--workshop">3:00 – 3:20</span>
-        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> DeepCAC2: del paper al modelo en MHub.ai — intro al taller <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        <span class="program__speaker">Leonard Nuernberg ★</span>
+        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> Intro al taller — Agentes de IA en Radiología: del caso clínico al reporte en cardiología</span>
+        <span class="program__speaker">Dr. Diego Jaramillo + Dr. Miguel Angarita</span>
       </div>
 
-      <div class="program__row program__row--workshop">
+      <div class="program__row program__row--workshop" style="border-radius:0 0 var(--radius-lg) var(--radius-lg);">
         <span class="time-pill time-pill--workshop">3:20 – 5:00</span>
         <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> ★ TALLER PRÁCTICO: Corre tu primer modelo de IA en Radiología <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
           <button class="taller-req-btn" onclick="openTallerModal()">
@@ -1169,7 +1310,7 @@
             Ver requisitos
           </button>
         </span>
-        <span class="program__speaker">Leonard Nuernberg + Dr. Miguel Angarita &nbsp;<a href="/taller" style="color:var(--semantic-success);font-weight:600;white-space:nowrap;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Ver detalles del taller →</a></span>
+        <span class="program__speaker">Leonard Nuernberg + Dr. Miguel Angarita &nbsp;<a href="/taller" style="color:var(--primary);font-weight:700;white-space:nowrap;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">Ver detalles del taller →</a></span>
       </div>
 
       <div class="program__row">
@@ -1204,7 +1345,7 @@
           <span class="venue__info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
           <div>
             <div class="venue__info-label">Dirección</div>
-            <div class="venue__info-value">Calle 100 #8A-55, Bogotá, Colombia</div>
+            <div class="venue__info-value">Avenida Carrera 9 # 131 A-40, Bogotá DC</div>
           </div>
         </div>
         <div class="venue__info-row reveal">
@@ -1246,11 +1387,11 @@
       <div class="reveal">
         <div class="venue__map">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.6!2d-74.0458!3d4.6780!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9be2a1b9b3ef%3A0x4b26f5f8a3c6b9e1!2sLos%20Cobos%20Medical%20Center!5e0!3m2!1ses!2sco!4v1680000000000!5m2!1ses!2sco"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3975.2!2d-74.02770!3d4.70360!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3f9a00e4b37a7d%3A0x2f6dbbbb3ea1cb6c!2sLos%20Cobos%20Medical%20Center!5e0!3m2!1ses!2sco!4v1716480000000!5m2!1ses!2sco"
             allowfullscreen=""
             loading="lazy"
             referrerpolicy="no-referrer-when-downgrade"
-            title="Los Cobos Medical Center en Google Maps">
+            title="Los Cobos Medical Center — Av. Carrera 9 # 131 A-40, Bogotá">
           </iframe>
         </div>
       </div>
@@ -1278,7 +1419,6 @@
           <li>Networking con speakers y patrocinadores</li>
           <li>Acceso al taller hands-on de cierre</li>
           <li>Certificado digital con aval Universidad El Bosque</li>
-          <li>Módulo gratuito del curso academy.openrad.ai</li>
         </ul>
       </div>
       <div class="card format__card reveal">
@@ -1290,7 +1430,6 @@
           <li>Acceso a grabaciones post-evento</li>
           <li>Certificado de asistencia virtual</li>
           <li>Q&amp;A en vivo con los speakers</li>
-          <li>Módulo gratuito del curso academy.openrad.ai</li>
         </ul>
       </div>
     </div>
@@ -1318,15 +1457,10 @@
     </div>
     <h2 class="display-lg cta-band__h2 reveal">Cupos limitados.</h2>
     <p class="cta-band__body reveal">
-      Los primeros inscritos reciben acceso gratuito al módulo 0 del curso
-      <strong>academy.openrad.ai</strong> y descuento exclusivo de inscripción.
-      100 cupos presenciales — el aforo no se amplía.
+      100 cupos presenciales — el aforo no se amplía. Registro próximamente disponible.
     </p>
-    <p class="reveal" style="color:var(--muted);font-size:16px;font-weight:400;line-height:1.5;margin-bottom:var(--sp-xl)">Registro próximamente disponible</p>
     <div class="cta-band__pills reveal">
-      <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><polyline points="20 6 9 17 4 12"/></svg> Módulo gratuito incluido</span>
       <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> Certificado U. El Bosque</span>
-      <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg> Descuento early bird</span>
     </div>
   </div>
 </section>
@@ -1335,36 +1469,47 @@
      FOOTER
 ══════════════════════════════════════════════════════════ -->
 <footer class="footer">
-  <div class="footer__inner">
-    <div class="footer__brand">
-      <img src="images/logo.webp" alt="Los Cobos Medical Center" style="height: 48px; width: auto; display: block;" onerror="this.style.border='3px solid red'; this.alt='ERROR: ' + this.src;">
-    </div>
 
-    <div>
-      <div class="footer__col-title">Evento</div>
-      <ul class="footer__links">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#programa">Programa</a></li>
-        <li><a href="#speakers">Speakers</a></li>
-        <li><a href="#venue">Venue</a></li>
-        <li><a href="#registro">Registro</a></li>
-      </ul>
+  <!-- Logos institucionales -->
+  <div class="footer__logos-row">
+    <div class="footer__logo-item">
+      <img src="images/logo.webp" alt="Los Cobos Medical Center" onerror="this.style.display='none'">
+      <div class="footer__logo-text">Los Cobos Medical Center<span>Sede del evento</span></div>
     </div>
-
-    <div>
-      <div class="footer__col-title">Alianzas</div>
-      <ul class="footer__links">
-        <li><a href="https://www.loscobosmc.com" target="_blank" rel="noopener">Los Cobos Medical Center</a></li>
-        <li><a href="https://www.uelbosque.edu.co" target="_blank" rel="noopener">Universidad El Bosque</a></li>
-        <li><a href="https://aim.hms.harvard.edu" target="_blank" rel="noopener">AIM Program · Mass General Brigham · Harvard Medical School</a></li>
-      </ul>
+    <div class="footer__logo-divider"></div>
+    <div class="footer__logo-item">
+      <div class="footer__logo-text">Universidad El Bosque<span>Aval académico · Certificación</span></div>
     </div>
   </div>
 
+  <!-- Información del evento -->
+  <div class="footer__main">
+    <div class="footer__event-name">IV Simposio de Imágenes Diagnósticas</div>
+    <ul class="footer__event-meta">
+      <li>Democratización del uso de IA en Radiología: De la formación a la práctica</li>
+      <li>Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</li>
+      <li>Avenida Carrera 9 # 131 A-40, Bogotá DC</li>
+    </ul>
+  </div>
+
+  <!-- Redes sociales -->
+  <div class="footer__social">
+    <a href="https://instagram.com/loscobosmc" target="_blank" rel="noopener" aria-label="Instagram @loscobosmc">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+    </a>
+    <a href="https://www.youtube.com/channel/UCIqHNCvXKASFYkxC9LF1TMQ/videos" target="_blank" rel="noopener" aria-label="YouTube Los Cobos Medical Center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/company/los-cobos-mc/" target="_blank" rel="noopener" aria-label="LinkedIn Los Cobos Medical Center">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+    </a>
+  </div>
+
+  <!-- Línea de cierre -->
   <div class="footer__bottom">
-    <span>&copy; 2026 Todos los derechos reservados</span>
-    <span>Bogotá, Colombia</span>
+    &copy; 2026 Los Cobos Medical Center · Universidad El Bosque &mdash; IV Simposio de Imágenes Diagnósticas
   </div>
+
 </footer>
 
 <!-- ══════════════════════════════════════════════════════════
