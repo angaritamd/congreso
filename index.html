@@ -784,9 +784,9 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <li><a href="#programa">Programa</a></li>
       <li><a href="#speakers">Speakers</a></li>
       <li><a href="#venue">Venue</a></li>
-      <li><a href="#registro">Registro</a></li>
+      <li><a href="#registro">Preregistro</a></li>
     </ul>
-    <a href="#registro" class="nav__btn nav__cta">Registrarme</a>
+    <a href="#registro" class="nav__btn nav__cta">Preregistro</a>
     <button class="nav__hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -796,8 +796,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <a href="#programa" onclick="closeMobile()">Programa</a>
     <a href="#speakers" onclick="closeMobile()">Speakers</a>
     <a href="#venue"    onclick="closeMobile()">Venue</a>
-    <a href="#registro" onclick="closeMobile()">Registro</a>
-    <a href="#registro" class="nav__btn" onclick="closeMobile()">Registrarme</a>
+    <a href="#registro" onclick="closeMobile()">Preregistro</a>
+    <a href="#registro" class="nav__btn" onclick="closeMobile()">Preregistro</a>
   </div>
 </nav>
 
@@ -810,27 +810,25 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> BOGOTÁ &middot; 11 SEP 2026</span>
     </div>
 
-    <h1 class="display-mega hero__h1 reveal">IV Simposio de Imágenes Diagnósticas</h1>
-    <p class="hero__subhead reveal">Democratización del uso de Inteligencia Artificial en Radiología:<br>De la formación a la práctica</p>
+    <div class="reveal" style="margin:0 auto 40px; border-radius:24px; overflow:hidden; border:1px solid var(--hairline); background:var(--surface-card);">
+      <div style="min-height:420px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,#0C3F66,#003e6a); color:white; text-align:center; padding:48px;">
+        <div>
+          <h1 style="font-size:clamp(34px,5vw,56px); line-height:1.15; font-weight:400; margin:0 0 16px;">IV Simposio de Imágenes Diagnósticas</h1>
+          <p style="font-size:clamp(17px,2vw,22px); line-height:1.45; margin:0; opacity:.9;">Democratización del uso de Inteligencia Artificial en Radiología:<br>De la formación a la práctica</p>
+        </div>
+      </div>
+    </div>
+
     <p class="hero__body body-md reveal">
       Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy
       en hospitales reales. Sin presentaciones vacías. Sin hype.
       Diseñado para el radiólogo que quiere actuar, no solo escuchar.
     </p>
 
-    <div style="display:flex; justify-content:center; margin: 40px auto;">
-      <img src="images/reporte.webp" alt="Reporte radiológico con IA" style="width:50%; max-width:600px; height:auto; border-radius:12px; border:1px solid var(--hairline);" onerror="this.style.border='3px solid red'; this.alt='ERROR: ' + this.src;">
-    </div>
-
-    <div class="hero__info-badges reveal">
-      <span class="info-badge"><span class="info-badge__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></span> Los Cobos Medical Center, Bogotá</span>
-      <span class="info-badge"><span class="info-badge__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span> Viernes, 11 de Septiembre de 2026 &middot; 7:30 AM – 6:00 PM</span>
-      <span class="info-badge"><span class="info-badge__icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span> Academia: Universidad El Bosque</span>
-    </div>
-
     <div class="hero__ctas reveal">
-      <a href="#registro" class="btn btn--download">Registrarme</a>
+      <a href="#registro" class="btn btn--download">Preregistro</a>
       <a href="#programa" class="btn btn--outline">Ver programa</a>
+      <a href="docs/agenda-simposio.pdf" class="btn btn--outline" download>Descargar agenda PDF</a>
     </div>
 
     <!-- COUNTDOWN -->
@@ -907,6 +905,216 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
+     AVAL ACADÉMICO
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="aval" style="background:var(--canvas); padding-top:60px; padding-bottom:60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Aval académico</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Respaldo académico internacional</h2>
+    </div>
+    <div class="why__grid" style="grid-template-columns: repeat(2, 1fr);">
+      <div class="card why__card reveal">
+        <h3 class="title-md why__card-title">Universidad El Bosque</h3>
+        <p class="why__card-body">Aval académico y certificación del evento a través de su Facultad de Medicina y programa de Radiología.</p>
+      </div>
+      <div class="card why__card reveal">
+        <h3 class="title-md why__card-title">Maastricht University</h3>
+        <p class="why__card-body">Vínculo académico internacional a través del AIM Program y la participación de Leonard Nuernberg.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     PATROCINADORES
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="patrocinadores" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Patrocinadores</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Aliados que hacen posible el simposio</h2>
+    </div>
+    <div style="display:flex; flex-wrap:wrap; gap:12px;">
+      <span class="badge-pill badge-pill--ink">Por Definir</span>
+      <span class="badge-pill badge-pill--ink">Dell Technologies</span>
+      <span class="badge-pill badge-pill--ink">Claro Comcel S.A.</span>
+      <span class="badge-pill badge-pill--ink">Dedalus</span>
+      <span class="badge-pill badge-pill--ink">Med-IA</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     VIDEO
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="video" style="background:var(--canvas); padding-top:60px; padding-bottom:60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Video</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Presentación del evento</h2>
+    </div>
+    <div class="reveal" style="aspect-ratio:16/9; border-radius:18px; border:1px solid var(--hairline); background:#0C3F66; display:flex; align-items:center; justify-content:center; color:white;">
+      <div style="text-align:center;">
+        <div style="font-size:48px; line-height:1;">▶</div>
+        <p style="margin-top:12px;">Placeholder para embeber video de YouTube</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     AVANCES
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="avances" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Avances</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Actualizaciones del simposio</h2>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(3, 1fr); gap:16px;">
+      <div class="card reveal" style="min-height:220px; display:flex; align-items:center; justify-content:center; text-align:center;">Post Instagram 1<br>Placeholder</div>
+      <div class="card reveal" style="min-height:220px; display:flex; align-items:center; justify-content:center; text-align:center;">Post Instagram 2<br>Placeholder</div>
+      <div class="card reveal" style="min-height:220px; display:flex; align-items:center; justify-content:center; text-align:center;">Post Instagram 3<br>Placeholder</div>
+    </div>
+  </div>
+</section>
+<!-- ══════════════════════════════════════════════════════════
+     SPEAKERS
+══════════════════════════════════════════════════════════ -->
+<section class="speakers section" id="speakers">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Speakers</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Quién estará en el escenario</h2>
+    </div>
+
+    <div class="speakers__grid">
+
+      <!-- 1. Dra. Diana Patricia Leal Contreras -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.3)">DL</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dra. Diana Patricia Leal Contreras</div>
+        <div class="speaker-card__institution">Jefa de Imágenes Diagnósticas · Los Cobos Medical Center · Miembro ACR y RSNA · Profesora Universidad El Bosque</div>
+        <div class="speaker-card__talk">
+          Moderadora de paneles y clausura
+        </div>
+        <span class="speaker-card__time">11:30 AM · 2:00 PM · Clausura 5:00 PM</span>
+      </div>
+
+      <!-- 2. Dra. Martha Oyuela -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.3)">MO</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dra. Martha Oyuela</div>
+        <div class="speaker-card__institution">Radióloga · Experta en IA Radiología Latinoamérica</div>
+        <div class="speaker-card__talk">
+          "Marco legal del uso de la IA en Colombia"
+        </div>
+        <span class="speaker-card__time">10:50 AM</span>
+      </div>
+
+      <!-- 3. Dra. Lina Maria Jaimes -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(223,168,143,0.3)">LJ</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dra. Lina María Jaimes</div>
+        <div class="speaker-card__institution">Médica · Universidad El Bosque</div>
+        <div class="speaker-card__talk">
+          "Herramientas de IA para el wellness en Radiología"
+        </div>
+        <span class="speaker-card__time">1:40 PM</span>
+      </div>
+
+      <!-- 4. Leonard Nuernberg -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.2)">LN</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--gold"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> Cum Laude RSNA 2025</span>
+          <span class="badge-pill">Speaker</span>
+          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Taller</span></a>
+        </div>
+        <div class="title-md speaker-card__name">Leonard Nuernberg ★</div>
+        <div class="speaker-card__institution">Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School</div>
+        <p class="speaker-card__talk" style="font-size:13px; color:var(--body); line-height:1.5; margin-bottom:var(--sp-sm);">
+          Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai. Dos conferencias + taller práctico.
+        </p>
+        <div class="speaker-card__talk">
+          8:40 AM — "Retos y desafíos de la IA en imágenes médicas"
+        </div>
+        <span class="speaker-card__time">8:40 AM · Taller 3:20 PM</span>
+      </div>
+
+      <!-- 5. Dr. Diego Jaramillo -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.25)">DJ</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dr. Diego Jaramillo</div>
+        <div class="speaker-card__institution">Imagen Cardiaca · Los Cobos Medical Center</div>
+        <div class="speaker-card__talk">
+          "Agentes de IA en Radiología: del caso clínico al reporte en cardiología"
+        </div>
+        <span class="speaker-card__time">3:00 PM</span>
+      </div>
+
+      <!-- 6. Dr. Miguel Angarita -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3)">MA</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Taller</span></a>
+        </div>
+        <div class="title-md speaker-card__name">Dr. Miguel Angarita</div>
+        <div class="speaker-card__institution">Radiólogo · Los Cobos Medical Center</div>
+        <div class="speaker-card__talk">
+          "IA en Radiología hoy" · "Entre la Firma y el Error" · Taller práctico
+        </div>
+        <span class="speaker-card__time">8:00 AM · 9:20 AM · 3:00 PM · Taller 3:20 PM</span>
+      </div>
+
+      <!-- 7. Carlos Alberto Pérez -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.25)">CP</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Carlos Alberto Pérez</div>
+        <div class="speaker-card__institution">Metodólogo e investigador en IA</div>
+        <div class="speaker-card__talk">
+          "Modelos de IA para la investigación en radiología"
+        </div>
+        <span class="speaker-card__time">10:30 AM</span>
+      </div>
+
+      <!-- 9. Dr. Felipe Aluja -->
+      <div class="card speaker-card reveal">
+        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.25)">FA</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill">Speaker</span>
+        </div>
+        <div class="title-md speaker-card__name">Dr. Felipe Aluja</div>
+        <div class="speaker-card__institution">Radiólogo · Director Especialización Docencia Universitaria</div>
+        <div class="speaker-card__talk">
+          "Residencia en Radiología en la era de la IA"
+        </div>
+        <span class="speaker-card__time">11:10 AM</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
      WHY THIS EVENT
 ══════════════════════════════════════════════════════════ -->
 <section class="why section" id="por-que">
@@ -961,7 +1169,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- ══════════════════════════════════════════════════════════
      INVITADO INTERNACIONAL — LEONARD NÜRNBERG
 ══════════════════════════════════════════════════════════ -->
-<section style="background: #0C3F66; padding: 72px 0;">
+<section id="leonard" style="background: #0C3F66; padding: 72px 0;">
   <div class="container">
 
     <!-- Badge superior -->
@@ -1046,140 +1254,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </style>
 
 <!-- ══════════════════════════════════════════════════════════
-     SPEAKERS
-══════════════════════════════════════════════════════════ -->
-<section class="speakers section" id="speakers">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill">Speakers</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)">Quién estará en el escenario</h2>
-    </div>
-
-    <div class="speakers__grid">
-
-      <!-- 1. Dra. Diana Patricia Leal Contreras -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.3)">DL</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-        </div>
-        <div class="title-md speaker-card__name">Dra. Diana Patricia Leal Contreras</div>
-        <div class="speaker-card__institution">Jefa de Imágenes Diagnósticas · Los Cobos Medical Center · Miembro ACR y RSNA · Profesora Universidad El Bosque</div>
-        <div class="speaker-card__talk">
-          "Flujos de trabajo en Radiología apoyados por IA"
-        </div>
-        <span class="speaker-card__time">8:00 AM</span>
-      </div>
-
-      <!-- 2. Dra. Martha Oyuela -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.3)">MO</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-        </div>
-        <div class="title-md speaker-card__name">Dra. Martha Oyuela</div>
-        <div class="speaker-card__institution">Radióloga · Experta en IA Radiología Latinoamérica</div>
-        <div class="speaker-card__talk">
-          "Marco legal del uso de la IA en Colombia"
-        </div>
-        <span class="speaker-card__time">8:20 AM</span>
-      </div>
-
-      <!-- 3. Dra. Lina Maria Jaimes -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(223,168,143,0.3)">LJ</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-        </div>
-        <div class="title-md speaker-card__name">Dra. Lina María Jaimes</div>
-        <div class="speaker-card__institution">Médica · Universidad El Bosque</div>
-        <div class="speaker-card__talk">
-          "Herramientas de IA para el wellness en Radiología"
-        </div>
-        <span class="speaker-card__time">2:00 PM</span>
-      </div>
-
-      <!-- 4. Leonard Nuernberg -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.2)">LN</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill badge-pill--gold"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> Cum Laude RSNA 2025</span>
-          <span class="badge-pill">Speaker</span>
-          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Taller</span></a>
-        </div>
-        <div class="title-md speaker-card__name">Leonard Nuernberg ★</div>
-        <div class="speaker-card__institution">Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School</div>
-        <p class="speaker-card__talk" style="font-size:13px; color:var(--body); line-height:1.5; margin-bottom:var(--sp-sm);">
-          Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai. Dos conferencias + taller práctico.
-        </p>
-        <div class="speaker-card__talk">
-          10:50 AM — "Retos y desafíos de la IA en imágenes médicas"
-        </div>
-        <span class="speaker-card__time">10:50 AM · Taller 3:20 PM</span>
-      </div>
-
-      <!-- 5. Dr. Diego Jaramillo -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.25)">DJ</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-        </div>
-        <div class="title-md speaker-card__name">Dr. Diego Jaramillo</div>
-        <div class="speaker-card__institution">Imagen Cardiaca · Los Cobos Medical Center</div>
-        <div class="speaker-card__talk">
-          "Agentes de IA en Radiología: del caso clínico al reporte en cardiología"
-        </div>
-        <span class="speaker-card__time">3:00 PM</span>
-      </div>
-
-      <!-- 6. Dr. Miguel Angarita -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3)">MA</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Taller</span></a>
-        </div>
-        <div class="title-md speaker-card__name">Dr. Miguel Angarita</div>
-        <div class="speaker-card__institution">Radiólogo · Los Cobos Medical Center</div>
-        <div class="speaker-card__talk">
-          "Aplicaciones útiles de IA en el trabajo diario del radiólogo"
-        </div>
-        <span class="speaker-card__time">8:40 AM · 9:20 AM · Taller 3:20 PM</span>
-      </div>
-
-      <!-- 7. Carlos Alberto Pérez -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.25)">CP</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-        </div>
-        <div class="title-md speaker-card__name">Carlos Alberto Pérez</div>
-        <div class="speaker-card__institution">Metodólogo e investigador en IA</div>
-        <div class="speaker-card__talk">
-          "Modelos de IA para la investigación en radiología"
-        </div>
-        <span class="speaker-card__time">10:30 AM</span>
-      </div>
-
-      <!-- 9. Dr. Felipe Aluja -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.25)">FA</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill">Speaker</span>
-        </div>
-        <div class="title-md speaker-card__name">Dr. Felipe Aluja</div>
-        <div class="speaker-card__institution">Radiólogo · Director Especialización Docencia Universitaria</div>
-        <div class="speaker-card__talk">
-          "Residencia en Radiología en la era de la IA"
-        </div>
-        <span class="speaker-card__time">11:15 AM</span>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
      FULL PROGRAM
 ══════════════════════════════════════════════════════════ -->
 <section class="program section" id="programa">
@@ -1217,8 +1291,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
       <div class="program__row">
         <span class="time-pill">9:00 – 9:20</span>
-        <span class="program__title">Implementación clínica de IA en Tomografía y Resonancia Magnética: experiencia y casos de uso</span>
-        <span class="program__speaker">GE HealthCare</span>
+        <span class="program__title">Implementación clínica de IA en Tomografía : experiencia y casos de uso</span>
+        <span class="program__speaker">Por Definir</span>
       </div>
 
       <div class="program__row program__row--angarita">
@@ -1270,7 +1344,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
 
       <div class="program__row">
-        <span class="time-pill">1:30 – 1:50</span>
+        <span class="time-pill">1:00 – 1:20</span>
         <span class="program__title">Ciberseguridad en la IA en Radiología</span>
         <span class="program__speaker">Claro Comcel S.A.</span>
       </div>
@@ -1295,7 +1369,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
       <div class="program__row program__row--break">
         <span class="time-pill time-pill--break">2:20 – 3:00</span>
-        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Receso · Café</span>
+        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> Coffee Break + Alistamiento de Taller</span>
         <span class="program__speaker">—</span>
       </div>
 
@@ -1340,7 +1414,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <div>
         <p class="venue__body">
           Uno de los centros médicos más reconocidos de Colombia, clasificado entre
-          los <strong>top 25 IPS del país por Newsweek</strong>. Sede de alta complejidad
+          los <strong>top 20 IPS del país por Newsweek</strong>. Sede de alta complejidad
           en el norte de Bogotá, con infraestructura de clase mundial para ciencias de la salud.
         </p>
 
@@ -1355,7 +1429,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
           <span class="venue__info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
           <div>
             <div class="venue__info-label">Fecha y hora</div>
-            <div class="venue__info-value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 6:00 PM</div>
+            <div class="venue__info-value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</div>
           </div>
         </div>
         <div class="venue__info-row reveal">
@@ -1370,15 +1444,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
           <div>
             <div class="venue__info-label">Transmisión</div>
             <div class="venue__info-value">YouTube Live + Luma Events · 400+ online</div>
-          </div>
-        </div>
-
-        <div class="card venue__partner-card reveal">
-          <div class="venue__partner-label">Alianza académica</div>
-          <div class="venue__partner-name">Universidad El Bosque</div>
-          <div class="venue__partner-desc">
-            Aval académico y certificación del evento a través de la Facultad de Medicina
-            y su programa de Radiología — una de las más reconocidas de Colombia.
           </div>
         </div>
 
@@ -1417,7 +1482,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <div class="format__number format__number--orange">100</div>
         <h3 class="title-md format__card-title">Presencial · Bogotá</h3>
         <ul class="format__list">
-          <li>Acceso completo al simposio (7:30 AM – 6:00 PM)</li>
+          <li>Acceso completo al simposio (7:30 AM – 5:30 PM)</li>
           <li>Coffee breaks y almuerzo incluidos</li>
           <li>Networking con speakers y patrocinadores</li>
           <li>Acceso al taller hands-on de cierre</li>
@@ -1456,11 +1521,11 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <section class="cta-band" id="registro">
   <div class="container">
     <div class="cta-band__badge reveal">
-      <span class="badge-pill">Registro</span>
+      <span class="badge-pill">Preregistro</span>
     </div>
     <h2 class="display-lg cta-band__h2 reveal">Cupos limitados.</h2>
     <p class="cta-band__body reveal">
-      100 cupos presenciales — el aforo no se amplía. Registro próximamente disponible.
+      100 cupos presenciales — el aforo no se amplía. Preregistro próximamente disponible.
     </p>
     <div class="cta-band__pills reveal">
       <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> Certificado U. El Bosque</span>
