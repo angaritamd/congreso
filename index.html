@@ -331,10 +331,6 @@
     /* Modificador en vez de style inline — así las media queries de mobile
        (que apuntan a .why__grid) pueden seguir ganando la cascada. */
     .why__grid--2col { grid-template-columns: repeat(2, 1fr); }
-    /* Antes vivía como style inline en el HTML — igual que arriba, eso le
-       ganaba a las media queries de mobile y rompía el grid en pantallas
-       chicas (nunca bajaba de 3 columnas). */
-    .avances__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
     .why__card { padding: var(--sp-xl); }
     .why__icon {
       width: 44px; height: 44px; border-radius: var(--radius-md);
@@ -564,7 +560,6 @@
     @media (max-width: 1024px) {
       .why__grid { grid-template-columns: repeat(2, 1fr); }
       .speakers__grid { grid-template-columns: repeat(2, 1fr); }
-      .avances__grid { grid-template-columns: repeat(2, 1fr); }
       .nav__partner-sub { display: none; }
     }
 
@@ -586,7 +581,6 @@
       .why__strip { flex-direction: column; gap: var(--sp-base); }
 
       .speakers__grid { grid-template-columns: 1fr; }
-      .avances__grid { grid-template-columns: 1fr; }
 
       .program__row { grid-template-columns: 110px 1fr; gap: var(--sp-sm); }
       .program__speaker { display: none; }
@@ -1061,19 +1055,13 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 -->
 
 <!-- ══════════════════════════════════════════════════════════
-     AVANCES
+     AVANCES — Instagram feed en vivo (Behold)
 ══════════════════════════════════════════════════════════ -->
-<section class="section" id="avances" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
+<section class="ig-feed reveal" id="avances">
   <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="avances.badge">Avances</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="avances.h2">Actualizaciones del simposio</h2>
-    </div>
-    <div class="avances__grid">
-      <div class="card reveal" style="min-height:220px; display:flex; align-items:center; justify-content:center; text-align:center;" data-i18n="avances.placeholder1" data-i18n-html="true">Post Instagram 1<br>Placeholder</div>
-      <div class="card reveal" style="min-height:220px; display:flex; align-items:center; justify-content:center; text-align:center;" data-i18n="avances.placeholder2" data-i18n-html="true">Post Instagram 2<br>Placeholder</div>
-      <div class="card reveal" style="min-height:220px; display:flex; align-items:center; justify-content:center; text-align:center;" data-i18n="avances.placeholder3" data-i18n-html="true">Post Instagram 3<br>Placeholder</div>
-    </div>
+    <h2 class="reveal" data-i18n="ig.title">Síguenos en Instagram</h2>
+    <div id="behold-widget-C39gegNeym2PlKkylYhE"></div>
+    <script src="https://w.behold.so/widget.js" type="module"></script>
   </div>
 </section>
 <!-- ══════════════════════════════════════════════════════════
@@ -1631,17 +1619,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
-     INSTAGRAM FEED — Behold
-══════════════════════════════════════════════════════════ -->
-<section class="ig-feed" id="instagram">
-  <div class="container">
-    <h2 class="display-lg reveal" data-i18n="ig.title">Síguenos en Instagram</h2>
-    <div id="behold-widget-C39gegNeym2PlKkylYhE"></div>
-    <script src="https://w.behold.so/widget.js" type="module"></script>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════════════════ -->
 <footer class="footer">
@@ -1835,12 +1812,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "aval.bosque_body": "Aval académico y certificación del evento a través de su Facultad de Medicina y programa de Radiología.",
       "aval.maastricht_body": "Vínculo académico internacional a través del AIM Program y la participación de Leonard Nuernberg.",
 
-      "avances.badge": "Avances",
-      "avances.h2": "Actualizaciones del simposio",
-      "avances.placeholder1": "Post Instagram 1<br>Placeholder",
-      "avances.placeholder2": "Post Instagram 2<br>Placeholder",
-      "avances.placeholder3": "Post Instagram 3<br>Placeholder",
-
       "speakers.h2": "Quién estará en el escenario",
       "speaker.badge": "Ponente",
       "speaker.diana_institution": "Jefa de Imágenes Diagnósticas · Los Cobos Medical Center · Miembro ACR y RSNA · Profesora Universidad El Bosque",
@@ -2011,12 +1982,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "aval.h2": "International academic backing",
       "aval.bosque_body": "Academic endorsement and event certification through its School of Medicine and Radiology program.",
       "aval.maastricht_body": "International academic link through the AIM Program and Leonard Nuernberg's participation.",
-
-      "avances.badge": "Updates",
-      "avances.h2": "Symposium updates",
-      "avances.placeholder1": "Instagram Post 1<br>Placeholder",
-      "avances.placeholder2": "Instagram Post 2<br>Placeholder",
-      "avances.placeholder3": "Instagram Post 3<br>Placeholder",
 
       "speakers.h2": "Who's taking the stage",
       "speaker.badge": "Speaker",
