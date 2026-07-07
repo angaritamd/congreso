@@ -490,6 +490,18 @@
     .cta-band__pills { display: flex; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; }
 
     /* ══════════════════════════════════════════════════════════
+       INSTAGRAM FEED — Behold
+    ══════════════════════════════════════════════════════════ */
+    .ig-feed {
+      padding: var(--sp-section) 0;
+      background: var(--canvas-soft);
+    }
+    .ig-feed h2 {
+      text-align: center;
+      margin-bottom: var(--sp-lg);
+    }
+
+    /* ══════════════════════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════════════════════ */
     .footer {
@@ -1619,6 +1631,17 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
+     INSTAGRAM FEED — Behold
+══════════════════════════════════════════════════════════ -->
+<section class="ig-feed" id="instagram">
+  <div class="container">
+    <h2 class="display-lg reveal" data-i18n="ig.title">Síguenos en Instagram</h2>
+    <div id="behold-widget-C39gegNeym2PlKkylYhE"></div>
+    <script src="https://w.behold.so/widget.js" type="module"></script>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════════════════ -->
 <footer class="footer">
@@ -1926,6 +1949,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "footer.academic_role": "Aval académico · Certificación",
       "footer.tagline": "Democratización del uso de IA en Radiología: De la formación a la práctica",
 
+      "ig.title": "Síguenos en Instagram",
+
       "taller.modal_title": "Requisitos del Taller",
       "taller.modal_subtitle": "Taller práctico: Corre tu primer modelo de IA en Radiología · 3:20 – 5:00 PM",
       "taller.close": "Cerrar",
@@ -2100,6 +2125,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "footer.venue_role": "Event venue",
       "footer.academic_role": "Academic endorsement · Certification",
       "footer.tagline": "Democratizing the use of AI in Radiology: From training to practice",
+
+      "ig.title": "Follow us on Instagram",
 
       "taller.modal_title": "Workshop Requirements",
       "taller.modal_subtitle": "Hands-on workshop: Run your first AI model in Radiology · 3:20 – 5:00 PM",
