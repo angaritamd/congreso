@@ -536,17 +536,21 @@
     .footer__event-meta li {
       font-size: 13px; color: rgba(255,255,255,0.72);
     }
-    .footer__social {
-      display: flex; gap: 12px; justify-content: center; margin-bottom: 40px;
-    }
-    .footer__social a {
+    .footer-social { display: flex; gap: var(--sp-lg); flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
+    .footer-social-group { display: flex; flex-direction: column; align-items: center; gap: var(--sp-xs); }
+    .footer-social-label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; opacity: 0.6; }
+    .footer-social-icons { display: flex; gap: var(--sp-sm); align-items: center; }
+    .footer-social-icons a {
       width: 40px; height: 40px; border-radius: 50%;
       display: inline-flex; align-items: center; justify-content: center;
       background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.85);
       border: 1px solid rgba(255,255,255,0.18);
       transition: background 0.15s; text-decoration: none;
     }
-    .footer__social a:hover { background: rgba(255,255,255,0.22); color: #ffffff; }
+    .footer-social-icons a:hover { background: rgba(255,255,255,0.22); color: #ffffff; }
+    @media (max-width: 768px) {
+      .footer-social { flex-direction: column; gap: var(--sp-base); }
+    }
     .footer__bottom {
       max-width: 1200px; margin: 0 auto;
       border-top: 1px solid rgba(255,255,255,0.15); padding-top: 20px;
@@ -1646,16 +1650,27 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 
   <!-- Redes sociales -->
-  <div class="footer__social">
-    <a href="https://instagram.com/loscobosmc" target="_blank" rel="noopener" aria-label="Instagram @loscobosmc">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
-    </a>
-    <a href="https://www.youtube.com/channel/UCIqHNCvXKASFYkxC9LF1TMQ/videos" target="_blank" rel="noopener" aria-label="YouTube Los Cobos Medical Center">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
-    </a>
-    <a href="https://www.linkedin.com/company/los-cobos-mc/" target="_blank" rel="noopener" aria-label="LinkedIn Los Cobos Medical Center">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-    </a>
+  <div class="footer-social">
+    <div class="footer-social-group">
+      <span class="footer-social-label" data-i18n="footer.social.angaritarad">AngaritaRad</span>
+      <div class="footer-social-icons">
+        <!-- Pendiente: URLs de redes de AngaritaRad -->
+      </div>
+    </div>
+    <div class="footer-social-group">
+      <span class="footer-social-label" data-i18n="footer.social.cobos">Los Cobos MC</span>
+      <div class="footer-social-icons">
+        <a href="https://instagram.com/loscobosmc" target="_blank" rel="noopener" aria-label="Instagram Los Cobos MC">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/company/los-cobos-mc/" target="_blank" rel="noopener" aria-label="LinkedIn Los Cobos MC">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+        <a href="https://www.youtube.com/@loscobosmc" target="_blank" rel="noopener" aria-label="YouTube Los Cobos MC">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="currentColor" stroke="none"/></svg>
+        </a>
+      </div>
+    </div>
   </div>
 
   <!-- Línea de cierre -->
@@ -1919,6 +1934,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "footer.venue_role": "Sede del evento",
       "footer.academic_role": "Aval académico · Certificación",
       "footer.tagline": "Democratización del uso de IA en Radiología: De la formación a la práctica",
+      "footer.social.angaritarad": "AngaritaRad",
+      "footer.social.cobos": "Los Cobos MC",
 
       "ig.title": "Síguenos en Instagram",
 
@@ -2090,6 +2107,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "footer.venue_role": "Event venue",
       "footer.academic_role": "Academic endorsement · Certification",
       "footer.tagline": "Democratizing the use of AI in Radiology: From training to practice",
+      "footer.social.angaritarad": "AngaritaRad",
+      "footer.social.cobos": "Los Cobos MC",
 
       "ig.title": "Follow us on Instagram",
 
