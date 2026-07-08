@@ -1946,6 +1946,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "footer.social.cobos": "Los Cobos MC",
 
       "ig.title": "Síguenos en Instagram",
+      "ig.empty": "Próximamente contenido del simposio.",
 
       "taller.modal_title": "Requisitos del Taller",
       "taller.modal_subtitle": "Taller práctico: Corre tu primer modelo de IA en Radiología · 3:20 – 5:00 PM",
@@ -2112,6 +2113,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "footer.social.cobos": "Los Cobos MC",
 
       "ig.title": "Follow us on Instagram",
+      "ig.empty": "Symposium content coming soon.",
 
       "taller.modal_title": "Workshop Requirements",
       "taller.modal_subtitle": "Hands-on workshop: Run your first AI model in Radiology · 3:20 – 5:00 PM",
@@ -2284,8 +2286,17 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   fetch(FEED_URL)
     .then(function(res) { return res.json(); })
     .then(function(data) {
-      const posts = (data.posts || []).slice(0, 6);
-      if (!posts.length) { grid.innerHTML = ''; return; }
+      const KEYWORD = 'simposio';
+      const posts = (data.posts || [])
+        .filter(function(post) {
+          const text = (post.caption || '').toLowerCase();
+          return text.includes(KEYWORD);
+        })
+        .slice(0, 6);
+      if (!posts.length) {
+        grid.innerHTML = '<p style="text-align:center;opacity:0.5;" data-i18n="ig.empty">Próximamente contenido del simposio.</p>';
+        return;
+      }
 
       grid.innerHTML = posts.map(function(post) {
         const thumb = post.sizes && post.sizes.medium
