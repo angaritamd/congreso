@@ -811,6 +811,21 @@
     .lang-toggle:hover { border-color: var(--primary); color: var(--primary); }
 
     /* ══════════════════════════════════════════════════════════
+       SHARE DROPDOWN
+    ══════════════════════════════════════════════════════════ */
+    .share-btn-wrapper { position: relative; }
+    .share-btn { display: flex; align-items: center; gap: 6px; padding: 8px 14px; border: 1px solid var(--hairline-strong); border-radius: 999px; background: transparent; cursor: pointer; font-size: 0.875rem; font-family: var(--font-sans); color: var(--ink); transition: background 0.2s; }
+    .share-btn:hover { background: var(--canvas-soft); }
+    .share-dropdown { position: absolute; top: calc(100% + 8px); right: 0; background: var(--surface-card); border: 1px solid var(--hairline-strong); border-radius: 12px; padding: 6px; min-width: 180px; box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 999; display: flex; flex-direction: column; gap: 2px; }
+    .share-option { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-radius: 8px; text-decoration: none; color: var(--ink); font-size: 0.875rem; font-family: var(--font-sans); background: none; border: none; cursor: pointer; width: 100%; text-align: left; transition: background 0.2s; }
+    .share-option:hover { background: var(--canvas-soft); }
+    @media (max-width: 768px) {
+      .share-btn span { display: none; }
+      .share-btn { padding: 8px; }
+      .share-dropdown { right: 0; left: auto; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
        SAVE THE DATE
     ══════════════════════════════════════════════════════════ */
     .std {
@@ -882,6 +897,34 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <li><a href="#venue" data-i18n="nav.venue">Venue</a></li>
     </ul>
     <a href="#registro" class="nav__btn nav__cta" data-i18n="nav.register">Regístrate</a>
+    <div class="share-btn-wrapper">
+      <button class="share-btn" id="share-btn" aria-label="Compartir" onclick="toggleShareMenu()">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+          <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+          <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+        </svg>
+        <span data-i18n="nav.share">Compartir</span>
+      </button>
+      <div class="share-dropdown" id="share-dropdown" style="display:none;">
+        <a href="https://wa.me/?text=IV%20Simposio%20de%20Radiolog%C3%ADa%20e%20IA%20%E2%80%94%20Del%20Pixel%20al%20Diagn%C3%B3stico%20%7C%2011%20de%20septiembre%202026%20%7C%20Los%20Cobos%20Medical%20Center%20https%3A%2F%2Fsimposio.angaritarad.com" target="_blank" rel="noopener" class="share-option">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.138.564 4.14 1.544 5.878L0 24l6.302-1.524A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.818a9.818 9.818 0 01-5.006-1.369l-.36-.214-3.732.902.936-3.629-.235-.374A9.818 9.818 0 1112 21.818z"/></svg>
+          WhatsApp
+        </a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=https%3A%2F%2Fsimposio.angaritarad.com" target="_blank" rel="noopener" class="share-option">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn
+        </a>
+        <a href="https://x.com/intent/tweet?text=IV%20Simposio%20de%20Radiolog%C3%ADa%20e%20IA%20%E2%80%94%20Del%20Pixel%20al%20Diagn%C3%B3stico%20%7C%2011%20sept%202026%20%7C%20Bogot%C3%A1&url=https%3A%2F%2Fsimposio.angaritarad.com" target="_blank" rel="noopener" class="share-option">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          X (Twitter)
+        </a>
+        <button onclick="copyLink()" class="share-option" id="copy-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></svg>
+          <span data-i18n="share.copy">Copiar link</span>
+        </button>
+      </div>
+    </div>
     <button class="lang-toggle" id="lang-toggle" onclick="toggleLang()" aria-label="Cambiar idioma / Switch language">EN</button>
     <button class="nav__hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
@@ -1800,6 +1843,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "nav.workshop": "Taller",
       "nav.venue": "Venue",
       "nav.register": "Regístrate",
+      "nav.share": "Compartir",
+      "share.copy": "Copiar link",
 
       "hero.title": "IV Simposio de Imágenes Diagnósticas — Democratización del uso de Inteligencia Artificial en Radiología: De la formación a la práctica",
       "hero.keyvisual_alt": "IV Simposio de Imágenes Diagnósticas — 11 de septiembre 2026, Los Cobos Medical Center, Bogotá",
@@ -1973,6 +2018,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "nav.workshop": "Workshop",
       "nav.venue": "Venue",
       "nav.register": "Register",
+      "nav.share": "Share",
+      "share.copy": "Copy link",
 
       "hero.title": "IV Radiology Imaging Symposium — Democratizing the use of Artificial Intelligence in Radiology: From Training to Practice",
       "hero.keyvisual_alt": "IV Radiology Imaging Symposium — September 11 2026, Los Cobos Medical Center, Bogotá",
@@ -2166,6 +2213,29 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     if (toggle) toggle.textContent = currentLang === 'es' ? 'EN' : 'ES';
     try { localStorage.setItem('lang', currentLang); } catch (e) {}
   }
+
+  function toggleShareMenu() {
+    const dropdown = document.getElementById('share-dropdown');
+    dropdown.style.display = dropdown.style.display === 'none' ? 'flex' : 'none';
+  }
+
+  function copyLink() {
+    navigator.clipboard.writeText('https://simposio.angaritarad.com').then(() => {
+      const btn = document.getElementById('copy-btn');
+      const span = btn.querySelector('[data-i18n]');
+      span.textContent = currentLang === 'es' ? '¡Copiado!' : 'Copied!';
+      setTimeout(() => {
+        span.textContent = currentLang === 'es' ? 'Copiar link' : 'Copy link';
+      }, 2000);
+    });
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!e.target.closest('.share-btn-wrapper')) {
+      const dropdown = document.getElementById('share-dropdown');
+      if (dropdown) dropdown.style.display = 'none';
+    }
+  });
 
   // Al cargar la página, restaurar idioma guardado (default ES ya está en el HTML).
   window.addEventListener('DOMContentLoaded', () => {
