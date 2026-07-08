@@ -978,7 +978,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <span style="font-size:22px; font-weight:400; color:var(--primary); letter-spacing:-0.5px; flex-shrink:0; min-width:28px; line-height:1.3;">2</span>
         <div>
           <p style="font-size:13px; font-weight:600; color:var(--ink); margin:0 0 4px;" data-i18n="objetivos.item2_title">Demos sobre casos clínicos reales</p>
-          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;" data-i18n="objetivos.item2_body">Demostrar el uso de herramientas de IA (MONAI, 3D Slicer, agentes clínicos) sobre casos radiológicos reales, con demostración en vivo en el taller práctico del cierre.</p>
+          <p style="font-size:15px; color:var(--body); line-height:1.6; margin:0;" data-i18n="objetivos.item2_body">Demostrar el uso de herramientas de IA (agentes clínicos) sobre casos radiológicos reales, con demostración en vivo en el taller práctico del cierre.</p>
         </div>
       </div>
       <div class="reveal" style="display:flex; gap:var(--sp-lg); align-items:flex-start; padding:var(--sp-base) var(--sp-lg); background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg);">
@@ -1815,7 +1815,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "objetivos.item1_title": "Estado del arte global y latinoamericano",
       "objetivos.item1_body": "Presentar el estado actual de la IA en radiología a nivel global y latinoamericano — qué funciona hoy, qué está en investigación y cuál es la brecha real de adopción en Colombia.",
       "objetivos.item2_title": "Demos sobre casos clínicos reales",
-      "objetivos.item2_body": "Demostrar el uso de herramientas de IA (MONAI, 3D Slicer, agentes clínicos) sobre casos radiológicos reales, con demostración en vivo en el taller práctico del cierre.",
+      "objetivos.item2_body": "Demostrar el uso de herramientas de IA (agentes clínicos) sobre casos radiológicos reales, con demostración en vivo en el taller práctico del cierre.",
       "objetivos.item3_title": "Capacitación práctica — te llevas el modelo funcionando",
       "objetivos.item3_body": "Capacitar a radiólogos en el uso práctico de modelos MHub.ai sin necesidad de programar. Los asistentes al taller instalan y configuran los modelos directamente en su computador. Sales del evento con la herramienta instalada y un caso procesado.",
       "objetivos.item4_title": "Sentar las bases de un modelo replicable",
@@ -1955,10 +1955,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "taller.step5_body": "Elegimos un modelo del repositorio <strong>AIM Program · Mass General Brigham</strong>. Aprox. 2-3 GB. Habrá red disponible en la sede.",
       "taller.step6_title": "Procesar primer estudio de imagen médica real",
       "taller.step6_body": "Corremos el modelo sobre un caso clínico real — los mismos modelos que usan los investigadores de Harvard y Mass General Brigham.",
-      "taller.step7_title": "Visualizar resultados en 3D Slicer <span style=\"font-weight:400;color:var(--ink-secondary)\">(opcional)</span>",
-      "taller.step7_body": "Abrimos la salida del modelo en <strong>3D Slicer</strong> para ver la segmentación sobre la imagen médica original.",
-      "taller.step8_title": "Explorar modelos MONAI disponibles <span style=\"font-weight:400;color:var(--ink-secondary)\">(opcional)</span>",
-      "taller.step8_body": "Revisamos el catálogo de modelos <strong>MONAI</strong> disponibles en mhub.ai y qué órganos y patologías cubren para tu práctica.",
     },
     en: {
       "nav.home": "Home",
@@ -1985,7 +1981,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "objetivos.item1_title": "Global and Latin American state of the art",
       "objetivos.item1_body": "Present the current state of AI in radiology globally and across Latin America — what works today, what's still under research, and the real adoption gap in Colombia.",
       "objetivos.item2_title": "Demos on real clinical cases",
-      "objetivos.item2_body": "Demonstrate the use of AI tools (MONAI, 3D Slicer, clinical agents) on real radiology cases, with a live demonstration in the closing hands-on workshop.",
+      "objetivos.item2_body": "Demonstrate the use of AI tools (clinical agents) on real radiology cases, with a live demonstration in the closing hands-on workshop.",
       "objetivos.item3_title": "Hands-on training — you leave with a working model",
       "objetivos.item3_body": "Train radiologists in the practical use of MHub.ai models with no coding required. Workshop attendees install and configure the models directly on their own computer. You leave the event with the tool installed and a case processed.",
       "objetivos.item4_title": "Lay the groundwork for a replicable model",
@@ -2124,11 +2120,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "taller.step5_title": "Select and download your first model",
       "taller.step5_body": "We'll choose a model from the <strong>AIM Program · Mass General Brigham</strong> repository. Approx. 2-3 GB. Network access will be available on site.",
       "taller.step6_title": "Process your first real medical imaging study",
-      "taller.step6_body": "We'll run the model on a real clinical case — the same models used by researchers at Harvard and Mass General Brigham.",
-      "taller.step7_title": "Visualize results in 3D Slicer <span style=\"font-weight:400;color:var(--ink-secondary)\">(optional)</span>",
-      "taller.step7_body": "We'll open the model's output in <strong>3D Slicer</strong> to view the segmentation over the original medical image.",
-      "taller.step8_title": "Explore available MONAI models <span style=\"font-weight:400;color:var(--ink-secondary)\">(optional)</span>",
-      "taller.step8_body": "We'll review the catalog of <strong>MONAI</strong> models available on mhub.ai and which organs and pathologies they cover for your practice."
+      "taller.step6_body": "We'll run the model on a real clinical case — the same models used by researchers at Harvard and Mass General Brigham."
     }
   };
 
@@ -2264,22 +2256,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
             <div class="taller-step__content">
               <div class="taller-step__title" data-i18n="taller.step6_title">Procesar primer estudio de imagen médica real</div>
               <div class="taller-step__body" data-i18n="taller.step6_body">Corremos el modelo sobre un caso clínico real — los mismos modelos que usan los investigadores de Harvard y Mass General Brigham.</div>
-            </div>
-          </div>
-
-          <div class="taller-step">
-            <span class="taller-step__num taller-step__num--during">7</span>
-            <div class="taller-step__content">
-              <div class="taller-step__title" data-i18n="taller.step7_title" data-i18n-html="true">Visualizar resultados en 3D Slicer <span style="font-weight:400;color:var(--ink-secondary)">(opcional)</span></div>
-              <div class="taller-step__body" data-i18n="taller.step7_body" data-i18n-html="true">Abrimos la salida del modelo en <strong>3D Slicer</strong> para ver la segmentación sobre la imagen médica original.</div>
-            </div>
-          </div>
-
-          <div class="taller-step">
-            <span class="taller-step__num taller-step__num--during">8</span>
-            <div class="taller-step__content">
-              <div class="taller-step__title" data-i18n="taller.step8_title" data-i18n-html="true">Explorar modelos MONAI disponibles <span style="font-weight:400;color:var(--ink-secondary)">(opcional)</span></div>
-              <div class="taller-step__body" data-i18n="taller.step8_body" data-i18n-html="true">Revisamos el catálogo de modelos <strong>MONAI</strong> disponibles en mhub.ai y qué órganos y patologías cubren para tu práctica.</div>
             </div>
           </div>
 
