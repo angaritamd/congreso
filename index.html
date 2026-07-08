@@ -4,7 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>IV Simposio de Imágenes Diagnósticas · Los Cobos Medical Center · 11 Sep 2026</title>
-  <meta name="description" content="IV Simposio de Imágenes Diagnósticas · Democratización del uso de Inteligencia Artificial en Radiología: De la formación a la práctica. 11 de Septiembre 2026, Los Cobos Medical Center, Bogotá." />
+  <meta name="description" content="IV Simposio de Radiología e IA — Del Pixel al Diagnóstico. 11 de septiembre 2026, Los Cobos Medical Center, Bogotá. Inteligencia artificial aplicada a imágenes médicas.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://simposio.angaritarad.com/">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IV Simposio de Radiología e IA — Del Pixel al Diagnóstico">
+  <meta property="og:description" content="11 de septiembre 2026 · Los Cobos Medical Center · Bogotá. IA aplicada a imágenes médicas para radiólogos latinoamericanos.">
+  <meta property="og:url" content="https://simposio.angaritarad.com/">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://simposio.angaritarad.com/images/keyvisual.webp">
+  <meta property="og:locale" content="es_CO">
+
+  <!-- Twitter/X Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="IV Simposio de Radiología e IA — Del Pixel al Diagnóstico">
+  <meta name="twitter:description" content="11 de septiembre 2026 · Los Cobos Medical Center · Bogotá.">
+  <meta name="twitter:image" content="https://simposio.angaritarad.com/images/keyvisual.webp">
+  <meta name="twitter:site" content="@angaritarad">
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet" />
@@ -607,35 +625,6 @@
       .display-mega { font-size: 56px; letter-spacing: -1.5px; }
     }
 
-    /* ══════════════════════════════════════════════════════════
-       PASSWORD GATE
-    ══════════════════════════════════════════════════════════ */
-    #auth-overlay {
-      position: fixed; inset: 0; z-index: 9999;
-      background: var(--canvas);
-      display: flex; align-items: center; justify-content: center;
-    }
-    #auth-overlay.hidden { display: none; }
-    .auth-box {
-      display: flex; flex-direction: column; align-items: center;
-      gap: var(--sp-lg); max-width: 340px; width: 100%; padding: var(--sp-xl);
-    }
-    .auth-logo {
-      font-size: 20px; font-weight: 600; color: var(--primary);
-      letter-spacing: -0.3px;
-    }
-    .auth-hint {
-      font-size: 13px; color: var(--muted); text-align: center; line-height: 1.5;
-    }
-    .auth-input {
-      width: 280px; height: 44px; padding: 12px 16px;
-      border: 1px solid var(--hairline); border-radius: var(--radius-md);
-      background: var(--surface-card); color: var(--ink);
-      font-family: var(--font-sans); font-size: 16px;
-      outline: none; transition: border-color 0.15s;
-    }
-    .auth-input:focus { border-color: var(--hairline-strong); }
-    .auth-input.error { border-color: var(--semantic-error); }
     @keyframes taller-pulse {
       0%, 100% { box-shadow: 0 0 0 0 rgba(229,82,5,0); }
       50%       { box-shadow: 0 0 0 4px rgba(229,82,5,0.18); }
@@ -654,27 +643,6 @@
       animation: none;
       box-shadow: 0 0 0 3px rgba(229,82,5,0.2);
     }
-    @keyframes shake {
-      0%,100% { transform: translateX(0); }
-      20%      { transform: translateX(-8px); }
-      40%      { transform: translateX(8px); }
-      60%      { transform: translateX(-5px); }
-      80%      { transform: translateX(5px); }
-    }
-    .auth-input.shake { animation: shake 0.35s ease; }
-    .auth-error {
-      font-size: 13px; color: var(--semantic-error);
-      min-height: 18px; text-align: center;
-    }
-    .auth-btn {
-      width: 280px; height: 44px;
-      background: var(--ink); color: var(--canvas);
-      border: none; border-radius: var(--radius-md);
-      font-family: var(--font-sans); font-size: 14px; font-weight: 500;
-      cursor: pointer; transition: background 0.15s;
-    }
-    .auth-btn:hover { background: #3a3930; }
-
     /* ══════════════════════════════════════════════════════════
        TALLER REQUIREMENTS MODAL
     ══════════════════════════════════════════════════════════ */
@@ -864,20 +832,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   <script src="https://w.behold.so/widget.js" type="module"></script>
 </head>
 <body>
-
-<!-- PASSWORD GATE OVERLAY -->
-<div id="auth-overlay">
-  <div class="auth-box">
-    <div class="auth-logo">Los Cobos Medical Center</div>
-    <p class="auth-hint" data-i18n="auth.hint">Sitio en construcción — acceso restringido</p>
-    <input class="auth-input" id="auth-input" type="password" placeholder="Contraseña" autocomplete="current-password" data-i18n="auth.placeholder" data-i18n-attr="placeholder" />
-    <p class="auth-error" id="auth-error"></p>
-    <button class="auth-btn" id="auth-btn" data-i18n="auth.enter">Entrar</button>
-  </div>
-</div>
-
-<!-- SITE CONTENT -->
-<div id="site-content" style="display:none">
 
 <!-- ══════════════════════════════════════════════════════════
      NAV
@@ -2005,11 +1959,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "taller.step7_body": "Abrimos la salida del modelo en <strong>3D Slicer</strong> para ver la segmentación sobre la imagen médica original.",
       "taller.step8_title": "Explorar modelos MONAI disponibles <span style=\"font-weight:400;color:var(--ink-secondary)\">(opcional)</span>",
       "taller.step8_body": "Revisamos el catálogo de modelos <strong>MONAI</strong> disponibles en mhub.ai y qué órganos y patologías cubren para tu práctica.",
-
-      "auth.hint": "Sitio en construcción — acceso restringido",
-      "auth.placeholder": "Contraseña",
-      "auth.enter": "Entrar",
-      "auth.wrong_password": "Contraseña incorrecta"
     },
     en: {
       "nav.home": "Home",
@@ -2179,12 +2128,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "taller.step7_title": "Visualize results in 3D Slicer <span style=\"font-weight:400;color:var(--ink-secondary)\">(optional)</span>",
       "taller.step7_body": "We'll open the model's output in <strong>3D Slicer</strong> to view the segmentation over the original medical image.",
       "taller.step8_title": "Explore available MONAI models <span style=\"font-weight:400;color:var(--ink-secondary)\">(optional)</span>",
-      "taller.step8_body": "We'll review the catalog of <strong>MONAI</strong> models available on mhub.ai and which organs and pathologies they cover for your practice.",
-
-      "auth.hint": "Site under construction — restricted access",
-      "auth.placeholder": "Password",
-      "auth.enter": "Enter",
-      "auth.wrong_password": "Incorrect password"
+      "taller.step8_body": "We'll review the catalog of <strong>MONAI</strong> models available on mhub.ai and which organs and pathologies they cover for your practice."
     }
   };
 
@@ -2346,51 +2290,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 </div>
 
-</div><!-- /site-content -->
-
-<!-- PASSWORD GATE SCRIPT -->
-<script>
-  (function () {
-    const STORAGE_KEY = 'congreso_auth';
-    const PASSWORD    = 'cobos2026';
-
-    const overlay  = document.getElementById('auth-overlay');
-    const content  = document.getElementById('site-content');
-    const input    = document.getElementById('auth-input');
-    const btn      = document.getElementById('auth-btn');
-    const errorEl  = document.getElementById('auth-error');
-
-    function unlock() {
-      sessionStorage.setItem(STORAGE_KEY, 'true');
-      overlay.classList.add('hidden');
-      content.style.display = '';
-    }
-
-    if (sessionStorage.getItem(STORAGE_KEY) === 'true') {
-      unlock();
-    }
-
-    function attempt() {
-      const entered = input.value.trim();
-      console.log('[auth] entered:', JSON.stringify(entered), '| expected:', JSON.stringify(PASSWORD), '| match:', entered === PASSWORD);
-      if (entered === PASSWORD) {
-        unlock();
-      } else {
-        errorEl.textContent = (typeof translations !== 'undefined' && translations[currentLang])
-          ? translations[currentLang]['auth.wrong_password']
-          : 'Contraseña incorrecta';
-        input.classList.remove('error', 'shake');
-        void input.offsetWidth;
-        input.classList.add('error', 'shake');
-        input.value = '';
-        input.focus();
-      }
-    }
-
-    btn.addEventListener('click', attempt);
-    input.addEventListener('keydown', e => { if (e.key === 'Enter') attempt(); });
-  })();
-</script>
 
 </body>
 </html>
