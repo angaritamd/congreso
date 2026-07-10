@@ -585,6 +585,14 @@
     }
 
     /* ══════════════════════════════════════════════════════════
+       VIDEO INTRO
+    ══════════════════════════════════════════════════════════ */
+    .video-intro { padding: var(--sp-section) 0; }
+    .video-intro h2 { text-align: center; margin-bottom: var(--sp-lg); }
+    .video-wrapper { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .video-wrapper iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+    /* ══════════════════════════════════════════════════════════
        RESPONSIVE
     ══════════════════════════════════════════════════════════ */
     @media (max-width: 1024px) {
@@ -1024,6 +1032,22 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <h3 class="title-md why__card-title">Maastricht University</h3>
         <p class="why__card-body" data-i18n="aval.maastricht_body">Vínculo académico internacional a través del AIM Program y la participación de Leonard Nuernberg.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<section class="video-intro reveal">
+  <div class="container">
+    <h2 class="reveal" data-i18n="video.title">El simposio en video</h2>
+    <div class="video-wrapper">
+      <iframe
+        src="https://www.youtube.com/embed/Wys5Oxit6Yg"
+        title="IV Simposio de Radiología e IA — Del Pixel al Diagnóstico"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen
+        loading="lazy">
+      </iframe>
     </div>
   </div>
 </section>
@@ -1834,6 +1858,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "aval.h2": "Respaldo académico internacional",
       "aval.bosque_body": "Aval académico y certificación del evento a través de su Facultad de Medicina y programa de Radiología.",
       "aval.maastricht_body": "Vínculo académico internacional a través del AIM Program y la participación de Leonard Nuernberg.",
+      "video.title": "El simposio en video",
 
       "speakers.h2": "Quién estará en el escenario",
       "speaker.badge": "Ponente",
@@ -2000,6 +2025,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "aval.h2": "International academic backing",
       "aval.bosque_body": "Academic endorsement and event certification through its School of Medicine and Radiology program.",
       "aval.maastricht_body": "International academic link through the AIM Program and Leonard Nuernberg's participation.",
+      "video.title": "The symposium on video",
 
       "speakers.h2": "Who's taking the stage",
       "speaker.badge": "Speaker",
