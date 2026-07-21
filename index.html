@@ -491,17 +491,11 @@
     /* ══════════════════════════════════════════════════════════
        REGISTRATION CTA
     ══════════════════════════════════════════════════════════ */
-    .cta-band {
-      background: var(--canvas); padding: 96px 0;
-      border-top: 1px solid var(--hairline);
-      text-align: center;
-    }
     .cta-band__badge { margin-bottom: var(--sp-lg); }
     .cta-band__h2 { margin-bottom: var(--sp-sm); }
     .cta-band__subhead { color: var(--muted); font-size: 18px; margin-bottom: var(--sp-base); }
     .cta-band__body { max-width: 520px; margin: 0 auto var(--sp-xl); color: var(--body); font-size: 15px; line-height: 1.6; }
     .cta-band__ctas { display: flex; justify-content: center; gap: var(--sp-base); flex-wrap: wrap; margin-bottom: var(--sp-xl); }
-    .cta-band__pills { display: flex; justify-content: center; gap: var(--sp-sm); flex-wrap: wrap; }
 
     /* ══════════════════════════════════════════════════════════
        INSTAGRAM FEED — Behold
@@ -808,34 +802,6 @@
       .share-btn { padding: 8px; }
       .share-dropdown { right: 0; left: auto; }
     }
-
-    /* ══════════════════════════════════════════════════════════
-       SAVE THE DATE
-    ══════════════════════════════════════════════════════════ */
-    .std {
-      display: inline-flex; flex-direction: column; align-items: center;
-      gap: var(--sp-xs); background: var(--surface-card);
-      border: 1px solid var(--hairline); border-radius: var(--radius-lg);
-      padding: var(--sp-xxl) var(--sp-xxl); max-width: 480px; width: 100%;
-    }
-    .std__label {
-      font-size: 12px; font-weight: 700; letter-spacing: 2px;
-      color: var(--primary); text-transform: uppercase;
-    }
-    .std__date {
-      font-size: 32px; font-weight: 400; letter-spacing: -0.7px;
-      color: var(--ink); line-height: 1.2; margin: var(--sp-xs) 0;
-    }
-    .std__venue { font-size: 15px; color: var(--body); margin-bottom: var(--sp-base); }
-    .std__earlybird {
-      font-size: 13px; color: var(--muted); margin-bottom: var(--sp-lg);
-    }
-    .std__btn { width: 100%; max-width: 280px; }
-    @media (max-width: 640px) {
-      .std { padding: var(--sp-xl) var(--sp-lg); }
-      .std__date { font-size: 26px; }
-      .std__btn { max-width: 100%; }
-    }
   </style>
   <script>
 window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
@@ -861,7 +827,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <li><a href="/taller" data-i18n="nav.workshop">Taller</a></li>
       <li><a href="#venue" data-i18n="nav.venue">Venue</a></li>
     </ul>
-    <a href="#registro" class="nav__btn nav__cta" data-i18n="nav.register">Regístrate</a>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="nav__btn nav__cta" data-i18n="nav.register">Regístrate</a>
     <div class="share-btn-wrapper">
       <button class="share-btn" id="share-btn" aria-label="Compartir" onclick="toggleShareMenu()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -901,7 +867,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <a href="#speakers" onclick="closeMobile()" data-i18n="nav.speakers">Ponentes</a>
     <a href="/taller"   onclick="closeMobile()" data-i18n="nav.workshop">Taller</a>
     <a href="#venue"    onclick="closeMobile()" data-i18n="nav.venue">Venue</a>
-    <a href="#registro" class="nav__btn" onclick="closeMobile()" data-i18n="nav.register">Regístrate</a>
+    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="nav__btn" onclick="closeMobile()" data-i18n="nav.register">Regístrate</a>
   </div>
 </nav>
 
@@ -932,10 +898,11 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     </p>
 
     <div class="hero__ctas reveal">
-      <a href="#registro" class="btn btn--download" data-i18n="nav.register">Regístrate</a>
+      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--download" data-i18n="hero.cta_register">Regístrate al Simposio →</a>
       <a href="#programa" class="btn btn--outline" data-i18n="hero.cta_program">Ver programa</a>
       <a href="docs/agenda-simposio.pdf" class="btn btn--outline" download data-i18n="hero.cta_agenda">Descargar agenda PDF</a>
     </div>
+    <p class="caption reveal" style="color:var(--muted); margin-top:var(--sp-sm);" data-i18n="hero.cta_caption">Certificado de asistencia con aval académico · Universidad El Bosque</p>
 
     <!-- COUNTDOWN -->
     <div class="countdown reveal">
@@ -1631,24 +1598,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
-     REGISTRATION CTA
-══════════════════════════════════════════════════════════ -->
-<section class="cta-band" id="registro">
-  <div class="container" style="display:flex; justify-content:center;">
-    <div class="std reveal">
-      <span class="std__label" data-i18n="std.label">SAVE THE DATE</span>
-      <span class="std__date" data-i18n="std.date">11 de septiembre, 2026</span>
-      <span class="std__venue" data-i18n="std.venue">Los Cobos Medical Center · Bogotá</span>
-      <span class="std__earlybird" data-i18n="std.earlybird">Early registration abre el 15 de julio</span>
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--primary std__btn" data-i18n="std.button">Regístrate aquí →</a>
-      <div class="cta-band__pills" style="margin-top:var(--sp-lg);">
-        <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> <span data-i18n="std.cert_pill">Certificado U. El Bosque</span></span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════════════════ -->
 <footer class="footer">
@@ -1832,6 +1781,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "hero.title": "IV Simposio de Imágenes Diagnósticas — Democratización del uso de Inteligencia Artificial en Radiología: De la formación a la práctica",
       "hero.keyvisual_alt": "IV Simposio de Imágenes Diagnósticas — 11 de septiembre 2026, Los Cobos Medical Center, Bogotá",
       "hero.body": "Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy en hospitales reales. Sin presentaciones vacías. Sin hype. Diseñado para el radiólogo que quiere actuar, no solo escuchar.",
+      "hero.cta_register": "Regístrate al Simposio →",
+      "hero.cta_caption": "Certificado de asistencia con aval académico · Universidad El Bosque",
       "hero.cta_program": "Ver programa",
       "hero.cta_agenda": "Descargar agenda PDF",
       "hero.countdown_days": "Días",
@@ -1952,13 +1903,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "format.cert_title": "Certificación oficial · Universidad El Bosque",
       "format.cert_desc": "Todos los asistentes presenciales y online reciben certificado digital con aval académico de la Universidad El Bosque, válido para créditos de educación médica continuada.",
 
-      "std.label": "SAVE THE DATE",
-      "std.date": "11 de septiembre, 2026",
-      "std.venue": "Los Cobos Medical Center · Bogotá",
-      "std.earlybird": "Early registration abre el 15 de julio",
-      "std.button": "Regístrate aquí →",
-      "std.cert_pill": "Certificado U. El Bosque",
-
       "footer.venue_role": "Sede del evento",
       "footer.academic_role": "Aval académico · Certificación",
       "footer.tagline": "Democratización del uso de IA en Radiología: De la formación a la práctica",
@@ -1999,6 +1943,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "hero.title": "IV Radiology Imaging Symposium — Democratizing the use of Artificial Intelligence in Radiology: From Training to Practice",
       "hero.keyvisual_alt": "IV Radiology Imaging Symposium — September 11 2026, Los Cobos Medical Center, Bogotá",
       "hero.body": "A full day of clinical cases, live demos and tools that already run in real hospitals today. No empty slides. No hype. Built for the radiologist who wants to act, not just listen.",
+      "hero.cta_register": "Register for the Symposium →",
+      "hero.cta_caption": "Certificate of attendance with academic endorsement · Universidad El Bosque",
       "hero.cta_program": "See program",
       "hero.cta_agenda": "Download agenda PDF",
       "hero.countdown_days": "Days",
@@ -2118,13 +2064,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "format.online_li5": "Live Q&A with the speakers",
       "format.cert_title": "Official certification · Universidad El Bosque",
       "format.cert_desc": "All in-person and online attendees receive a digital certificate with academic endorsement from Universidad El Bosque, valid for continuing medical education credits.",
-
-      "std.label": "SAVE THE DATE",
-      "std.date": "September 11, 2026",
-      "std.venue": "Los Cobos Medical Center · Bogotá",
-      "std.earlybird": "Early registration opens July 15",
-      "std.button": "Register here →",
-      "std.cert_pill": "U. El Bosque Certificate",
 
       "footer.venue_role": "Event venue",
       "footer.academic_role": "Academic endorsement · Certification",
