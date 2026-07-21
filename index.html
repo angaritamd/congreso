@@ -831,10 +831,6 @@
       font-size: 13px; color: var(--muted); margin-bottom: var(--sp-lg);
     }
     .std__btn { width: 100%; max-width: 280px; }
-    .std__btn[aria-disabled="true"] {
-      background: var(--surface-strong); color: var(--muted-soft);
-      cursor: not-allowed; pointer-events: none;
-    }
     @media (max-width: 640px) {
       .std { padding: var(--sp-xl) var(--sp-lg); }
       .std__date { font-size: 26px; }
@@ -1644,7 +1640,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <span class="std__date" data-i18n="std.date">11 de septiembre, 2026</span>
       <span class="std__venue" data-i18n="std.venue">Los Cobos Medical Center · Bogotá</span>
       <span class="std__earlybird" data-i18n="std.earlybird">Early registration abre el 15 de julio</span>
-      <button class="btn btn--primary std__btn" disabled aria-disabled="true" data-i18n="std.button">Regístrate aquí →</button>
+      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--primary std__btn" data-i18n="std.button">Regístrate aquí →</a>
       <div class="cta-band__pills" style="margin-top:var(--sp-lg);">
         <span class="badge-pill"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> <span data-i18n="std.cert_pill">Certificado U. El Bosque</span></span>
       </div>
