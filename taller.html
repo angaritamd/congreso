@@ -123,6 +123,27 @@
     .taller-hero__subhead { font-size: 22px; font-weight: 400; color: var(--primary); letter-spacing: -0.2px; margin-bottom: var(--sp-lg); max-width: 680px; margin-left: auto; margin-right: auto; line-height: 1.4; }
     .taller-hero__info { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--sp-sm); margin-bottom: var(--sp-xxl); }
 
+    .demo-figure {
+      margin: 2rem auto;
+      max-width: 680px;
+      text-align: center;
+    }
+
+    .demo-figure__img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      display: block;
+    }
+
+    .demo-figure__caption {
+      margin-top: 0.75rem;
+      font-size: 0.85rem;
+      color: var(--text-muted, #6b7280);
+      line-height: 1.5;
+      font-style: italic;
+    }
+
     /* ══════════════════════════════════════════════════════════
        PROMISES
     ══════════════════════════════════════════════════════════ */
@@ -215,6 +236,45 @@
     .footer__links a { font-size: 14px; color: var(--body); transition: color 0.15s; }
     .footer__links a:hover { color: var(--ink); }
     .footer__bottom { max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--hairline-soft); padding-top: var(--sp-lg); display: flex; justify-content: space-between; flex-wrap: wrap; gap: var(--sp-sm); font-size: 12px; color: var(--muted); }
+
+    /* ══════════════════════════════════════════════════════════
+       PARTNER LOGOS
+    ══════════════════════════════════════════════════════════ */
+    .partner-logos {
+      padding: 3rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid var(--border, #e5e7eb);
+      margin-top: 3rem;
+    }
+
+    .partner-logos__label {
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--text-muted, #6b7280);
+      margin-bottom: 1.5rem;
+    }
+
+    .partner-logos__grid {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3rem;
+      flex-wrap: wrap;
+    }
+
+    .partner-logos__img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+      opacity: 0.85;
+      filter: grayscale(20%);
+    }
+
+    @media (max-width: 480px) {
+      .partner-logos__grid { gap: 2rem; }
+      .partner-logos__img { height: 36px; }
+    }
 
     /* ══════════════════════════════════════════════════════════
        VERIFY COMMAND (docker --version copy block)
@@ -348,6 +408,20 @@
         Incluido en la inscripción presencial al simposio
       </span>
     </div>
+
+    <figure class="demo-figure">
+      <img
+        src="images/cac.webp"
+        alt="Visualización 3D de calcificaciones coronarias generada por DeepCAC2 — modelo MHub.ai"
+        class="demo-figure__img"
+        loading="lazy"
+      />
+      <figcaption class="demo-figure__caption">
+        Imagen real generada por DeepCAC2, uno de los modelos de MHub.ai.
+        Visualización 3D de calcificaciones coronarias en tomografía cardíaca —
+        el tipo de análisis que se demostrará en vivo al inicio del taller.
+      </figcaption>
+    </figure>
 
     <div style="display:flex;justify-content:center;gap:var(--sp-base);flex-wrap:wrap;" class="reveal">
       <a href="https://lu.ma/ia-radiologia-2026" target="_blank" rel="noopener" class="btn btn--download">Inscribirme al simposio →</a>
@@ -917,6 +991,24 @@ Reporte guardado en:
     <span>Los Cobos Medical Center · Bogotá, Colombia</span>
   </div>
 </footer>
+
+<section class="partner-logos">
+  <p class="partner-logos__label">Tecnología y aval académico</p>
+  <div class="partner-logos__grid">
+    <img
+      src="images/MHub.webp"
+      alt="MHub.ai — Plataforma de modelos de IA para imágenes médicas"
+      class="partner-logos__img"
+      loading="lazy"
+    />
+    <img
+      src="images/university-logo.webp"
+      alt="Universidad El Bosque — Aval académico"
+      class="partner-logos__img"
+      loading="lazy"
+    />
+  </div>
+</section>
 
 <script>
   // Sticky nav
