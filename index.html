@@ -551,10 +551,20 @@
       margin-bottom: 16px; letter-spacing: -0.3px;
     }
     .footer__event-meta {
-      list-style: none; display: flex; flex-direction: column; gap: 6px;
+      list-style: none; display: flex; flex-direction: column; gap: 14px;
     }
     .footer__event-meta li {
       font-size: 15px; color: rgba(255,255,255,0.72); line-height: 1.4;
+    }
+    .footer__event-meta .footer__tagline {
+      font-size: 34px; font-weight: 800; color: var(--primary);
+      line-height: 1.25; letter-spacing: -0.4px;
+    }
+    .footer__event-meta .footer__datetime-badge {
+      align-self: center; display: inline-block;
+      font-size: 15px; font-weight: 700; color: #ffffff;
+      background: rgba(245,78,0,0.18); border: 1px solid var(--primary);
+      border-radius: var(--radius-pill); padding: 6px 16px;
     }
     .footer-social { display: flex; gap: var(--sp-lg); flex-wrap: wrap; justify-content: center; margin-bottom: 40px; }
     .footer-social-group { display: flex; flex-direction: column; align-items: center; gap: var(--sp-xs); }
@@ -1618,8 +1628,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   <div class="footer__main">
     <div class="footer__event-name">IV Simposio de Imágenes Diagnósticas</div>
     <ul class="footer__event-meta">
-      <li data-i18n="footer.tagline">Democratización del uso de IA en Radiología: De la formación a la práctica</li>
-      <li data-i18n="venue.datetime_value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</li>
+      <li class="footer__tagline" data-i18n="footer.tagline">Democratización del uso de IA en Radiología: De la formación a la práctica</li>
+      <li class="footer__datetime-badge" data-i18n="venue.datetime_value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</li>
       <li>Avenida Carrera 9 # 131 A-40, Bogotá DC</li>
     </ul>
   </div>
