@@ -403,12 +403,27 @@
        CONFERENCISTAS NACIONALES
     ══════════════════════════════════════════════════════════ */
     .nacional { background: var(--canvas); }
+    .nacional__wrap { position: relative; }
     .nacional__carousel {
       overflow-x: auto; scroll-snap-type: x proximity;
       margin: 0 calc(var(--sp-xl) * -1); padding: 4px var(--sp-xl) var(--sp-base);
       -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; -ms-overflow-style: none;
     }
+    .nacional__carousel::-webkit-scrollbar { display: none; }
     .nacional__track { display: flex; gap: var(--sp-lg); }
+    .nacional__arrow {
+      position: absolute; top: 200px; transform: translateY(-50%);
+      width: 40px; height: 40px; padding: 0; border-radius: var(--radius-pill);
+      background: var(--surface-card); border: 1px solid var(--hairline-strong);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--ink); cursor: pointer; z-index: 2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.12);
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .nacional__arrow:hover { border-color: var(--ink); background: var(--canvas-soft); }
+    .nacional__arrow--prev { left: 8px; }
+    .nacional__arrow--next { right: 8px; }
     .nacional-card {
       flex: 0 0 320px; scroll-snap-align: start; padding: 0;
       overflow: hidden; display: flex; flex-direction: column;
@@ -1246,7 +1261,14 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="nacional.h2">Más voces que se suman al programa</h2>
     </div>
 
-    <div class="nacional__carousel">
+    <div class="nacional__wrap">
+      <button type="button" class="nacional__arrow nacional__arrow--prev" aria-label="Conferencista anterior">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button type="button" class="nacional__arrow nacional__arrow--next" aria-label="Siguiente conferencista">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+      <div class="nacional__carousel">
       <div class="nacional__track">
 
         <!-- TARJETA 1 — Dra. Lina Johana Jaime Díaz -->
@@ -1360,8 +1382,113 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
       </div>
     </div>
+    </div>
   </div>
 </section>
+
+<script>
+  // ── CONFERENCISTAS NACIONALES — infinite arrow carousel ──
+  (function () {
+    const wrap = document.querySelector('.nacional__wrap');
+    if (!wrap) return;
+
+    const carousel = wrap.querySelector('.nacional__carousel');
+    const track = wrap.querySelector('.nacional__track');
+    const prevBtn = wrap.querySelector('.nacional__arrow--prev');
+    const nextBtn = wrap.querySelector('.nacional__arrow--next');
+    const realCards = Array.from(track.children);
+    const total = realCards.length;
+
+    // Clone the whole set on each side (not just one card) so there's always
+    // enough scroll room to bring any real card flush-left, even on wide
+    // viewports where several cards are visible at once.
+    const beforeClones = realCards.map(c => c.cloneNode(true));
+    const afterClones = realCards.map(c => c.cloneNode(true));
+    beforeClones.forEach(c => c.setAttribute('aria-hidden', 'true'));
+    afterClones.forEach(c => c.setAttribute('aria-hidden', 'true'));
+    beforeClones.forEach(c => track.insertBefore(c, track.firstChild));
+    afterClones.forEach(c => track.appendChild(c));
+
+    const cards = Array.from(track.children); // [...beforeClones, ...real, ...afterClones]
+    const realStart = total;      // index of first real card
+    const realEnd = total * 2 - 1; // index of last real card
+    let index = realStart;
+
+    function cardScrollLeft(card) {
+      const cRect = carousel.getBoundingClientRect();
+      const kRect = card.getBoundingClientRect();
+      return kRect.left - cRect.left + carousel.scrollLeft;
+    }
+
+    function goTo(i, smooth) {
+      index = i;
+      carousel.scrollTo({ left: cardScrollLeft(cards[i]), behavior: smooth ? 'smooth' : 'auto' });
+    }
+
+    goTo(realStart, false); // set initial scroll position without animating
+
+    function nearestIndex() {
+      let best = 0, bestDist = Infinity;
+      cards.forEach((card, i) => {
+        const dist = Math.abs(cardScrollLeft(card) - carousel.scrollLeft);
+        if (dist < bestDist) { bestDist = dist; best = i; }
+      });
+      return best;
+    }
+
+    function next() { goTo(index + 1, true); }
+    function prev() { goTo(index - 1, true); }
+
+    // after any scroll settles (arrow click or manual swipe), snap
+    // clones back to their real counterpart with no animation
+    function handleScrollEnd() {
+      const n = nearestIndex();
+      if (n < realStart) { goTo(n + total, false); }
+      else if (n > realEnd) { goTo(n - total, false); }
+      else { index = n; }
+    }
+
+    if ('onscrollend' in window) {
+      carousel.addEventListener('scrollend', handleScrollEnd);
+    } else {
+      let scrollEndTimer = null;
+      carousel.addEventListener('scroll', () => {
+        clearTimeout(scrollEndTimer);
+        scrollEndTimer = setTimeout(handleScrollEnd, 120);
+      }, { passive: true });
+    }
+
+    prevBtn.addEventListener('click', prev);
+    nextBtn.addEventListener('click', next);
+
+    // ── autoplay: advance every 10s, pause on hover/touch, resume 5s after ──
+    const AUTOPLAY_MS = 10000;
+    const RESUME_DELAY_MS = 5000;
+    let autoplayTimer = null;
+    let resumeTimer = null;
+
+    function startAutoplay() {
+      if (autoplayTimer) return;
+      autoplayTimer = setInterval(next, AUTOPLAY_MS);
+    }
+    function pause() {
+      clearInterval(autoplayTimer);
+      autoplayTimer = null;
+      clearTimeout(resumeTimer);
+    }
+    function scheduleResume() {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(startAutoplay, RESUME_DELAY_MS);
+    }
+
+    wrap.addEventListener('mouseenter', pause);
+    wrap.addEventListener('mouseleave', scheduleResume);
+    wrap.addEventListener('touchstart', pause, { passive: true });
+    wrap.addEventListener('touchend', scheduleResume, { passive: true });
+
+    startAutoplay();
+  })();
+</script>
 
 
 <!-- ══════════════════════════════════════════════════════════
