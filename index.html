@@ -400,6 +400,36 @@
     }
 
     /* ══════════════════════════════════════════════════════════
+       CONFERENCISTAS NACIONALES
+    ══════════════════════════════════════════════════════════ */
+    .nacional { background: var(--canvas); }
+    .nacional__carousel {
+      overflow-x: auto; scroll-snap-type: x proximity;
+      margin: 0 calc(var(--sp-xl) * -1); padding: 4px var(--sp-xl) var(--sp-base);
+      -webkit-overflow-scrolling: touch;
+    }
+    .nacional__track { display: flex; gap: var(--sp-lg); }
+    .nacional-card {
+      flex: 0 0 320px; scroll-snap-align: start; padding: 0;
+      overflow: hidden; display: flex; flex-direction: column;
+    }
+    .nacional-card__photo-wrap {
+      width: 320px; height: 400px; position: relative;
+      background: var(--surface-strong); flex-shrink: 0;
+    }
+    .nacional-card__photo { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .nacional-card__photo-fallback {
+      position: absolute; inset: 0; display: none;
+      align-items: center; justify-content: center; color: var(--muted-soft);
+    }
+    .nacional-card__body { padding: var(--sp-lg); }
+    .nacional-card__badges { display: flex; gap: var(--sp-xs); flex-wrap: wrap; margin-bottom: var(--sp-sm); }
+    .nacional-card__name { margin-bottom: 2px; }
+    .nacional-card__title { color: var(--muted); font-size: 13px; margin-bottom: var(--sp-sm); }
+    .nacional-card__bio { font-size: 13px; color: var(--body); line-height: 1.55; }
+    .nacional-card--placeholder .nacional-card__body { text-align: center; }
+
+    /* ══════════════════════════════════════════════════════════
        PROGRAM
     ══════════════════════════════════════════════════════════ */
     .program { background: var(--canvas); }
@@ -1099,7 +1129,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
       <!-- 2. Dra. Martha Hoyuela -->
       <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.3)">MO</div>
+        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.3)">MH</div>
         <div class="speaker-card__badges">
           <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
         </div>
@@ -1201,6 +1231,134 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <span class="speaker-card__time">11:10 AM</span>
       </div>
 
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════════
+     CONFERENCISTAS NACIONALES
+══════════════════════════════════════════════════════════ -->
+<section class="nacional section" id="conferencistas-nacionales">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill" data-i18n="nacional.badge">Conferencistas Nacionales</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="nacional.h2">Más voces que se suman al programa</h2>
+    </div>
+
+    <div class="nacional__carousel">
+      <div class="nacional__track">
+
+        <!-- TARJETA 1 — Dra. Lina Johana Jaime Díaz -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/lina-jaime.jpg" width="320" height="400" loading="lazy" alt="Dra. Lina Johana Jaime Díaz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.lina_name">Dra. Lina Johana Jaime Díaz</div>
+            <div class="nacional-card__title" data-i18n="nacional.lina_title">Médica especialista en Medicina del Deporte</div>
+            <p class="nacional-card__bio" data-i18n="nacional.lina_bio">Médica especialista en medicina del deporte de la Universidad El Bosque, con formación en ecografía musculoesquelética intervencionista en la Universidad del Rosario (Argentina) y máster en ecografía traumatológica y reumatológica de la Universidad de Alcalá (Hospital Ramón y Cajal). Actualmente médica del deporte en la Universidad de La Sabana, liderando estrategias de bienestar en médicos y trabajadores de la salud. Su práctica combina ecografía intervencionista, rehabilitación deportiva y terapias regenerativas.</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 2 — Dr. Felipe Aluja Jaramillo, MD, MHPE -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/felipe-aluja.jpg" width="320" height="400" loading="lazy" alt="Dr. Felipe Aluja Jaramillo, MD, MHPE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.felipe_name">Dr. Felipe Aluja Jaramillo, MD, MHPE</div>
+            <div class="nacional-card__title" data-i18n="nacional.felipe_title">Médico Radiólogo, Hospital Universitario San Ignacio</div>
+            <p class="nacional-card__bio" data-i18n="nacional.felipe_bio">Coordinador Académico del Programa de Postgrado de Radiología e Imágenes Diagnósticas de la Pontificia Universidad Javeriana. Profesor Asistente de la Facultad de Medicina PUJ. Miembro del comité de imagen torácica de la Asociación Colombiana de Radiología. Chair of the RSNA Committee for Latin America (RCLA).</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 3 — Sandra Valderrama Ortiz -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/sandra-valderrama.jpg" width="320" height="400" loading="lazy" alt="Sandra Valderrama Ortiz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.sandra_name">Sandra Valderrama Ortiz</div>
+            <div class="nacional-card__title" data-i18n="nacional.sandra_title">Especialista en Aplicaciones Clínicas de TC · GE HealthCare</div>
+            <p class="nacional-card__bio" data-i18n="nacional.sandra_bio">Especialista en Aplicaciones Clínicas de Tomografía Computarizada para Latinoamérica y el Caribe en GE HealthCare. Cuenta con más de 15 años de experiencia en diagnóstico por imagen, con especial énfasis en tomografía computarizada y radiología pediátrica. Su trayectoria combina experiencia clínica, formación de profesionales de la salud, soporte estratégico a clientes y liderazgo en la adopción de tecnologías avanzadas de imagen médica en la región.</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 4 — Dra. Martha Hoyuela -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/martha-hoyuela.jpg" width="320" height="400" loading="lazy" alt="Dra. Martha Hoyuela" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.martha_name">Dra. Martha Hoyuela</div>
+            <div class="nacional-card__title" data-i18n="nacional.martha_title">Médica Radióloga · Jefe Servicio de Radiología, Instituto Roosevelt</div>
+            <p class="nacional-card__bio" data-i18n="nacional.martha_bio">Médica Radióloga, especialista en Bioética y Epidemiología, con Magíster en Economía de la Salud y Farmacoeconomía y Maestría en Inteligencia Artificial en Salud. Miembro de la Junta Directiva de la Asociación Colombiana de Salud Digital y del Comité de Inteligencia Artificial de la ACR (Asociación Colombiana de Radiología). Jefe del Servicio de Radiología del Instituto Roosevelt.</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 5 — Dra. Diana Leal -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/diana-leal.jpg" width="320" height="400" loading="lazy" alt="Dra. Diana Leal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.diana_name">Dra. Diana Leal</div>
+            <div class="nacional-card__title" data-i18n="nacional.diana_title">Médica Radióloga · Jefe Unidad de Imágenes Diagnósticas, Los Cobos Medical Center</div>
+            <p class="nacional-card__bio" data-i18n="nacional.diana_bio">Médica Radióloga de la Universidad El Bosque y la Universidad Nacional. Jefe de la Unidad de Imágenes Diagnósticas de Los Cobos Medical Center. Miembro del grupo de líderes que inspira, influye y transforma de Los Cobos Medical Center. Docente de pre y posgrado de la Universidad El Bosque.</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 6 — Dr. Diego Jaramillo Hernández -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/diego-jaramillo.jpg" width="320" height="400" loading="lazy" alt="Dr. Diego Jaramillo Hernández" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.diego_name">Dr. Diego Jaramillo Hernández</div>
+            <div class="nacional-card__title" data-i18n="nacional.diego_title">Médico Radiólogo · Especialista en Imagen Cardiaca Avanzada</div>
+            <p class="nacional-card__bio" data-i18n="nacional.diego_bio">Médico Radiólogo especialista en imagen cardiaca avanzada. Profesor Asistente de la Facultad de Medicina de la Universidad El Bosque y del posgrado en Radiología de la Universidad de La Sabana. Miembro de la European Association of Cardiovascular Imaging (EACVI), nivel 3 CCT.</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 7 — Placeholder (Dr. Miguel Angarita Páez, pendiente de foto) -->
+        <div class="card nacional-card nacional-card--placeholder reveal">
+          <div class="nacional-card__photo-wrap">
+            <div class="nacional-card__photo-fallback" style="display:flex">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="nacional.soon">Próximamente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.tbd">Conferencista por confirmar</div>
+          </div>
+        </div>
+
+      </div>
     </div>
   </div>
 </section>
