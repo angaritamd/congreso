@@ -442,7 +442,6 @@
     .nacional-card__name { margin-bottom: 2px; }
     .nacional-card__title { color: var(--muted); font-size: 13px; margin-bottom: var(--sp-sm); }
     .nacional-card__bio { font-size: 13px; color: var(--body); line-height: 1.55; }
-    .nacional-card--placeholder .nacional-card__body { text-align: center; }
 
     /* ══════════════════════════════════════════════════════════
        PROGRAM
@@ -1383,16 +1382,35 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
           </div>
         </div>
 
-        <!-- TARJETA 8 — Placeholder (Dr. Miguel Angarita Páez, pendiente de foto) -->
-        <div class="card nacional-card nacional-card--placeholder reveal">
+        <!-- TARJETA 8 — Juan Felipe Orejuela Zapata -->
+        <div class="card nacional-card reveal">
           <div class="nacional-card__photo-wrap">
-            <div class="nacional-card__photo-fallback" style="display:flex">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/jfelipe.orejuela.jpg" width="320" height="400" loading="lazy" alt="Juan Felipe Orejuela Zapata" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
             </div>
           </div>
           <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="nacional.soon">Próximamente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.tbd">Conferencista por confirmar</div>
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.juanfelipe_name">Juan Felipe Orejuela Zapata</div>
+            <div class="nacional-card__title" data-i18n="nacional.juanfelipe_title">Ingeniero Biomédico · Consultor Presales, Dedalus</div>
+            <p class="nacional-card__bio" data-i18n="nacional.juanfelipe_bio">Ingeniero Biomédico y Magíster en Ingeniería, con experiencia en imagen médica, RIS/PACS, inteligencia artificial y análisis de datos en salud. Consultor Presales en Dedalus, especializado en soluciones de Enterprise Imaging y transformación digital en salud.</p>
+          </div>
+        </div>
+
+        <!-- TARJETA 9 — Dr. Miguel Angarita Páez -->
+        <div class="card nacional-card reveal">
+          <div class="nacional-card__photo-wrap">
+            <img class="nacional-card__photo" src="images/conferencistas-nacionales/miguel-angarita.jpg" width="320" height="400" loading="lazy" alt="Dr. Miguel Angarita Páez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+            <div class="nacional-card__photo-fallback">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+            </div>
+          </div>
+          <div class="nacional-card__body">
+            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
+            <div class="title-md nacional-card__name" data-i18n="nacional.miguel_name">Dr. Miguel Angarita Páez</div>
+            <div class="nacional-card__title" data-i18n="nacional.miguel_title">Radiólogo · Los Cobos Medical Center · Fundador AngaritaRad</div>
+            <p class="nacional-card__bio" data-i18n="nacional.miguel_bio">Radiólogo egresado de la Universidad El Bosque, con más de 20 años de experiencia en Los Cobos Medical Center. Enfocado en la adopción práctica de inteligencia artificial en radiología, ha presentado en RSNA 2024 y RSNA 2025 (Chicago) su trabajo en detección de errores en reportes radiológicos con IA. Fundador de AngaritaRad, iniciativa para democratizar el uso de IA entre radiólogos de Latinoamérica.</p>
           </div>
         </div>
 
@@ -1673,7 +1691,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <div class="program__row">
         <span class="time-pill">8:20 – 8:40</span>
         <span class="program__title" data-i18n="program.r3_title">Flujos de trabajo en Radiología apoyados por IA</span>
-        <span class="program__speaker">Juan F. Orjuela · Ingeniero experto en PACS-RIS</span>
+        <span class="program__speaker">Juan Felipe Orejuela · Ingeniero experto en PACS-RIS</span>
       </div>
 
       <div class="program__row program__row--workshop">
