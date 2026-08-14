@@ -562,6 +562,37 @@
     @media (max-width: 768px) { .ig-grid { grid-template-columns: repeat(2, 1fr); } }
 
     /* ══════════════════════════════════════════════════════════
+       FAQ
+    ══════════════════════════════════════════════════════════ */
+    .faq__list {
+      display: flex; flex-direction: column; gap: var(--sp-sm);
+      max-width: 760px; margin: 0 auto;
+    }
+    .faq__item { padding: 0; }
+    .faq__item[open] { border-color: var(--hairline-strong); }
+    .faq__q {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      gap: var(--sp-base); cursor: pointer; list-style: none;
+      padding: var(--sp-base) var(--sp-lg);
+      font-size: 16px; font-weight: 600; line-height: 1.4; color: var(--ink);
+    }
+    .faq__q::-webkit-details-marker { display: none; }
+    .faq__q::after {
+      content: "+"; flex-shrink: 0;
+      font-size: 20px; font-weight: 400; line-height: 1.2; color: var(--muted);
+      transition: transform 0.2s;
+    }
+    .faq__item[open] .faq__q::after { content: "−"; color: var(--primary); }
+    .faq__a {
+      padding: 0 var(--sp-lg) var(--sp-base);
+      font-size: 15px; line-height: 1.6; color: var(--body);
+    }
+    @media (max-width: 768px) {
+      .faq__q { padding: var(--sp-sm) var(--sp-base); font-size: 15px; }
+      .faq__a { padding: 0 var(--sp-base) var(--sp-sm); font-size: 14px; }
+    }
+
+    /* ══════════════════════════════════════════════════════════
        FOOTER
     ══════════════════════════════════════════════════════════ */
     .footer {
@@ -603,6 +634,10 @@
     .footer__event-meta .footer__tagline {
       font-size: 34px; font-weight: 800; color: var(--primary);
       line-height: 1.25; letter-spacing: -0.4px;
+    }
+    .footer__event-meta .footer__aval {
+      font-size: 16px; font-weight: 600; color: rgba(255,255,255,0.88);
+      margin-top: -4px;
     }
     .footer__event-meta .footer__datetime-badge {
       align-self: center; display: inline-block;
@@ -956,7 +991,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <a href="#programa" class="btn btn--outline" data-i18n="hero.cta_program">Ver programa</a>
       <a href="docs/agenda-simposio.pdf" class="btn btn--outline" download data-i18n="hero.cta_agenda">Descargar agenda PDF</a>
     </div>
-    <p class="caption reveal" style="color:var(--muted); margin-top:var(--sp-sm);" data-i18n="hero.cta_caption">Certificado de asistencia con aval académico · Universidad El Bosque</p>
 
     <!-- COUNTDOWN -->
     <div class="countdown reveal">
@@ -978,14 +1012,9 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       </div>
     </div>
 
-    <!-- LOGOS ROW -->
+    <!-- CERTIFICADO -->
     <div class="hero__logos reveal">
-      <span class="hero__logos-label" data-i18n="hero.logos_label">En alianza con</span>
-      <div class="hero__logos-items">
-        <span class="logo-name">Los Cobos Medical Center</span>
-        <span class="logo-name logo-name--separator">/</span>
-        <span class="logo-name">Universidad El Bosque</span>
-      </div>
+      <span class="badge-pill badge-pill--ink"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> <span data-i18n="hero.certificadoBosque">Incluye Certificado de Asistencia con el aval de la Universidad El Bosque</span></span>
     </div>
   </div>
 </section>
@@ -1750,7 +1779,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 
       <div class="program__row program__row--break">
         <span class="time-pill time-pill--break">12:00 – 1:00</span>
-        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg> <span data-i18n="program.lunch_title">Almuerzo</span></span>
+        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg> <span data-i18n="program.lunch_title">Almuerzo ofrecido por el simposio para los asistentes</span></span>
         <span class="program__speaker">—</span>
       </div>
 
@@ -1927,6 +1956,45 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 </section>
 
 <!-- ══════════════════════════════════════════════════════════
+     FAQ
+══════════════════════════════════════════════════════════ -->
+<section class="faq section" id="faq" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill" data-i18n="faq.badge">FAQ</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="faq.title">Preguntas Frecuentes</h2>
+    </div>
+
+    <div class="faq__list">
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q1">¿El almuerzo está incluido?</span></summary>
+        <p class="faq__a" data-i18n="faq.a1">Sí. El almuerzo y los recesos con estación de café están incluidos para todos los asistentes del simposio.</p>
+      </details>
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q2">¿Hay parqueadero disponible?</span></summary>
+        <p class="faq__a" data-i18n="faq.a2">No, el evento no incluye parqueadero.</p>
+      </details>
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q3">¿Qué pasa si necesito ayuda instalando el software del taller?</span></summary>
+        <p class="faq__a" data-i18n="faq.a3">Habrá una estación de asistencia técnica para ayudar con la instalación del software en los portátiles. Cada asistente debe traer su propio computador portátil.</p>
+      </details>
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q4">¿Necesito conexión a internet para la demo del taller?</span></summary>
+        <p class="faq__a" data-i18n="faq.a4">No. La demo del taller no requiere conexión a internet.</p>
+      </details>
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q5">Al registrarme, ¿se guarda mi cupo?</span></summary>
+        <p class="faq__a" data-i18n="faq.a5">Sí. Tu cupo se valida mediante un correo de confirmación una vez se valide el pago.</p>
+      </details>
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q6">¿El simposio incluye certificado?</span></summary>
+        <p class="faq__a" data-i18n="faq.a6">Sí. Se entrega certificado de asistencia con el aval de la Universidad El Bosque.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
      FOOTER
 ══════════════════════════════════════════════════════════ -->
 <footer class="footer">
@@ -1937,10 +2005,6 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       <img src="images/logo.webp" alt="Los Cobos Medical Center" onerror="this.style.display='none'">
       <div class="footer__logo-text">Los Cobos Medical Center<span data-i18n="footer.venue_role">Sede del evento</span></div>
     </div>
-    <div class="footer__logo-divider"></div>
-    <div class="footer__logo-item">
-      <div class="footer__logo-text">Universidad El Bosque<span data-i18n="footer.academic_role">Aval académico · Certificación</span></div>
-    </div>
   </div>
 
   <!-- Información del evento -->
@@ -1948,6 +2012,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <div class="footer__event-name">IV Simposio de Imágenes Diagnósticas</div>
     <ul class="footer__event-meta">
       <li class="footer__tagline" data-i18n="footer.tagline">Democratización del uso de IA en Radiología: De la formación a la práctica</li>
+      <li class="footer__aval" data-i18n="footer.avalBosque">Con el aval de la Universidad El Bosque.</li>
       <li class="footer__datetime-badge" data-i18n="venue.datetime_value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</li>
       <li>Avenida Carrera 9 # 131 A-40, Bogotá DC</li>
     </ul>
@@ -2111,14 +2176,13 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "hero.keyvisual_alt": "IV Simposio de Imágenes Diagnósticas — 11 de septiembre 2026, Los Cobos Medical Center, Bogotá",
       "hero.body": "Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy en hospitales reales. Sin presentaciones vacías. Sin hype. Diseñado para el radiólogo que quiere actuar, no solo escuchar.",
       "hero.cta_register": "Regístrate al Simposio →",
-      "hero.cta_caption": "Certificado de asistencia con aval académico · Universidad El Bosque",
       "hero.cta_program": "Ver programa",
       "hero.cta_agenda": "Descargar agenda PDF",
       "hero.countdown_days": "Días",
       "hero.countdown_hours": "Horas",
       "hero.countdown_mins": "Minutos",
       "hero.countdown_secs": "Segundos",
-      "hero.logos_label": "En alianza con",
+      "hero.certificadoBosque": "Incluye Certificado de Asistencia con el aval de la Universidad El Bosque",
 
       "objetivos.badge": "Objetivos del Simposio",
       "objetivos.item1_title": "Estado del arte global y latinoamericano",
@@ -2196,7 +2260,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "program.r10_title": "Marco legal del uso de AI en Radiología",
       "program.r11_title": "Residencia en Radiología en la era de la IA",
       "program.moderator_prefix": "Moderadora:",
-      "program.lunch_title": "Almuerzo",
+      "program.lunch_title": "Almuerzo ofrecido por el simposio para los asistentes",
       "program.r14_title": "Ciberseguridad en IA para Radiología",
       "program.r15_title": "Infraestructura en la nube para IA en Radiología: retos y oportunidades",
       "program.r16_title": "Herramientas de IA para el wellness en Radiología",
@@ -2232,9 +2296,24 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "format.cert_title": "Certificación oficial · Universidad El Bosque",
       "format.cert_desc": "Todos los asistentes presenciales y online reciben certificado digital con aval académico de la Universidad El Bosque, válido para créditos de educación médica continuada.",
 
+      "faq.badge": "FAQ",
+      "faq.title": "Preguntas Frecuentes",
+      "faq.q1": "¿El almuerzo está incluido?",
+      "faq.a1": "Sí. El almuerzo y los recesos con estación de café están incluidos para todos los asistentes del simposio.",
+      "faq.q2": "¿Hay parqueadero disponible?",
+      "faq.a2": "No, el evento no incluye parqueadero.",
+      "faq.q3": "¿Qué pasa si necesito ayuda instalando el software del taller?",
+      "faq.a3": "Habrá una estación de asistencia técnica para ayudar con la instalación del software en los portátiles. Cada asistente debe traer su propio computador portátil.",
+      "faq.q4": "¿Necesito conexión a internet para la demo del taller?",
+      "faq.a4": "No. La demo del taller no requiere conexión a internet.",
+      "faq.q5": "Al registrarme, ¿se guarda mi cupo?",
+      "faq.a5": "Sí. Tu cupo se valida mediante un correo de confirmación una vez se valide el pago.",
+      "faq.q6": "¿El simposio incluye certificado?",
+      "faq.a6": "Sí. Se entrega certificado de asistencia con el aval de la Universidad El Bosque.",
+
       "footer.venue_role": "Sede del evento",
-      "footer.academic_role": "Aval académico · Certificación",
       "footer.tagline": "Democratización del uso de IA en Radiología: De la formación a la práctica",
+      "footer.avalBosque": "Con el aval de la Universidad El Bosque.",
       "footer.social.angaritarad": "AngaritaRad",
       "footer.social.cobos": "Los Cobos MC",
 
@@ -2273,14 +2352,13 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "hero.keyvisual_alt": "IV Radiology Imaging Symposium — September 11 2026, Los Cobos Medical Center, Bogotá",
       "hero.body": "A full day of clinical cases, live demos and tools that already run in real hospitals today. No empty slides. No hype. Built for the radiologist who wants to act, not just listen.",
       "hero.cta_register": "Register for the Symposium →",
-      "hero.cta_caption": "Certificate of attendance with academic endorsement · Universidad El Bosque",
       "hero.cta_program": "See program",
       "hero.cta_agenda": "Download agenda PDF",
       "hero.countdown_days": "Days",
       "hero.countdown_hours": "Hours",
       "hero.countdown_mins": "Minutes",
       "hero.countdown_secs": "Seconds",
-      "hero.logos_label": "In partnership with",
+      "hero.certificadoBosque": "Includes Attendance Certificate endorsed by Universidad El Bosque",
 
       "objetivos.badge": "Symposium Objectives",
       "objetivos.item1_title": "Global and Latin American state of the art",
@@ -2358,7 +2436,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "program.r10_title": "Legal Framework for AI Use in Radiology",
       "program.r11_title": "Radiology Residency in the AI Era",
       "program.moderator_prefix": "Moderator:",
-      "program.lunch_title": "Lunch",
+      "program.lunch_title": "Lunch provided by the symposium for attendees",
       "program.r14_title": "Cybersecurity in AI for Radiology",
       "program.r15_title": "Cloud Infrastructure for AI in Radiology: Challenges and Opportunities",
       "program.r16_title": "AI Tools for Wellness in Radiology",
@@ -2394,9 +2472,24 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "format.cert_title": "Official certification · Universidad El Bosque",
       "format.cert_desc": "All in-person and online attendees receive a digital certificate with academic endorsement from Universidad El Bosque, valid for continuing medical education credits.",
 
+      "faq.badge": "FAQ",
+      "faq.title": "Frequently Asked Questions",
+      "faq.q1": "Is lunch included?",
+      "faq.a1": "Yes. Lunch and coffee-break refreshments are included for all symposium attendees.",
+      "faq.q2": "Is parking available?",
+      "faq.a2": "No, parking is not included with the event.",
+      "faq.q3": "What if I need help installing the workshop software?",
+      "faq.a3": "There will be a technical assistance station to help with software installation on laptops. Each attendee must bring their own laptop.",
+      "faq.q4": "Do I need an internet connection for the workshop demo?",
+      "faq.a4": "No. The workshop demo does not require an internet connection.",
+      "faq.q5": "When I register, is my spot saved?",
+      "faq.a5": "Yes. Your spot is validated via a confirmation email once payment is verified.",
+      "faq.q6": "Does the symposium include a certificate?",
+      "faq.a6": "Yes. An attendance certificate is provided, endorsed by Universidad El Bosque.",
+
       "footer.venue_role": "Event venue",
-      "footer.academic_role": "Academic endorsement · Certification",
       "footer.tagline": "Democratizing the use of AI in Radiology: From training to practice",
+      "footer.avalBosque": "Endorsed by Universidad El Bosque.",
       "footer.social.angaritarad": "AngaritaRad",
       "footer.social.cobos": "Los Cobos MC",
 
