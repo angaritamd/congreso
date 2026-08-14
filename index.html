@@ -203,7 +203,7 @@
       flex-shrink: 0; text-decoration: none;
     }
     .nav__logo-img {
-      height: 34px; width: auto; display: block; flex-shrink: 0;
+      height: 44px; width: auto; display: block; flex-shrink: 0;
     }
     .nav__logo-divider {
       width: 1px; height: 28px; background: #D1D5DB; flex-shrink: 0;
@@ -718,6 +718,25 @@
       .footer { padding: 40px var(--sp-base) 28px; }
       .footer__logos-row { gap: 20px; }
       .footer__logo-divider { display: none; }
+
+      /* El nav no cabía en pantallas de teléfono: logo + compartir + idioma +
+         hamburguesa con gap de 32px sumaban 452px y empujaban la hamburguesa
+         fuera del viewport. Se alinea el padding con el del container y se
+         permite que el logo ceda ancho si hace falta. */
+      .nav__inner { padding: 0 var(--sp-base); gap: var(--sp-sm); }
+      .nav__logo { flex-shrink: 1; min-width: 0; }
+      .nav__logo-img {
+        height: 34px; max-width: 100%; object-fit: contain;
+        flex-shrink: 1; min-width: 0;
+      }
+
+      /* El carrusel usa margen negativo para sangrar a los bordes del
+         container, pero seguía en -32px cuando el container ya bajó a 16px,
+         y se salía 16px por lado. */
+      .nacional__carousel {
+        margin: 0 calc(var(--sp-base) * -1);
+        padding: 4px var(--sp-base) var(--sp-base);
+      }
     }
 
     @media (min-width: 640px) and (max-width: 1024px) {
@@ -906,7 +925,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   <div class="nav__inner">
     <!-- Logo institucional -->
     <a href="#inicio" class="nav__logo">
-      <img src="images/logo.webp" alt="Los Cobos Medical Center" class="nav__logo-img" style="height:44px;" onerror="this.style.display='none'">
+      <img src="images/logo.webp" alt="Los Cobos Medical Center" class="nav__logo-img" onerror="this.style.display='none'">
     </a>
     <!-- Links -->
     <ul class="nav__links">
@@ -1990,6 +2009,10 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
         <summary class="faq__q"><span data-i18n="faq.q6">¿El simposio incluye certificado?</span></summary>
         <p class="faq__a" data-i18n="faq.a6">Sí. Se entrega certificado de asistencia con el aval de la Universidad El Bosque.</p>
       </details>
+      <details class="card faq__item reveal">
+        <summary class="faq__q"><span data-i18n="faq.q7">¿Puedo pagar el taller el mismo día del evento?</span></summary>
+        <p class="faq__a" data-i18n="faq.a7">Sí, pero los cupos del taller son limitados. Para asegurar tu asistencia te recomendamos completar el pago con anticipación; el pago el mismo día del evento queda sujeto a disponibilidad de cupo.</p>
+      </details>
     </div>
   </div>
 </section>
@@ -2310,6 +2333,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "faq.a5": "Sí. Tu cupo se valida mediante un correo de confirmación una vez se valide el pago.",
       "faq.q6": "¿El simposio incluye certificado?",
       "faq.a6": "Sí. Se entrega certificado de asistencia con el aval de la Universidad El Bosque.",
+      "faq.q7": "¿Puedo pagar el taller el mismo día del evento?",
+      "faq.a7": "Sí, pero los cupos del taller son limitados. Para asegurar tu asistencia te recomendamos completar el pago con anticipación; el pago el mismo día del evento queda sujeto a disponibilidad de cupo.",
 
       "footer.venue_role": "Sede del evento",
       "footer.tagline": "Democratización del uso de IA en Radiología: De la formación a la práctica",
@@ -2486,6 +2511,8 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "faq.a5": "Yes. Your spot is validated via a confirmation email once payment is verified.",
       "faq.q6": "Does the symposium include a certificate?",
       "faq.a6": "Yes. An attendance certificate is provided, endorsed by Universidad El Bosque.",
+      "faq.q7": "Can I pay for the workshop on the day of the event?",
+      "faq.a7": "Yes, but workshop places are limited. To secure your attendance we recommend completing payment in advance; payment on the day of the event is subject to availability.",
 
       "footer.venue_role": "Event venue",
       "footer.tagline": "Democratizing the use of AI in Radiology: From training to practice",
