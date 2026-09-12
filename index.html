@@ -930,12 +930,12 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <!-- Links -->
     <ul class="nav__links">
       <li><a href="#inicio" data-i18n="nav.home">Inicio</a></li>
-      <li><a href="#programa" data-i18n="nav.program">Programa</a></li>
-      <li><a href="#speakers" data-i18n="nav.speakers">Ponentes</a></li>
       <li><a href="/taller" data-i18n="nav.workshop">Taller</a></li>
-      <li><a href="#venue" data-i18n="nav.venue">Venue</a></li>
+      <li><a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer">angaritarad.com</a></li>
+      <li><a href="https://mhub.ai" target="_blank" rel="noopener noreferrer">mhub.ai</a></li>
+      <li><a href="https://cobos.com.co" target="_blank" rel="noopener noreferrer" data-i18n="nav.venue_ext">Los Cobos</a></li>
     </ul>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="nav__btn nav__cta" data-i18n="nav.register">Regístrate</a>
+    <span class="nav__btn nav__cta" style="background:var(--surface-strong); color:var(--muted); cursor:not-allowed; pointer-events:none;" data-i18n="nav.event_over">Evento finalizado</span>
     <div class="share-btn-wrapper">
       <button class="share-btn" id="share-btn" aria-label="Compartir" onclick="toggleShareMenu()">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -971,11 +971,10 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
   <div class="nav__mobile" id="nav-mobile">
     <a href="#inicio"   onclick="closeMobile()" data-i18n="nav.home">Inicio</a>
-    <a href="#programa" onclick="closeMobile()" data-i18n="nav.program">Programa</a>
-    <a href="#speakers" onclick="closeMobile()" data-i18n="nav.speakers">Ponentes</a>
     <a href="/taller"   onclick="closeMobile()" data-i18n="nav.workshop">Taller</a>
-    <a href="#venue"    onclick="closeMobile()" data-i18n="nav.venue">Venue</a>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="nav__btn" onclick="closeMobile()" data-i18n="nav.register">Regístrate</a>
+    <a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer" onclick="closeMobile()">angaritarad.com</a>
+    <a href="https://mhub.ai" target="_blank" rel="noopener noreferrer" onclick="closeMobile()">mhub.ai</a>
+    <a href="https://cobos.com.co" target="_blank" rel="noopener noreferrer" onclick="closeMobile()" data-i18n="nav.venue_ext">Los Cobos</a>
   </div>
 </nav>
 
@@ -991,49 +990,82 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <!-- Encabezado semántico oculto visualmente: el título ya está en el gráfico del key visual -->
     <h1 class="visually-hidden" data-i18n="hero.title">IV Simposio de Imágenes Diagnósticas — Democratización del uso de Inteligencia Artificial en Radiología: De la formación a la práctica</h1>
 
-    <!-- KEY VISUAL: images/keyvisual.webp (subido y commiteado) -->
+    <!-- FOTO DEL EVENTO (post-evento) -->
     <div class="hero-keyvisual-wrap reveal">
-      <img src="/images/keyvisual.webp" alt="IV Simposio de Imágenes Diagnósticas — 11 de septiembre 2026, Los Cobos Medical Center, Bogotá"
+      <img src="/images/foto-simposio.jpeg" alt="Conferencistas y asistentes del IV Simposio de Imágenes Diagnósticas — Los Cobos Medical Center, Bogotá"
         data-i18n="hero.keyvisual_alt" data-i18n-attr="alt"
-        class="hero-keyvisual" width="1920" height="1080"
+        class="hero-keyvisual" width="1280" height="720"
         onerror="this.closest('.hero-keyvisual-wrap').style.display='none'">
+      <p style="text-align:center; font-size:14px; color:var(--muted); margin-top:var(--sp-sm);" data-i18n="hero.photo_caption">✨ IV Simposio de Imágenes Diagnósticas — Los Cobos Medical Center, Bogotá · 11 de septiembre 2026</p>
     </div>
 
     <p class="hero__body body-md reveal" data-i18n="hero.body">
-      Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy
-      en hospitales reales. Sin presentaciones vacías. Sin hype.
-      Diseñado para el radiólogo que quiere actuar, no solo escuchar.
+      Un día completo de casos clínicos, demos en vivo y herramientas que ya corren
+      en hospitales reales. Gracias a todos los que nos acompañaron.
     </p>
 
     <div class="hero__ctas reveal">
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--download" data-i18n="hero.cta_register">Regístrate al Simposio →</a>
-      <a href="#programa" class="btn btn--outline" data-i18n="hero.cta_program">Ver programa</a>
-      <a href="docs/agenda-simposio.pdf" class="btn btn--outline" download data-i18n="hero.cta_agenda">Descargar agenda PDF</a>
-    </div>
-
-    <!-- COUNTDOWN -->
-    <div class="countdown reveal">
-      <div class="countdown__card">
-        <span class="countdown__number" id="cd-days">—</span>
-        <span class="countdown__label" data-i18n="hero.countdown_days">Días</span>
-      </div>
-      <div class="countdown__card">
-        <span class="countdown__number" id="cd-hours">—</span>
-        <span class="countdown__label" data-i18n="hero.countdown_hours">Horas</span>
-      </div>
-      <div class="countdown__card">
-        <span class="countdown__number" id="cd-mins">—</span>
-        <span class="countdown__label" data-i18n="hero.countdown_mins">Minutos</span>
-      </div>
-      <div class="countdown__card">
-        <span class="countdown__number" id="cd-secs">—</span>
-        <span class="countdown__label" data-i18n="hero.countdown_secs">Segundos</span>
-      </div>
+      <span class="btn" style="background:var(--surface-strong); color:var(--muted); cursor:not-allowed; pointer-events:none;" data-i18n="hero.event_over">Evento finalizado</span>
+      <a href="#recursos" class="btn btn--outline" data-i18n="hero.cta_resources">Recursos del evento →</a>
     </div>
 
     <!-- CERTIFICADO -->
     <div class="hero__logos reveal">
       <span class="badge-pill badge-pill--ink"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> <span data-i18n="hero.certificadoBosque">Incluye Certificado de Asistencia con el aval de la Universidad El Bosque</span></span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     POST-EVENTO: GRACIAS + PRÓXIMO AÑO
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="gracias" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill" data-i18n="post.badge">Post-evento</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="post.thanks_title">Gracias a nuestros conferencistas</h2>
+      <p style="font-size:16px; color:var(--muted); max-width:620px; margin-top:var(--sp-base); line-height:1.6;" data-i18n="post.thanks_body">
+        A Leonard Nürnberg, al Dr. Miguel Angarita y a todos los conferencistas nacionales e internacionales:
+        gracias por un día de demos en vivo, casos reales y conocimiento compartido sin reservas.
+      </p>
+    </div>
+    <div style="text-align:center; padding-top:var(--sp-lg);" class="reveal">
+      <h3 class="display-lg" data-i18n="post.nextyear_title">Esperamos verte el próximo año</h3>
+      <p style="font-size:17px; color:var(--muted); max-width:520px; margin:var(--sp-base) auto 0; line-height:1.6;" data-i18n="post.nextyear_body">
+        El IV Simposio fue un éxito. Te esperamos en 2027 para la próxima edición.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     DESCARGAS (DESTACADO)
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="recursos" style="background:#0C3F66; padding-top:72px; padding-bottom:72px;">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill" style="background:rgba(255,255,255,0.12); color:#fff; border-color:rgba(255,255,255,0.25);" data-i18n="res.badge">Descargas</span>
+      <h2 class="display-mega" style="margin-top:var(--sp-base); color:#fff;" data-i18n="res.title">Recursos del evento</h2>
+      <p style="color:rgba(255,255,255,0.75); font-size:16px; max-width:520px; margin-top:var(--sp-base); line-height:1.6;" data-i18n="res.subtitle">Lo que se usó en el simposio y el taller, disponible para seguir practicando.</p>
+    </div>
+
+    <div class="reveal" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:var(--sp-base); max-width:960px;">
+      <a href="https://www.dropbox.com/scl/fo/wjdfaat2q3niib8ns9awz/AF8jOtkJiAEgli8922hQX_4?rlkey=4wf3a0xwvd86dvz5yc8jqwr7o&amp;st=jdcacq3g&amp;dl=0" target="_blank" rel="noopener noreferrer" style="background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg); padding:var(--sp-lg); text-decoration:none; color:inherit; display:flex; align-items:flex-start; gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+        <span><span style="display:block; font-weight:600; color:var(--ink); font-size:15px;" data-i18n="res.card1_title">Casos de nódulo pulmonar</span><span style="font-size:13px; color:var(--muted);" data-i18n="res.card1_desc">Carpeta de Dropbox con los estudios usados en el taller →</span></span>
+      </a>
+      <a href="https://mhub.ai" target="_blank" rel="noopener noreferrer" style="background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg); padding:var(--sp-lg); text-decoration:none; color:inherit; display:flex; align-items:flex-start; gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+        <span><span style="display:block; font-weight:600; color:var(--ink); font-size:15px;">mhub.ai</span><span style="font-size:13px; color:var(--muted);" data-i18n="res.card2_desc">La plataforma open-source del taller — corre más modelos →</span></span>
+      </a>
+      <a href="https://curso.angaritarad.com" target="_blank" rel="noopener noreferrer" style="background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg); padding:var(--sp-lg); text-decoration:none; color:inherit; display:flex; align-items:flex-start; gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <span><span style="display:block; font-weight:600; color:var(--ink); font-size:15px;" data-i18n="res.card3_title">Curso AngaritaRad-AI</span><span style="font-size:13px; color:var(--muted);" data-i18n="res.card3_desc">Continúa lo aprendido — curso.angaritarad.com →</span></span>
+      </a>
+      <a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer" style="background:var(--surface-card); border:1px solid var(--hairline); border-radius:var(--radius-lg); padding:var(--sp-lg); text-decoration:none; color:inherit; display:flex; align-items:flex-start; gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:2px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span><span style="display:block; font-weight:600; color:var(--ink); font-size:15px;">angaritarad.com</span><span style="font-size:13px; color:var(--muted);" data-i18n="res.card4_desc">Agentes de IA para radiología →</span></span>
+      </a>
     </div>
   </div>
 </section>
@@ -1101,21 +1133,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
   </div>
 </section>
 
-<section class="video-intro reveal">
-  <div class="container">
-    <h2 class="reveal" data-i18n="video.title">El simposio en video</h2>
-    <div class="video-wrapper">
-      <iframe
-        src="https://www.youtube.com/embed/Wys5Oxit6Yg"
-        title="IV Simposio de Radiología e IA — Democratizando el uso de la Inteligencia Artificial"
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        allowfullscreen
-        loading="lazy">
-      </iframe>
-    </div>
-  </div>
-</section>
+
 
 <!-- SPONSORS TEMPORALMENTE OCULTOS - descomentar cuando se confirmen todos
 <section class="section" id="patrocinadores" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
@@ -1136,20 +1154,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 -->
 
 <!-- VIDEO TEMPORALMENTE OCULTO - descomentar post-lanzamiento
-<section class="section" id="video" style="background:var(--canvas); padding-top:60px; padding-bottom:60px;">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill">Video</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)">Presentación del evento</h2>
-    </div>
-    <div class="reveal" style="aspect-ratio:16/9; border-radius:18px; border:1px solid var(--hairline); background:#0C3F66; display:flex; align-items:center; justify-content:center; color:white;">
-      <div style="text-align:center;">
-        <div style="font-size:48px; line-height:1;">▶</div>
-        <p style="margin-top:12px;">Placeholder para embeber video de YouTube</p>
-      </div>
-    </div>
-  </div>
-</section>
+
 -->
 
 <!-- ══════════════════════════════════════════════════════════
@@ -1166,307 +1171,13 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- ══════════════════════════════════════════════════════════
      SPEAKERS
 ══════════════════════════════════════════════════════════ -->
-<section class="speakers section" id="speakers">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="nav.speakers">Ponentes</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="speakers.h2">Quién estará en el escenario</h2>
-    </div>
 
-    <div class="speakers__grid">
-
-      <!-- 1. Dra. Diana Patricia Leal Contreras -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.3)">DL</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-        </div>
-        <div class="title-md speaker-card__name">Dra. Diana Patricia Leal Contreras</div>
-        <div class="speaker-card__institution" data-i18n="speaker.diana_institution">Jefa de Imágenes Diagnósticas · Los Cobos Medical Center · Miembro ACR y RSNA · Profesora Universidad El Bosque</div>
-        <div class="speaker-card__talk" data-i18n="speaker.diana_talk">
-          Moderadora de paneles y clausura
-        </div>
-        <span class="speaker-card__time">11:30 AM · 2:00 PM · <span data-i18n="program.closing_title">Clausura</span> 5:00 PM</span>
-      </div>
-
-      <!-- 2. Dra. Martha Oyuela -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.3)">MO</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-        </div>
-        <div class="title-md speaker-card__name">Dra. Martha Oyuela</div>
-        <div class="speaker-card__institution" data-i18n="speaker.martha_institution">Radióloga · Experta en IA Radiología Latinoamérica</div>
-        <div class="speaker-card__talk" data-i18n="speaker.martha_talk">
-          "Marco legal del uso de AI en Radiología"
-        </div>
-        <span class="speaker-card__time">10:50 AM</span>
-      </div>
-
-      <!-- 3. Dra. Lina Maria Jaimes -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(223,168,143,0.3)">LJ</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-        </div>
-        <div class="title-md speaker-card__name">Dra. Lina María Jaimes</div>
-        <div class="speaker-card__institution" data-i18n="speaker.lina_institution">Médica especialista en Medicina del deporte · Grado de honor · Universidad El Bosque</div>
-        <div class="speaker-card__talk" data-i18n="speaker.lina_talk">
-          "Herramientas de IA para el wellness en Radiología"
-        </div>
-        <span class="speaker-card__time">1:40 PM</span>
-      </div>
-
-      <!-- 4. Leonard Nuernberg -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.2)">LN</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill badge-pill--gold"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px;flex-shrink:0"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg> Cum Laude RSNA 2025</span>
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span data-i18n="nav.workshop">Taller</span></span></a>
-        </div>
-        <div class="title-md speaker-card__name">Leonard Nuernberg ★</div>
-        <div class="speaker-card__institution">Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School</div>
-        <p class="speaker-card__talk" style="font-size:13px; color:var(--body); line-height:1.5; margin-bottom:var(--sp-sm);" data-i18n="speaker.leonard_bio">
-          Research Scholar · AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai. Dos conferencias + taller práctico.
-        </p>
-        <div class="speaker-card__talk" data-i18n="speaker.leonard_talk">
-          8:40 AM — "Retos y desafíos de la IA en imágenes médicas"
-        </div>
-        <span class="speaker-card__time">8:40 AM · <span data-i18n="nav.workshop">Taller</span> 3:20 PM</span>
-      </div>
-
-      <!-- 5. Dr. Diego Jaramillo -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.25)">DJ</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-        </div>
-        <div class="title-md speaker-card__name">Dr. Diego Jaramillo</div>
-        <div class="speaker-card__institution" data-i18n="speaker.diego_institution">Imagen Cardiaca · Los Cobos Medical Center</div>
-        <div class="speaker-card__talk" data-i18n="speaker.diego_talk">
-          "Agentes de IA en Radiología: del caso clínico al reporte en cardiología"
-        </div>
-        <span class="speaker-card__time">3:00 PM</span>
-      </div>
-
-      <!-- 6. Dr. Miguel Angarita -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3)">MA</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-          <a href="/taller" style="text-decoration:none;"><span class="badge-taller"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg><span data-i18n="nav.workshop">Taller</span></span></a>
-        </div>
-        <div class="title-md speaker-card__name">Dr. Miguel Angarita</div>
-        <div class="speaker-card__institution" data-i18n="speaker.miguel_institution">Radiólogo · Los Cobos Medical Center</div>
-        <div class="speaker-card__talk" data-i18n="speaker.miguel_talk">
-          "IA en Radiología hoy" · "Entre la Firma y el Error" · Taller práctico
-        </div>
-        <span class="speaker-card__time">8:00 AM · 9:20 AM · 3:00 PM · <span data-i18n="nav.workshop">Taller</span> 3:20 PM</span>
-      </div>
-
-      <!-- 7. Carlos Alberto Pérez -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(159,201,162,0.25)">CP</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-        </div>
-        <div class="title-md speaker-card__name">Carlos Alberto Pérez</div>
-        <div class="speaker-card__institution" data-i18n="speaker.carlos_institution">Investigador y metodólogo</div>
-        <div class="speaker-card__talk" data-i18n="speaker.carlos_talk">
-          "Modelos de IA para la investigación en radiología"
-        </div>
-        <span class="speaker-card__time">10:30 AM</span>
-      </div>
-
-      <!-- 9. Dr. Felipe Aluja -->
-      <div class="card speaker-card reveal">
-        <div class="speaker-card__avatar" style="background:rgba(192,168,221,0.25)">FA</div>
-        <div class="speaker-card__badges">
-          <span class="badge-pill" data-i18n="speaker.badge">Ponente</span>
-        </div>
-        <div class="title-md speaker-card__name">Dr. Felipe Aluja</div>
-        <div class="speaker-card__institution" data-i18n="speaker.felipe_institution">Médico Radiólogo · Director de la Especialización en Docencia Universitaria, Universidad Javeriana</div>
-        <div class="speaker-card__talk" data-i18n="speaker.felipe_talk">
-          "Residencia en Radiología en la era de la IA"
-        </div>
-        <span class="speaker-card__time">11:10 AM</span>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 
 <!-- ══════════════════════════════════════════════════════════
      CONFERENCISTAS NACIONALES
 ══════════════════════════════════════════════════════════ -->
-<section class="nacional section" id="conferencistas-nacionales">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="nacional.badge">Conferencistas Nacionales</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="nacional.h2">Más voces que se suman al programa</h2>
-    </div>
 
-    <div class="nacional__wrap">
-      <button type="button" class="nacional__arrow nacional__arrow--prev" aria-label="Conferencista anterior">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-      </button>
-      <button type="button" class="nacional__arrow nacional__arrow--next" aria-label="Siguiente conferencista">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </button>
-      <div class="nacional__carousel">
-      <div class="nacional__track">
-
-        <!-- TARJETA 1 — Dra. Lina Johana Jaime Díaz -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/lina-jaime.jpg" width="320" height="400" loading="lazy" alt="Dra. Lina Johana Jaime Díaz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.lina_name">Dra. Lina Johana Jaime Díaz</div>
-            <div class="nacional-card__title" data-i18n="nacional.lina_title">Médica especialista en Medicina del Deporte</div>
-            <p class="nacional-card__bio" data-i18n="nacional.lina_bio">Médica especialista en medicina del deporte de la Universidad El Bosque, con formación en ecografía musculoesquelética intervencionista en la Universidad del Rosario (Argentina) y máster en ecografía traumatológica y reumatológica de la Universidad de Alcalá (Hospital Ramón y Cajal). Actualmente médica del deporte en la Universidad de La Sabana, liderando estrategias de bienestar en médicos y trabajadores de la salud. Su práctica combina ecografía intervencionista, rehabilitación deportiva y terapias regenerativas.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 2 — Dr. Felipe Aluja Jaramillo, MD, MHPE -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/felipe-aluja.jpg" width="320" height="400" loading="lazy" alt="Dr. Felipe Aluja Jaramillo, MD, MHPE" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.felipe_name">Dr. Felipe Aluja Jaramillo, MD, MHPE</div>
-            <div class="nacional-card__title" data-i18n="nacional.felipe_title">Médico Radiólogo, Hospital Universitario San Ignacio</div>
-            <p class="nacional-card__bio" data-i18n="nacional.felipe_bio">Coordinador Académico del Programa de Postgrado de Radiología e Imágenes Diagnósticas de la Pontificia Universidad Javeriana. Profesor Asistente de la Facultad de Medicina PUJ. Miembro del comité de imagen torácica de la Asociación Colombiana de Radiología. Chair of the RSNA Committee for Latin America (RCLA).</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 3 — Sandra Valderrama Ortiz -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/sandra-valderrama.jpg" width="320" height="400" loading="lazy" alt="Sandra Valderrama Ortiz" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.sandra_name">Sandra Valderrama Ortiz</div>
-            <div class="nacional-card__title" data-i18n="nacional.sandra_title">Especialista en Aplicaciones Clínicas de TC · GE HealthCare</div>
-            <p class="nacional-card__bio" data-i18n="nacional.sandra_bio">Especialista en Aplicaciones Clínicas de Tomografía Computarizada para Latinoamérica y el Caribe en GE HealthCare. Cuenta con más de 15 años de experiencia en diagnóstico por imagen, con especial énfasis en tomografía computarizada y radiología pediátrica. Su trayectoria combina experiencia clínica, formación de profesionales de la salud, soporte estratégico a clientes y liderazgo en la adopción de tecnologías avanzadas de imagen médica en la región.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 4 — Dra. Martha Oyuela -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/martha-oyuela.jpg" width="320" height="400" loading="lazy" alt="Dra. Martha Oyuela" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.martha_name">Dra. Martha Oyuela</div>
-            <div class="nacional-card__title" data-i18n="nacional.martha_title">Médica Radióloga · Jefe Servicio de Radiología, Instituto Roosevelt</div>
-            <p class="nacional-card__bio" data-i18n="nacional.martha_bio">Médica Radióloga, especialista en Bioética y Epidemiología, con Magíster en Economía de la Salud y Farmacoeconomía y Maestría en Inteligencia Artificial en Salud. Miembro de la Junta Directiva de la Asociación Colombiana de Salud Digital y del Comité de Inteligencia Artificial de la ACR (Asociación Colombiana de Radiología). Jefe del Servicio de Radiología del Instituto Roosevelt.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 5 — Dra. Diana Leal -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/diana-leal.jpg" width="320" height="400" loading="lazy" alt="Dra. Diana Leal" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.diana_name">Dra. Diana Leal</div>
-            <div class="nacional-card__title" data-i18n="nacional.diana_title">Médica Radióloga · Jefe Unidad de Imágenes Diagnósticas, Los Cobos Medical Center</div>
-            <p class="nacional-card__bio" data-i18n="nacional.diana_bio">Médica Radióloga de la Universidad El Bosque y la Universidad Nacional. Jefe de la Unidad de Imágenes Diagnósticas de Los Cobos Medical Center. Miembro del grupo de líderes que inspira, influye y transforma de Los Cobos Medical Center. Docente de pre y posgrado de la Universidad El Bosque.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 6 — Dr. Diego Jaramillo Hernández -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/diego-jaramillo.jpg" width="320" height="400" loading="lazy" alt="Dr. Diego Jaramillo Hernández" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.diego_name">Dr. Diego Jaramillo Hernández</div>
-            <div class="nacional-card__title" data-i18n="nacional.diego_title">Médico Radiólogo · Especialista en Imagen Cardiaca Avanzada</div>
-            <p class="nacional-card__bio" data-i18n="nacional.diego_bio">Médico Radiólogo especialista en imagen cardiaca avanzada. Profesor Asistente de la Facultad de Medicina de la Universidad El Bosque y del posgrado en Radiología de la Universidad de La Sabana. Miembro de la European Association of Cardiovascular Imaging (EACVI), nivel 3 CCT.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 7 — Carlos Pérez Gómez -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/carlos-perez.jpg" width="320" height="400" loading="lazy" alt="Carlos Pérez Gómez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.carlos_name">Carlos Pérez Gómez</div>
-            <div class="nacional-card__title" data-i18n="nacional.carlos_title">Fisioterapeuta · Especialista en Investigación Científica</div>
-            <p class="nacional-card__bio" data-i18n="nacional.carlos_bio">Fisioterapeuta, especialista en proyectos de investigación científica y magíster en efectividad clínica. Experiencia en metodologías de investigación aplicadas a la salud, con formación en estadística aplicada a la investigación, integrando herramientas para potenciar la formulación de proyectos, el análisis de datos, el desarrollo de instrumentos y la innovación metodológica. Cuenta con experiencia en formulación de proyectos con apoyo de inteligencia artificial. Su enfoque combina rigurosidad científica, visión ética y dominio de tecnologías emergentes.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 8 — Juan Felipe Orejuela Zapata -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/jfelipe.orejuela.jpg" width="320" height="400" loading="lazy" alt="Juan Felipe Orejuela Zapata" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.juanfelipe_name">Juan Felipe Orejuela Zapata</div>
-            <div class="nacional-card__title" data-i18n="nacional.juanfelipe_title">Ingeniero Biomédico · Consultor Presales, Dedalus</div>
-            <p class="nacional-card__bio" data-i18n="nacional.juanfelipe_bio">Ingeniero Biomédico y Magíster en Ingeniería, con experiencia en imagen médica, RIS/PACS, inteligencia artificial y análisis de datos en salud. Consultor Presales en Dedalus, especializado en soluciones de Enterprise Imaging y transformación digital en salud.</p>
-          </div>
-        </div>
-
-        <!-- TARJETA 9 — Dr. Miguel Angarita Páez -->
-        <div class="card nacional-card reveal">
-          <div class="nacional-card__photo-wrap">
-            <img class="nacional-card__photo" src="images/conferencistas-nacionales/miguel-angarita.jpg" width="320" height="400" loading="lazy" alt="Dr. Miguel Angarita Páez" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
-            <div class="nacional-card__photo-fallback">
-              <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
-            </div>
-          </div>
-          <div class="nacional-card__body">
-            <div class="nacional-card__badges"><span class="badge-pill" data-i18n="speaker.badge">Ponente</span></div>
-            <div class="title-md nacional-card__name" data-i18n="nacional.miguel_name">Dr. Miguel Angarita Páez</div>
-            <div class="nacional-card__title" data-i18n="nacional.miguel_title">Radiólogo · Los Cobos Medical Center · Fundador AngaritaRad</div>
-            <p class="nacional-card__bio" data-i18n="nacional.miguel_bio">Radiólogo egresado de la Universidad El Bosque, con más de 20 años de experiencia en Los Cobos Medical Center. Enfocado en la adopción práctica de inteligencia artificial en radiología, ha presentado en RSNA 2024 y RSNA 2025 (Chicago) su trabajo en detección de errores en reportes radiológicos con IA. Fundador de AngaritaRad, iniciativa para democratizar el uso de IA entre radiólogos de Latinoamérica.</p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-    </div>
-  </div>
-</section>
 
 <script>
   // ── CONFERENCISTAS NACIONALES — infinite arrow carousel ──
@@ -1576,54 +1287,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- ══════════════════════════════════════════════════════════
      WHY THIS EVENT
 ══════════════════════════════════════════════════════════ -->
-<section class="why section" id="por-que">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="why.badge">El Evento</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="why.h2">No más slides. Aquí la IA corre en vivo.</h2>
-    </div>
 
-    <div class="why__grid why__grid--2col">
-      <div class="card why__card reveal">
-        <div class="why__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <h3 class="title-md why__card-title" data-i18n="why.card1_title">Diseñado para el radiólogo que quiere actuar hoy</h3>
-        <p class="why__card-body" data-i18n="why.card1_body">
-          Radiólogos, residentes, líderes de tecnología médica e investigadores. Creado por radiólogos, para radiólogos — con casos clínicos reales y herramientas que funcionan desde el primer día.
-        </p>
-      </div>
-      <div class="card why__card reveal">
-        <div class="why__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
-        </div>
-        <h3 class="title-md why__card-title" data-i18n="why.card2_title">Al terminar el simposio podrás</h3>
-        <p class="why__card-body" data-i18n="why.card2_body">
-          Evaluar y seleccionar modelos de IA para tu especialidad. Correr un modelo sobre imágenes médicas reales desde tu propio computador. Aplicar herramientas validadas en casos clínicos reales desde el día siguiente.
-        </p>
-      </div>
-      <div class="card why__card reveal">
-        <div class="why__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="13" rx="2"/><polyline points="8 21 12 17 16 21"/><polygon points="10 8.5 10 13.5 15 11"/></svg>
-        </div>
-        <h3 class="title-md why__card-title" data-i18n="why.card3_title">Entre tanto, el hospital se alista</h3>
-        <p class="why__card-body" data-i18n="why.card3_body">
-          Los hospitales colombianos avanzan en la adopción institucional de IA. Entre tanto, el radiólogo puede empezar hoy: alistarse, generar sus propias habilidades y aprender a actuar con IA de forma responsable. La mayoría de los cursos disponibles son demasiado técnicos para el radiólogo clínico. Este simposio hace fácil el acceso: modelos de vanguardia, sobre imágenes médicas reales, en tu propio computador.
-        </p>
-      </div>
-      <div class="card why__card reveal">
-        <div class="why__icon">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </div>
-        <h3 class="title-md why__card-title" data-i18n="why.card4_title">Investigador invitado desde Harvard</h3>
-        <p class="why__card-body" data-i18n="why.card4_body">
-          Leonard Nuernberg — Research Scholar, AIM Program · Mass General Brigham · Harvard Medical School. Cum Laude RSNA 2025, Chicago. Creador de MHub.ai, plataforma open-source para correr modelos de IA sobre imágenes médicas sin necesidad de programar.
-        </p>
-      </div>
-    </div>
-
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════
      INVITADO INTERNACIONAL — LEONARD NÜRNBERG
@@ -1715,149 +1379,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- ══════════════════════════════════════════════════════════
      FULL PROGRAM
 ══════════════════════════════════════════════════════════ -->
-<section class="program section" id="programa">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="program.badge">Programa</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="program.h2">Un día completo. Todo en vivo.</h2>
-    </div>
 
-    <div class="program__table reveal">
-
-      <div class="program__row">
-        <span class="time-pill">7:30 – 8:00</span>
-        <span class="program__title" data-i18n="program.r1_title">Inauguración del simposio</span>
-        <span class="program__speaker" data-i18n="program.committee">Comité Organizador</span>
-      </div>
-
-      <div class="program__row program__row--angarita">
-        <span class="time-pill time-pill--angarita">8:00 – 8:20</span>
-        <span class="program__title"><span data-i18n="program.r2_title">IA en Radiología hoy: estado del arte y aplicaciones reales</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-read)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        <span class="program__speaker">Dr. Miguel Angarita</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">8:20 – 8:40</span>
-        <span class="program__title" data-i18n="program.r3_title">Flujos de trabajo en Radiología apoyados por IA</span>
-        <span class="program__speaker">Juan Felipe Orejuela · Ingeniero experto en PACS-RIS</span>
-      </div>
-
-      <div class="program__row program__row--workshop">
-        <span class="time-pill time-pill--workshop">8:40 – 9:00</span>
-        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> <span data-i18n="program.r4_title">Retos y desafíos de la IA en imágenes médicas</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        <span class="program__speaker">Leonard Nuernberg · AIM Program · Universidad de Maastricht</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">9:00 – 9:20</span>
-        <span class="program__title" data-i18n="program.r5_title">Evaluación de Tromboembolismo Pulmonar: Inteligencia Artificial y Perfusión Pulmonar por TC Espectral</span>
-        <span class="program__speaker">Sandra Valderrama Ortiz · GE HealthCare</span>
-      </div>
-
-      <div class="program__row program__row--angarita">
-        <span class="time-pill time-pill--angarita">9:20 – 9:40</span>
-        <span class="program__title"><span data-i18n="program.r6_title">Entre la Firma y el Error: IA como Segunda Revisión en Radiología</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-read)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
-        <span class="program__speaker">Dr. Miguel Angarita</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">9:40 – 10:00</span>
-        <span class="program__title" data-i18n="program.panel_title">Panel de preguntas con los conferencistas</span>
-        <span class="program__speaker">—</span>
-      </div>
-
-      <div class="program__row program__row--break">
-        <span class="time-pill time-pill--break">10:00 – 10:30</span>
-        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> <span data-i18n="program.coffee_break_title">Coffee Break + Preparación del Taller</span></span>
-        <span class="program__speaker">—</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">10:30 – 10:50</span>
-        <span class="program__title" data-i18n="program.r9_title">Modelos de IA para la investigación en radiología</span>
-        <span class="program__speaker">Carlos Alberto Pérez</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">10:50 – 11:10</span>
-        <span class="program__title" data-i18n="program.r10_title">Marco legal del uso de AI en Radiología</span>
-        <span class="program__speaker">Dra. Martha Oyuela</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">11:10 – 11:30</span>
-        <span class="program__title" data-i18n="program.r11_title">Residencia en Radiología en la era de la IA</span>
-        <span class="program__speaker">Dr. Felipe Aluja</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">11:30 – 12:00</span>
-        <span class="program__title" data-i18n="program.panel_title">Panel de preguntas con los conferencistas</span>
-        <span class="program__speaker"><span data-i18n="program.moderator_prefix">Moderadora:</span> Dra. Diana Patricia Leal Contreras · Dr. Diego Jaramillo</span>
-      </div>
-
-      <div class="program__row program__row--break">
-        <span class="time-pill time-pill--break">12:00 – 1:00</span>
-        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg> <span data-i18n="program.lunch_title">Almuerzo ofrecido por el simposio para los asistentes</span></span>
-        <span class="program__speaker">—</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">1:00 – 1:20</span>
-        <span class="program__title" data-i18n="program.r14_title">Ciberseguridad en IA para Radiología</span>
-        <span class="program__speaker">Claro Comcel S.A.</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">1:20 – 1:40</span>
-        <span class="program__title" data-i18n="program.r15_title">Del prompt al Skill: asistentes de IA reutilizables para radiología</span>
-        <span class="program__speaker">Leonard Nuernberg + Dr. Miguel Angarita</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">1:40 – 2:00</span>
-        <span class="program__title" data-i18n="program.r16_title">Herramientas de IA para el wellness en Radiología</span>
-        <span class="program__speaker">Dra. Lina María Jaimes</span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">2:00 – 2:20</span>
-        <span class="program__title" data-i18n="program.panel_title">Panel de preguntas con los conferencistas</span>
-        <span class="program__speaker"><span data-i18n="program.moderator_prefix">Moderadora:</span> Dra. Diana Patricia Leal Contreras · Jorge Martínez, director TI LCMC</span>
-      </div>
-
-      <div class="program__row program__row--break">
-        <span class="time-pill time-pill--break">2:20 – 3:00</span>
-        <span class="program__title program__title--break"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><line x1="6" y1="2" x2="6" y2="4"/><line x1="10" y1="2" x2="10" y2="4"/><line x1="14" y1="2" x2="14" y2="4"/></svg> <span data-i18n="program.coffee_break_title">Coffee Break + Preparación del Taller</span></span>
-        <span class="program__speaker">—</span>
-      </div>
-
-      <div class="program__row program__row--workshop" style="border-bottom:none; border-radius:var(--radius-lg) var(--radius-lg) 0 0; margin-bottom:0;">
-        <span class="time-pill time-pill--workshop">3:00 – 3:20</span>
-        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> <span data-i18n="program.r19_title">Intro al taller — Agentes de IA en Radiología: del caso clínico al reporte en cardiología</span></span>
-        <span class="program__speaker">Dr. Diego Jaramillo + Dr. Miguel Angarita</span>
-      </div>
-
-      <div class="program__row program__row--workshop" style="border-radius:0 0 var(--radius-lg) var(--radius-lg);">
-        <span class="time-pill time-pill--workshop">3:20 – 5:00</span>
-        <span class="program__title"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg> <span data-i18n="program.r20_title">★ TALLER PRÁCTICO: Corre tu primer modelo de IA en Radiología</span> <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--timeline-grep)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-1px"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-          <button class="taller-req-btn" onclick="openTallerModal()">
-            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-            <span data-i18n="program.req_button">Ver requisitos</span>
-          </button>
-        </span>
-        <span class="program__speaker">Leonard Nuernberg + Dr. Miguel Angarita &nbsp;<a href="/taller" style="color:var(--primary);font-weight:700;white-space:nowrap;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'"><span data-i18n="program.workshop_link">Ver detalles del taller →</span></a></span>
-      </div>
-
-      <div class="program__row">
-        <span class="time-pill">5:00 – 5:30</span>
-        <span class="program__title" data-i18n="program.closing_title">Clausura</span>
-        <span class="program__speaker">Dra. Diana Patricia Leal Contreras</span>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════
      VENUE
@@ -1888,7 +1410,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
           <span class="venue__info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-3px"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></span>
           <div>
             <div class="venue__info-label" data-i18n="venue.datetime_label">Fecha y hora</div>
-            <div class="venue__info-value" data-i18n="venue.datetime_value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</div>
+            <div class="venue__info-value" data-i18n="venue.datetime_value">Realizado el 11 de septiembre de 2026</div>
           </div>
         </div>
         <div class="venue__info-row reveal">
@@ -1929,93 +1451,12 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
 <!-- ══════════════════════════════════════════════════════════
      FORMAT
 ══════════════════════════════════════════════════════════ -->
-<section class="format section" id="formato">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="format.badge">Formato</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="format.h2">Presencial y en vivo para toda Latinoamérica</h2>
-    </div>
 
-    <div class="format__grid">
-      <div class="card format__card reveal">
-        <div class="format__number format__number--orange">100</div>
-        <h3 class="title-md format__card-title" data-i18n="format.onsite_title">Presencial · Bogotá</h3>
-        <ul class="format__list">
-          <li data-i18n="format.onsite_li1">Acceso completo al simposio (7:30 AM – 5:30 PM)</li>
-          <li data-i18n="format.onsite_li2">Coffee breaks y almuerzo incluidos</li>
-          <li data-i18n="format.onsite_li3">Networking con speakers y patrocinadores</li>
-          <li data-i18n="format.onsite_li4">Acceso al taller hands-on de cierre</li>
-          <li data-i18n="format.onsite_li5">Certificado digital con aval Universidad El Bosque</li>
-        </ul>
-      </div>
-      <div class="card format__card reveal">
-        <div class="format__number format__number--ink">400+</div>
-        <h3 class="title-md format__card-title" data-i18n="format.online_title">Online · Latinoamérica</h3>
-        <ul class="format__list">
-          <li data-i18n="format.online_li1">Transmisión en vivo por YouTube Live</li>
-          <li data-i18n="format.online_li2">Registro en Luma Events con recordatorio</li>
-          <li data-i18n="format.online_li3">Acceso a grabaciones post-evento</li>
-          <li data-i18n="format.online_li4">Certificado de asistencia virtual</li>
-          <li data-i18n="format.online_li5">Q&amp;A en vivo con los speakers</li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="format__cert-strip card reveal">
-      <div class="format__cert-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2z"/></svg></div>
-      <div>
-        <div class="format__cert-title" data-i18n="format.cert_title">Certificación oficial · Universidad El Bosque</div>
-        <div class="format__cert-desc" data-i18n="format.cert_desc">
-          Todos los asistentes presenciales y online reciben certificado digital con aval académico
-          de la Universidad El Bosque, válido para créditos de educación médica continuada.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════
      FAQ
 ══════════════════════════════════════════════════════════ -->
-<section class="faq section" id="faq" style="background:var(--canvas-soft); padding-top:60px; padding-bottom:60px;">
-  <div class="container">
-    <div class="section-header reveal">
-      <span class="badge-pill" data-i18n="faq.badge">FAQ</span>
-      <h2 class="display-lg" style="margin-top:var(--sp-base)" data-i18n="faq.title">Preguntas Frecuentes</h2>
-    </div>
 
-    <div class="faq__list">
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q1">¿El almuerzo está incluido?</span></summary>
-        <p class="faq__a" data-i18n="faq.a1">Sí. El almuerzo y los recesos con estación de café están incluidos para todos los asistentes del simposio.</p>
-      </details>
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q2">¿Hay parqueadero disponible?</span></summary>
-        <p class="faq__a" data-i18n="faq.a2">No, el evento no incluye parqueadero.</p>
-      </details>
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q3">¿Qué pasa si necesito ayuda instalando el software del taller?</span></summary>
-        <p class="faq__a" data-i18n="faq.a3">Habrá una estación de asistencia técnica para ayudar con la instalación del software en los portátiles. Cada asistente debe traer su propio computador portátil.</p>
-      </details>
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q4">¿Necesito conexión a internet para la demo del taller?</span></summary>
-        <p class="faq__a" data-i18n="faq.a4">No. La demo del taller no requiere conexión a internet.</p>
-      </details>
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q5">Al registrarme, ¿se guarda mi cupo?</span></summary>
-        <p class="faq__a" data-i18n="faq.a5">Sí. Tu cupo se valida mediante un correo de confirmación una vez se valide el pago.</p>
-      </details>
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q6">¿El simposio incluye certificado?</span></summary>
-        <p class="faq__a" data-i18n="faq.a6">Sí. Se entrega certificado de asistencia con el aval de la Universidad El Bosque.</p>
-      </details>
-      <details class="card faq__item reveal">
-        <summary class="faq__q"><span data-i18n="faq.q7">¿Puedo pagar el taller el mismo día del evento?</span></summary>
-        <p class="faq__a" data-i18n="faq.a7">Sí, pero los cupos del taller son limitados. Para asegurar tu asistencia te recomendamos completar el pago con anticipación; el pago el mismo día del evento queda sujeto a disponibilidad de cupo.</p>
-      </details>
-    </div>
-  </div>
-</section>
 
 <!-- ══════════════════════════════════════════════════════════
      FOOTER
@@ -2036,7 +1477,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     <ul class="footer__event-meta">
       <li class="footer__tagline" data-i18n="footer.tagline">Democratización del uso de IA en Radiología: De la formación a la práctica</li>
       <li class="footer__aval" data-i18n="footer.avalBosque">Con el aval de la Universidad El Bosque.</li>
-      <li class="footer__datetime-badge" data-i18n="venue.datetime_value">Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM</li>
+      <li class="footer__datetime-badge" data-i18n="footer.event_date">Realizado el 11 de septiembre de 2026</li>
       <li>Avenida Carrera 9 # 131 A-40, Bogotá DC</li>
     </ul>
   </div>
@@ -2065,6 +1506,13 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
     </div>
   </div>
 
+  <!-- Links post-evento -->
+  <div style="display:flex; justify-content:center; gap:var(--sp-lg); flex-wrap:wrap; padding:var(--sp-base) 0;">
+    <a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer" style="color:var(--muted); font-size:14px;">angaritarad.com</a>
+    <a href="https://mhub.ai" target="_blank" rel="noopener noreferrer" style="color:var(--muted); font-size:14px;">mhub.ai</a>
+    <a href="https://cobos.com.co" target="_blank" rel="noopener noreferrer" style="color:var(--muted); font-size:14px;">Los Cobos Medical Center</a>
+  </div>
+
   <!-- Línea de cierre -->
   <div class="footer__bottom">
     &copy; 2026 Los Cobos Medical Center · Universidad El Bosque &mdash; IV Simposio de Imágenes Diagnósticas
@@ -2076,34 +1524,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
      JAVASCRIPT
 ══════════════════════════════════════════════════════════ -->
 <script>
-  // ── 1. COUNTDOWN TO 2026-09-11T07:30:00 UTC-5 ──
-  const TARGET = new Date('2026-09-11T07:30:00-05:00').getTime();
-
-  function updateCountdown() {
-    const now  = Date.now();
-    const diff = TARGET - now;
-
-    if (diff <= 0) {
-      document.getElementById('cd-days').textContent  = '0';
-      document.getElementById('cd-hours').textContent = '0';
-      document.getElementById('cd-mins').textContent  = '0';
-      document.getElementById('cd-secs').textContent  = '0';
-      return;
-    }
-
-    const days  = Math.floor(diff / 86400000);
-    const hours = Math.floor((diff % 86400000) / 3600000);
-    const mins  = Math.floor((diff % 3600000)  / 60000);
-    const secs  = Math.floor((diff % 60000)    / 1000);
-
-    document.getElementById('cd-days').textContent  = String(days);
-    document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
-    document.getElementById('cd-mins').textContent  = String(mins).padStart(2, '0');
-    document.getElementById('cd-secs').textContent  = String(secs).padStart(2, '0');
-  }
-
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  // Countdown retirado: el evento (11 sep 2026) ya se realizó.
 
   // ── 2. STICKY NAV ──
   const nav = document.getElementById('nav');
@@ -2196,8 +1617,28 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "share.copy": "Copiar link",
 
       "hero.title": "IV Simposio de Imágenes Diagnósticas — Democratización del uso de Inteligencia Artificial en Radiología: De la formación a la práctica",
-      "hero.keyvisual_alt": "IV Simposio de Imágenes Diagnósticas — 11 de septiembre 2026, Los Cobos Medical Center, Bogotá",
-      "hero.body": "Un día completo de casos clínicos, demos en vivo y herramientas que corren hoy en hospitales reales. Sin presentaciones vacías. Sin hype. Diseñado para el radiólogo que quiere actuar, no solo escuchar.",
+      "hero.keyvisual_alt": "Conferencistas y asistentes del IV Simposio de Imágenes Diagnósticas — Los Cobos Medical Center, Bogotá",
+      "hero.body": "Un día completo de casos clínicos, demos en vivo y herramientas que ya corren en hospitales reales. Gracias a todos los que nos acompañaron.",
+      "hero.photo_caption": "✨ IV Simposio de Imágenes Diagnósticas — Los Cobos Medical Center, Bogotá · 11 de septiembre 2026",
+      "hero.event_over": "Evento finalizado",
+      "hero.cta_resources": "Recursos del evento →",
+      "nav.venue_ext": "Los Cobos",
+      "nav.event_over": "Evento finalizado",
+      "post.badge": "Post-evento",
+      "post.thanks_title": "Gracias a nuestros conferencistas",
+      "post.thanks_body": "A Leonard Nürnberg, al Dr. Miguel Angarita y a todos los conferencistas nacionales e internacionales: gracias por un día de demos en vivo, casos reales y conocimiento compartido sin reservas.",
+      "post.nextyear_title": "Esperamos verte el próximo año",
+      "post.nextyear_body": "El IV Simposio fue un éxito. Te esperamos en 2027 para la próxima edición.",
+      "res.badge": "Descargas",
+      "res.title": "Recursos del evento",
+      "res.subtitle": "Lo que se usó en el simposio y el taller, disponible para seguir practicando.",
+      "res.card1_title": "Casos de nódulo pulmonar",
+      "res.card1_desc": "Carpeta de Dropbox con los estudios usados en el taller →",
+      "res.card2_desc": "La plataforma open-source del taller — corre más modelos →",
+      "res.card3_title": "Curso AngaritaRad-AI",
+      "res.card3_desc": "Continúa lo aprendido — curso.angaritarad.com →",
+      "res.card4_desc": "Agentes de IA para radiología →",
+      "footer.event_date": "Realizado el 11 de septiembre de 2026",
       "hero.cta_register": "Regístrate al Simposio →",
       "hero.cta_program": "Ver programa",
       "hero.cta_agenda": "Descargar agenda PDF",
@@ -2297,7 +1738,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "venue.body": "Uno de los centros médicos más reconocidos de Colombia, clasificado entre los <strong>top 20 IPS del país por Newsweek</strong>. Sede de alta complejidad en el norte de Bogotá, con infraestructura de clase mundial para ciencias de la salud.",
       "venue.address_label": "Dirección",
       "venue.datetime_label": "Fecha y hora",
-      "venue.datetime_value": "Viernes, 11 de Septiembre de 2026 · 7:30 AM – 5:30 PM",
+      "venue.datetime_value": "Realizado el 11 de septiembre de 2026",
       "venue.capacity_label": "Capacidad presencial",
       "venue.capacity_value": "100 cupos · aforo limitado",
       "venue.stream_label": "Transmisión",
@@ -2374,8 +1815,28 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "share.copy": "Copy link",
 
       "hero.title": "IV Radiology Imaging Symposium — Democratizing the use of Artificial Intelligence in Radiology: From Training to Practice",
-      "hero.keyvisual_alt": "IV Radiology Imaging Symposium — September 11 2026, Los Cobos Medical Center, Bogotá",
-      "hero.body": "A full day of clinical cases, live demos and tools that already run in real hospitals today. No empty slides. No hype. Built for the radiologist who wants to act, not just listen.",
+      "hero.keyvisual_alt": "Speakers and attendees of the IV Radiology Imaging Symposium — Los Cobos Medical Center, Bogotá",
+      "hero.body": "A full day of clinical cases, live demos and tools that already run in real hospitals. Thank you to everyone who joined us.",
+      "hero.photo_caption": "✨ IV Radiology Imaging Symposium — Los Cobos Medical Center, Bogotá · September 11, 2026",
+      "hero.event_over": "Event Completed",
+      "hero.cta_resources": "Event resources →",
+      "nav.venue_ext": "Los Cobos",
+      "nav.event_over": "Event Completed",
+      "post.badge": "Post-event",
+      "post.thanks_title": "Thanks to our speakers",
+      "post.thanks_body": "To Leonard Nürnberg, Dr. Miguel Angarita and all our national and international speakers: thank you for a day of live demos, real cases and knowledge shared without reserve.",
+      "post.nextyear_title": "We look forward to seeing you next year",
+      "post.nextyear_body": "The IV Symposium was a success. We hope to see you in 2027 for the next edition.",
+      "res.badge": "Downloads",
+      "res.title": "Event resources",
+      "res.subtitle": "Everything used at the symposium and the workshop, available so you can keep practicing.",
+      "res.card1_title": "Lung nodule cases",
+      "res.card1_desc": "Dropbox folder with the studies used in the workshop →",
+      "res.card2_desc": "The workshop\u0027s open-source platform — run more models →",
+      "res.card3_title": "AngaritaRad-AI Course",
+      "res.card3_desc": "Keep learning — curso.angaritarad.com →",
+      "res.card4_desc": "AI agents for radiology →",
+      "footer.event_date": "Held on September 11, 2026",
       "hero.cta_register": "Register for the Symposium →",
       "hero.cta_program": "See program",
       "hero.cta_agenda": "Download agenda PDF",
@@ -2475,7 +1936,7 @@ window.va = window.va || function () { (window.vaq = window.vaq || []).push(argu
       "venue.body": "One of the most recognized medical centers in Colombia, ranked among the <strong>top 20 IPS in the country by Newsweek</strong>. A high-complexity facility in northern Bogotá, with world-class healthcare infrastructure.",
       "venue.address_label": "Address",
       "venue.datetime_label": "Date & time",
-      "venue.datetime_value": "Friday, September 11, 2026 · 7:30 AM – 5:30 PM",
+      "venue.datetime_value": "Held on September 11, 2026",
       "venue.capacity_label": "In-person capacity",
       "venue.capacity_value": "100 seats · limited capacity",
       "venue.stream_label": "Livestream",
