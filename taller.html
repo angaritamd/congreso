@@ -70,6 +70,7 @@
     .btn { display: inline-flex; align-items: center; justify-content: center; font-family: var(--font-sans); font-size: 14px; font-weight: 500; line-height: 1; border-radius: var(--radius-md); cursor: pointer; border: none; transition: background 0.15s, border-color 0.15s; text-decoration: none; }
     .btn--download { background: var(--ink); color: var(--canvas); padding: 12px 20px; height: 44px; }
     .btn--download:hover { background: #3a3930; }
+    .btn--disabled { background: var(--surface-strong); color: var(--muted); padding: 12px 20px; height: 44px; cursor: not-allowed; pointer-events: none; }
     .btn--primary  { background: var(--primary); color: var(--on-primary); padding: 12px 20px; height: 44px; }
     .btn--primary:hover { background: var(--primary-active); }
     .btn--outline  { background: transparent; color: var(--ink); padding: 11px 19px; height: 44px; border: 1px solid var(--hairline-strong); }
@@ -361,9 +362,11 @@
       <li><a href="#leonard">Instructor</a></li>
       <li><a href="#herramientas">Herramientas</a></li>
       <li><a href="#requisitos">Requisitos</a></li>
-      <li><a href="#registro">Registro</a></li>
+      <li><a href="#recursos">Recursos</a></li>
+      <li><a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer">angaritarad.com</a></li>
+      <li><a href="https://mhub.ai" target="_blank" rel="noopener noreferrer">mhub.ai</a></li>
     </ul>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--download nav__cta">Inscribirme</a>
+    <span class="btn btn--disabled nav__cta">Evento finalizado</span>
     <button class="nav__hamburger" id="hamburger" aria-label="Menú">
       <span></span><span></span><span></span>
     </button>
@@ -372,7 +375,10 @@
     <a href="#leonard"     onclick="closeMobile()">Instructor</a>
     <a href="#herramientas" onclick="closeMobile()">Herramientas</a>
     <a href="#requisitos"  onclick="closeMobile()">Requisitos</a>
-    <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--download" onclick="closeMobile()">Inscribirme</a>
+    <a href="#recursos"    onclick="closeMobile()">Recursos</a>
+    <a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer" onclick="closeMobile()">angaritarad.com</a>
+    <a href="https://mhub.ai" target="_blank" rel="noopener noreferrer" onclick="closeMobile()">mhub.ai</a>
+    <span class="btn btn--disabled" onclick="closeMobile()">Evento finalizado</span>
   </div>
 </nav>
 
@@ -411,21 +417,107 @@
 
     <figure class="demo-figure">
       <img
-        src="images/cac.webp"
-        alt="Visualización 3D de calcificaciones coronarias generada por DeepCAC2 — modelo MHub.ai"
+        src="images/foto-simposio.jpeg"
+        alt="Asistentes y conferencistas del IV Simposio de Imágenes Diagnósticas — Los Cobos Medical Center, Bogotá"
         class="demo-figure__img"
         loading="lazy"
       />
       <figcaption class="demo-figure__caption">
-        Imagen real generada por DeepCAC2, uno de los modelos de MHub.ai.
-        Visualización 3D de calcificaciones coronarias en tomografía cardíaca —
-        el tipo de análisis que se demostrará en vivo al inicio del taller.
+        ✨ IV Simposio de Imágenes Diagnósticas — 11 de septiembre 2026
       </figcaption>
     </figure>
 
     <div style="display:flex;justify-content:center;gap:var(--sp-base);flex-wrap:wrap;" class="reveal">
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--download">Inscribirme al simposio →</a>
+      <span class="btn btn--disabled">Evento finalizado</span>
       <a href="/" class="btn btn--outline">Ver programa completo →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1B: GRACIAS (post-evento)
+══════════════════════════════════════════════════════════ -->
+<section class="instructors section" id="gracias" style="background:var(--canvas-soft);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill badge-pill--green">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+        Post-evento
+      </span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Gracias a nuestros conferencistas</h2>
+      <p style="font-size:16px;color:var(--muted);max-width:560px;margin-top:var(--sp-base);line-height:1.6;">
+        El taller práctico fue posible gracias a la generosidad y el conocimiento de quienes lo lideraron.
+        A ambos, nuestro agradecimiento por una sesión que dejó modelos de IA corriendo en decenas de computadores.
+      </p>
+    </div>
+
+    <div class="instructors__grid reveal">
+      <div class="card speaker-card">
+        <div class="speaker-card__avatar" style="background:rgba(192,133,50,0.18);color:var(--timeline-done);">LN</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--gold">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
+            Cum Laude RSNA 2025
+          </span>
+        </div>
+        <div class="speaker-card__name">Leonard Nürnberg</div>
+        <div class="speaker-card__institution">Research Scholar · AIM Program · Harvard Medical School<br>Creador de mhub.ai</div>
+        <div class="speaker-card__talk">Gracias por viajar hasta Bogotá y demostrar en vivo que correr IA sobre imágenes médicas está al alcance de cualquier médico.</div>
+      </div>
+
+      <div class="card speaker-card">
+        <div class="speaker-card__avatar" style="background:rgba(159,187,224,0.3);">MA</div>
+        <div class="speaker-card__badges">
+          <span class="badge-pill badge-pill--primary">Organizador</span>
+        </div>
+        <div class="speaker-card__name">Dr. Miguel Angarita</div>
+        <div class="speaker-card__institution">Radiólogo · Los Cobos Medical Center<br>Fundador OpenRad.ai · @angaritarad</div>
+        <div class="speaker-card__talk">Gracias por liderar el taller y acompañar a cada asistente hasta ver su primer modelo funcionando.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1C: NOS VEMOS EN 2027
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="proximo-ano">
+  <div class="container" style="text-align:center;">
+    <span class="badge-pill reveal">Próxima edición</span>
+    <h2 class="display-lg reveal" style="margin-top:var(--sp-base)">Esperamos verte el próximo año</h2>
+    <p class="reveal" style="font-size:17px;color:var(--muted);max-width:520px;margin:var(--sp-base) auto 0;line-height:1.6;">
+      El IV Simposio fue un éxito. Te esperamos en 2027 para la próxima edición.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════════
+     SECCIÓN 1D: RECURSOS DEL TALLER
+══════════════════════════════════════════════════════════ -->
+<section class="section" id="recursos" style="background:var(--canvas-soft);">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="badge-pill">Descargas</span>
+      <h2 class="display-lg" style="margin-top:var(--sp-base)">Recursos del taller</h2>
+    </div>
+
+    <div class="reveal" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--sp-base);max-width:760px;">
+      <a href="https://www.dropbox.com/scl/fo/wjdfaat2q3niib8ns9awz/AF8jOtkJiAEgli8922hQX_4?rlkey=4wf3a0xwvd86dvz5yc8jqwr7o&amp;st=jdcacq3g&amp;dl=0" target="_blank" rel="noopener noreferrer" class="card" style="padding:var(--sp-lg);text-decoration:none;color:inherit;display:flex;align-items:flex-start;gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+        <span><span class="title-sm" style="display:block;">Casos de nódulo pulmonar</span><span style="font-size:13px;color:var(--muted);">Carpeta de Dropbox con los estudios usados en el taller →</span></span>
+      </a>
+      <a href="https://mhub.ai" target="_blank" rel="noopener noreferrer" class="card" style="padding:var(--sp-lg);text-decoration:none;color:inherit;display:flex;align-items:flex-start;gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><rect width="16" height="16" x="4" y="4" rx="2"/><rect width="6" height="6" x="9" y="9" rx="1"/><path d="M15 2v2"/><path d="M15 20v2"/><path d="M2 15h2"/><path d="M2 9h2"/><path d="M20 15h2"/><path d="M20 9h2"/><path d="M9 2v2"/><path d="M9 20v2"/></svg>
+        <span><span class="title-sm" style="display:block;">mhub.ai</span><span style="font-size:13px;color:var(--muted);">La plataforma open-source del taller — corre más modelos →</span></span>
+      </a>
+      <a href="https://curso.angaritarad.com" target="_blank" rel="noopener noreferrer" class="card" style="padding:var(--sp-lg);text-decoration:none;color:inherit;display:flex;align-items:flex-start;gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        <span><span class="title-sm" style="display:block;">Curso AngaritaRad-AI</span><span style="font-size:13px;color:var(--muted);">Continúa lo aprendido — curso.angaritarad.com →</span></span>
+      </a>
+      <a href="https://angaritarad.com" target="_blank" rel="noopener noreferrer" class="card" style="padding:var(--sp-lg);text-decoration:none;color:inherit;display:flex;align-items:flex-start;gap:var(--sp-base);">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:2px;"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+        <span><span class="title-sm" style="display:block;">angaritarad.com</span><span style="font-size:13px;color:var(--muted);">Agentes de IA para radiología →</span></span>
+      </a>
     </div>
   </div>
 </section>
@@ -948,29 +1040,15 @@ Reporte guardado en:
 <section class="cta-band" id="registro">
   <div class="container">
     <div class="cta-band__badge reveal">
-      <span class="badge-pill">Registro</span>
+      <span class="badge-pill">Registro cerrado</span>
     </div>
-    <h2 class="display-lg cta-band__h2 reveal">El taller es presencial.<br>Los cupos son limitados.</h2>
+    <h2 class="display-lg cta-band__h2 reveal">El evento finalizó.</h2>
     <p class="cta-band__body reveal">
-      Incluido en la inscripción presencial al simposio. Los primeros inscritos reciben acceso gratuito al módulo 0 del curso <strong>academy.openrad.ai</strong>.
+      El IV Simposio y su taller práctico se realizaron el 11 de septiembre de 2026 en Los Cobos Medical Center. Gracias a todos los asistentes.
     </p>
     <div class="cta-band__ctas reveal">
-      <a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer" class="btn btn--download">Inscribirme al simposio →</a>
-      <a href="/" class="btn btn--outline">Ver programa completo →</a>
-    </div>
-    <div class="cta-band__pills reveal">
-      <span class="badge-pill">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-        100 cupos presenciales
-      </span>
-      <span class="badge-pill">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89L17 22l-5-3-5 3 1.523-9.11"/></svg>
-        Certificado U. El Bosque
-      </span>
-      <span class="badge-pill">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
-        Almuerzo incluido
-      </span>
+      <span class="btn btn--disabled">Evento finalizado</span>
+      <a href="#recursos" class="btn btn--outline">Ver recursos del taller →</a>
     </div>
   </div>
 </section>
@@ -983,7 +1061,7 @@ Reporte guardado en:
       <li><a href="/">← Volver al simposio</a></li>
       <li><a href="/#programa">Programa completo</a></li>
       <li><a href="/#speakers">Speakers</a></li>
-      <li><a href="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=NrRk1p6UrU6tkm0j7ziynlOyfMa2Zk1Mh4NaKN3abydUQUFTU09HNFhSUlJRWDI5N1hMSjREU1JNTC4u" target="_blank" rel="noopener noreferrer">Registro</a></li>
+      <li><a href="#recursos">Recursos</a></li>
     </ul>
   </div>
   <div class="footer__bottom">
